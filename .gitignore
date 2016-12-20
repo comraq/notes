@@ -1,0 +1,7 @@
+musings
+example
+old
+
+*.*
+!*.tex
+!*.dvi

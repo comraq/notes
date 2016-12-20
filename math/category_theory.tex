@@ -1,0 +1,146 @@
+%        File: category_theory.tex
+%     Created: Mon Dec 19 06:00 PM 2016 P
+% Last Change: Mon Dec 19 06:00 PM 2016 P
+%
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage[xindy, sort=def, nonumberlist, nopostdot]{glossaries}
+
+\makeindex
+\makeglossaries
+
+\newglossaryentry{set}
+{
+  name=Set,
+  text=set,
+  description={is a mathematical entity that is distinct from, but
+    completely determined by, its elements (if any). For every entity $x$
+    and set $S$, the statement $x\in S$, read '\textit{$x$ is an element of
+  $S$}', is a sentence that is either true or false.}
+}
+
+\newglossaryentry{emptyset}
+{
+  name=Empty Set,
+  text=empty set,
+  description={is the set with no elements \{\}.},
+  symbol={$\emptyset$}
+}
+
+\newglossaryentry{cartesianproduct}
+{
+  name=Cartesian Product,
+  text=cartesian product,
+  description={If $S$ and $T$ are sets, the \textbf{cartesian product} of
+    $S$ and $T$ is the set $S\times T$ of ordered pairs $(s,t)$ with $s\in S$ and
+    $t\in T$. The ordered pair $(s,t)$ is determined uniquely by the fact that
+  its first cordinate is $s$ and its second coordinate is $t$.}
+}
+
+
+\newglossaryentry{orderedtuple}
+{
+  name=Ordered $n$-Tuple,
+  text=ordered $n$-tuple,
+  description={is a sequence $(a_1, \cdots, a_n)$ determined uniquely by the
+    fact that for $i=1,\cdots,n$, the $i$th coordinate of $(a_1,\cdots,a_n)$,
+    is $a_i$. Then the \gls{cartesianproduct} $S_1\times S_2\times\cdots\times
+    S_n$ is the set of all $n$-tuples $(a_1,\cdots,a_n)$ with
+  $a_i\in S_i$ for $i=1,\cdots,n$}
+}
+
+\newglossaryentry{relation}
+{
+  name=Relation,
+  text=relation,
+  description={A \boldbf{relation} $\alpha$ from a set $S$ to a set $T$ is a subset
+    of $S\times T$. Any such subset is a relation from $S$ to $T$. Extreme
+    examples of relations are the \glssymbol{emptyset} and the set $S\times
+  T$.}
+}
+
+\newglossaryentry{diagonalrelation}
+{
+  name=Diagonal Relation,
+  text=diagonal relation,
+  description={A relation from $S$ to $S$ for any set $S$ defined as:
+    \begin{equation*}
+      \Delta _S=\{(x,x)|x\in S\}
+    \end{equation*}
+  },
+  symbol={$\Delta _S$}
+}
+
+\longnewglossaryentry{function}
+{
+  name=Function,
+  text=function,
+  symbol={$\rightarrow$}
+}{A \boldbf{function} $f$ is a mathematical entity with the
+  following properities:
+  \begin{itemize}
+    \item[F-1] {$f$ has a \boldbf{domain} and \boldbf{codomain}, each of
+      which must be a set.}
+    \item[F-2] {For every element $x$ of the domain, $f$ has a
+        \boldbf{value} at $x$, which is an element of the codomain and is
+      denoted $f(x)$.}
+    \item[F-3] {The domain, the codomain, and the value $f(x)$ for each
+      $x$ in the domain are all determined completely by the function.}
+    \item[F-4] {Conversely, the data consisting of the domain, the
+        codomain, and the value $f(x)$ for each element $x$ of the domain
+      completely determine the function $f$.}
+  \end{itemize}
+  The domain and codomain are often called the \boldbf{source} and
+\boldbf{target} of $f$.}
+
+\newglossaryentry{anonymousfunction}
+{
+  name=Anonymous Function,
+  text=anonymous function,
+  description={is denoted by the barred arrow, which goes from \textit{input
+  datum to output datum}.},
+  symbol={$\mapsto$}
+}
+
+\newglossaryentry{identityfunction}
+{
+  name=Identity Function,
+  text=identity function,
+  description={Every set $S$ has an \boldbf{identity function} $id_S
+  :S\rightarrow S$ for which $id_s(x)=x$ for all $x\in S$.},
+  symbol={$id$}
+}
+
+\newglossaryentry{graphofafunction}
+{
+  name=Graph of a Function,
+  text=graph of a function,
+  description={is the set of ordered pairs:$\{(x,f(x))|x\in S\}$ for a
+    function $f:S\rightarrow T$. The graph of a function from $S$ to $T$ is a
+    relation from $S$ to $T$ that for all $s\in S$, there is one and only one
+    $t\in T$ such that $(s,t)$ is in the graph, sometimes known as
+  \boldbf{mapping} from $s$ to $t$.}
+}
+
+\newglossaryentry{image}
+{
+  name=Image,
+  text=image,
+  description={is the set of values of a function $f:S\rightarrow T$,
+  $\{t\in T|\exists s\in S, f(s)=t\}$.}
+}
+
+\title{Category Theory}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+\maketitle
+A glossary reference for terms in Category Theory which I have came across.
+
+\clearpage
+
+\glsaddall
+\glossarystyle{tree}
+\printglossaries
+\end{document}
