@@ -1,0 +1,703 @@
+%        File: basics.tex
+%     Created: Mon Dec 19 06:00 PM 2016 P
+% Last Change: Mon Dec 19 06:00 PM 2016 P
+%
+\documentclass[a4paper]{article}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[xindy, nonumberlist, nopostdot]{glossaries}
+
+\newenvironment{note}[1][Note]
+{\begin{itemize}[align=left, nolistsep, after=\vspace{\baselineskip}]
+    \item[\textit{ #1}:]
+}
+{\end{itemize}}
+
+\makeindex
+\makeglossaries
+
+\newglossaryentry{set}
+{
+  name=Set,
+  text=set,
+  description={is a mathematical entity that is distinct from, but
+    completely determined by, its elements (if any). For every entity $x$
+    and set $S$, the statement $x\in S$, read '\textit{$x$ is an element of
+  $S$}', is a sentence that is either true or false.}
+}
+
+\newglossaryentry{emptyset}
+{
+  name=Empty Set,
+  text=empty set,
+  description={is the set with no elements \{\}.},
+  symbol={$\emptyset$}
+}
+
+\newglossaryentry{cartesianproduct}
+{
+  name=Cartesian Product,
+  text=cartesian product,
+  description={If $S$ and $T$ are sets, the \textbf{cartesian product} of
+    $S$ and $T$ is the set $S\times T$ of ordered pairs $(s,t)$ with $s\in S$ and
+    $t\in T$. The ordered pair $(s,t)$ is determined uniquely by the fact that
+  its first cordinate is $s$ and its second coordinate is $t$.}
+}
+
+
+\newglossaryentry{orderedtuple}
+{
+  name=Ordered $n$-Tuple,
+  text=ordered $n$-tuple,
+  description={is a sequence $(a_1, \cdots, a_n)$ determined uniquely by the
+    fact that for $i=1,\cdots,n$, the $i$th coordinate of $(a_1,\cdots,a_n)$,
+    is $a_i$. Then the \gls{cartesianproduct} $S_1\times S_2\times\cdots\times
+    S_n$ is the set of all $n$-tuples $(a_1,\cdots,a_n)$ with
+  $a_i\in S_i$ for $i=1,\cdots,n$}
+}
+
+\newglossaryentry{relation}
+{
+  name=Relation,
+  text=relation,
+  description={A \textbf{relation} $\alpha$ from a set $S$ to a set $T$ is a subset
+    of $S\times T$. Any such subset is a relation from $S$ to $T$. Extreme
+    examples of relations are the $\emptyset$ and the set $S\times
+  T$.}
+}
+
+\newglossaryentry{diagonalrelation}
+{
+  name=Diagonal Relation,
+  text=diagonal relation,
+  description={A relation from $S$ to $S$ for any set $S$ defined as:
+    \begin{equation*}
+      \Delta _S=\{(x,x)|x\in S\}
+    \end{equation*}
+  },
+  symbol={$\Delta _S$}
+}
+
+\longnewglossaryentry{function}
+{
+  name=Function,
+  text=function,
+  symbol={$\rightarrow$}
+}{A \textbf{function} $f$ is a mathematical entity with the
+  following properities:
+  \begin{enumerate}
+    \item $f$ has a \textbf{domain} and \textbf{codomain}, each of
+      which must be a set.
+    \item For every element $x$ of the domain, $f$ has a
+        \textbf{value} at $x$, which is an element of the codomain and is
+      denoted $f(x)$.
+    \item The domain, the codomain, and the value $f(x)$ for each
+      $x$ in the domain are all determined completely by the function.
+    \item Conversely, the data consisting of the domain, the
+        codomain, and the value $f(x)$ for each element $x$ of the domain
+      completely determine the function $f$.
+  \end{enumerate}
+  The domain and codomain are often called the \textbf{source} and
+\textbf{target} of $f$.}
+
+\newglossaryentry{anonymousfunction}
+{
+  name=Anonymous Function,
+  text=anonymous function,
+  description={is denoted by the barred arrow, which goes from \textit{input
+  datum to output datum}.},
+  symbol={$\mapsto$}
+}
+
+\newglossaryentry{identityfunction}
+{
+  name=Identity Function,
+  text=identity function,
+  description={Every set $S$ has an \textbf{identity function} $id_S
+  :S\rightarrow S$ for which $id_s(x)=x$ for all $x\in S$.},
+  symbol={$id$}
+}
+
+\newglossaryentry{graphofafunction}
+{
+  name=Graph of a Function,
+  text=graph of a function,
+  description={is the set of ordered pairs:$\{(x,f(x))|x\in S\}$ for a
+    function $f:S\rightarrow T$. The graph of a function from $S$ to $T$ is a
+    relation from $S$ to $T$ that for all $s\in S$, there is one and only one
+    $t\in T$ such that $(s,t)$ is in the graph, sometimes known as
+  \textbf{mapping} from $s$ to $t$.}
+}
+
+\newglossaryentry{image}
+{
+  name=Image,
+  text=image,
+  description={is the set of values of a function $f:S\rightarrow T$,
+  $\{t\in T|\exists s\in S, f(s)=t\}$.}
+}
+
+\newglossaryentry{inductivereasoning}
+{
+  name=Inductive Reasoning,
+  text=inductive reasoning,
+  description={is the method of reasoning based on making inferences and
+    conclusions from observations to a more general conclusion or future
+  event.}
+}
+
+\newglossaryentry{deductivereasoning}
+{
+  name=Deductive Reasoning,
+  text=deductive reasoning,
+  description={is the method of reasoning where a conclusion is reached by
+  logical arguments based on a collection of assumptions.}
+}
+
+\newglossaryentry{axiom}
+{
+  name=Axiom/Postulate,
+  text=axiom,
+  description={is a mathematical statement that is taken to be
+    self-evidently true without proof. These are basic building blocks from
+  which all theorems are proved.}
+}
+
+\newglossaryentry{definition}
+{
+  name=Mathematical Definition,
+  text=definition,
+  description={is a statement that gives precise meaning to a mathematical
+    concept, word or term. It characterizes the meaning of the word by
+  giving all the properties and only those properties that must be true.}
+}
+
+\longnewglossaryentry{conjecture}
+{
+  name=Conjecture,
+  text=conjecture
+} {is any mathematical statement that has not yet been proved or
+  disproved.\\
+
+  To disprove a \textbf{conjecture}, a \textit{counterexample} is required.
+  A \textit{counterexample} to the conjecture $H\Rightarrow C$ is a specific
+  example where the hypothesis $H$ is true, but the conclusion $C$ is false.
+  \begin{note}
+    only a single \textit{counterexample} is needed to disprove a
+    \textbf{conjecture}
+  \end{note}
+}
+
+\newglossaryentry{proof}
+{
+  name=Proof,
+  text=proof,
+  description={A proof of a mathematical result is a sequence of rigorous
+    mathematical arguments that are presented in a clear and concise
+  fashion. Convincingly demonstrates the truth of a given result.
+  \begin{note}[Remarks]
+    \item[]
+    \begin{itemize}
+      \item no method of proof begins with the assumption that the
+        conclusion is true
+      \item no method of proof begins with the assumption that the
+        hypthesis is false
+      \item if a \textit{conjecture} cannot be proved, it may be false. To disprove,
+        provide a counterexample
+    \end{itemize}
+  \end{note}
+  }
+}
+
+\newglossaryentry{theorem}
+{
+  name=Theorem,
+  text=theorem,
+  description={is any mathematical statement that can be shown to be true
+  using accepted logical and mathematical arguments.}
+}
+
+\newglossaryentry{lemma}
+{
+  name=Lemma,
+  text=lemma,
+  description={is a minor result whose sole purpose is to help in proving
+    a theorem. Any provable result that is used primarily as a necessary
+    step in the proof of another theorem, a stepping stone on the path to
+    proving a theorem. Very occasionally lemmas can take on a "life of their
+    own" \textit{(Zorn's lemma, Urysohn's lemma, Burnside's lemma, Sperner's
+  lemma)}.}
+}
+
+\newglossaryentry{corollary}
+{
+  name=Corollary,
+  text=corollary,
+  description={is a theorem that can be stated as a special case of a more
+    general theorem. Also is a result in which the (usually short) proof
+    relies heavily on a given theorem. Often say that "this is a corollary
+  of Theorem A".}
+}
+
+\newglossaryentry{claim}
+{
+  name=Claim,
+  text=claim,
+  description={is an assertion that is then proved, often used like an
+  informal lemma.}
+}
+
+\newglossaryentry{proposition}
+{
+  name=Logical Statement/Proposition,
+  text=proposition,
+  description={is a declarative sentence that is either true or false.}
+}
+
+\newglossaryentry{propositionalfunction}
+{
+  name=Propositional Function,
+  text=propositional function,
+  description={is a declarative sentence $P(x)$ involving a variable $x$
+    that takes on values in a set $\Delta$ is said to be a
+    \textbf{propositional function} iff $P(x)$ has a well-defined truth
+    value for each value of $x$ in $\Delta$. The set $\Delta$ is called the
+  \textit{domain} of the propositional function $P(x)$.}
+}
+
+\newglossaryentry{propositionalfunctionvariables}
+{
+  name=Variables in Propositional Functions,
+  text=variables in propositional functions,
+  description={is any term in a propositional function whose value is not
+    explicitly stated, implied or understood and whose value is needed in
+    order to determine the truth or falsity of the propostion. The values of
+    a variable is called the \textit{domain} of the propositional function
+  and is denoted by $\Delta$.}
+}
+
+\newglossaryentry{compoundstatement}
+{
+  name=Compound Statement,
+  text=compound statement,
+  description={is combined from simple logical statements that is based on
+  more than one object and the use of logical operators.}
+}
+
+\newglossaryentry{conjunction}
+{
+  name=Conjunction,
+  text=conjunction,
+  description={is a truth-functional operator that is true if and only if
+  \textit{all} of its operands are true.},
+  symbol={$\wedge$}
+}
+
+\newglossaryentry{disjunction}
+{
+  name=Disjunction,
+  text=disjunction,
+  description={is a truth-functional operator that is true if and only if
+  \textit{one or more} of its operands are true.},
+  symbol={$\vee$}
+}
+
+\newglossaryentry{negation}
+{
+  name=Negation,
+  text=negation,
+  description={is an unary logical operator that inverts the true values of
+    a proposition. If $P$ is a proposition, $\neg P$ is false when $P$ is
+  true, true when $P$ is false.},
+  symbol={$\neg$}
+}
+
+\longnewglossaryentry{logicaloperators}
+{
+  name=Logical Operators,
+  text=logical operators
+} {Let $P$ and $Q$ be statements:
+  \begin{itemize}
+    \item $P\wedge Q$ is called the \textit{conjunction} or \textit{meet} of
+      the statements $P$ and $Q$
+    \item $P\vee Q$ is called the \textit{disjunction} or \textit{join} of
+      the statements $P$ and $Q$
+    \item $\neg P$ is called the \textit{negation} of the
+      statement $P$
+  \end{itemize}
+}
+
+\newglossaryentry{tautology}
+{
+  name=Tautology,
+  text=tautology,
+  description={is a statement that is always true for all of its states of
+  nature.}
+}
+
+\newglossaryentry{contradiction}
+{
+  name=Contradiction,
+  text=contradiction,
+  description={is a statement that is always false for all of its states
+  of nature.}
+}
+
+\newglossaryentry{logicallyequivalent}
+{
+  name=Logically Equivalent,
+  text=logically equivalent,
+  description={Two statements $X$ and $Y$ are \textbf{logically equivalent}
+  when they have identitcal truth tables.}
+}
+
+\newglossaryentry{implication}
+{
+  name=Conditional Statement/Implication,
+  text=implication,
+  description={Let $P$ and $Q$ be statements, then the declarative sentence
+  $P\Rightarrow Q$ is called a \textbf{conditional statement}.
+  \begin{note}
+    In the statement $P\Rightarrow Q$, $P$ is also called the
+    \textit{antecedent} and $q$ the \textit{consequent}
+  \end{note}
+  },
+  symbol={$\Rightarrow$}
+}
+
+\newglossaryentry{converse}
+{
+  name=Converse Statement,
+  text=converse,
+  description={The \textbf{converse} of the statement
+    $P\Rightarrow Q$ is $Q\Rightarrow P$.
+    \begin{note}
+      a statement and its converse are not logically equivalent
+    \end{note}
+  }
+}
+
+\newglossaryentry{contrapositive}
+{
+  name=Contrapositive Statement,
+  text=contrapositive,
+  description={The \textbf{contrapositive} of the statement
+    $P\Rightarrow Q$ is
+    $\neg P\Rightarrow Q$.
+    \begin{note}
+      a statement and its contrapositive are logically equivalent
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{biconditional}
+{
+  name=Biconditional Statement,
+  text=biconditional,
+  symbol={$\Leftrightarrow$}
+} {
+  Let $P$ and $Q$ be statements, the \textbf{biconditional
+  statement} is $P$ if and only if $Q$, or $P$ iff $Q$.
+  \begin{note}
+    $P\Leftrightarrow Q$ is only true if both
+    $P\Rightarrow Q$ and its converse
+    $Q\Rightarrow P$ is true
+  \end{note}
+
+  To prove, given a biconditional theorem of the form $H\Leftrightarrow
+  C$, both $H\Rightarrow C$ and $C\Rightarrow H$ needs to be proved.
+}
+
+\newglossaryentry{universalquantification}
+{
+  name=Universal Quantification,
+  text=universal quantification,
+  description={is read as \textit{for every, for each, for all}.
+    \begin{note}
+      negating an universally quantified statement is equivalent
+      to the statement with an existential quantifier but with the associated
+      propositional function negated
+    \end{note}
+  },
+  symbol={$\forall$}
+}
+
+\newglossaryentry{existentialquantification}
+{
+  name=Existential Quantification,
+  text=existential quantification,
+  description={is read as \textit{there exists, there is at least one, there
+    is some}.
+    \begin{note}
+      negating an existentially quantified statement is equivalent
+      to the statement with an univeral quantifier but with the associated
+      propositional function negated
+    \end{note}
+  },
+  symbol={$\exists$}
+}
+
+\longnewglossaryentry{directproof}
+{
+  name=Direct Proof,
+  text=direct proof
+} {Prove if $H$ then $C$, that is $H\Rightarrow C$:
+  \begin{itemize}[align=left]
+    \item [Forward Direct Approach] Assume that the hypothesis $H$ is true,
+        proceeds forward with a sequence of logical arguments that leads to
+      the conclusion $C$.
+    \item [Proof by Contrapositive] State the contrapositive to prove; if
+        $\neg C$ then$\neg H$,
+        $\neg C\Rightarrow\neg H$.
+        Assume the conclusion $C$ is false (ie: $\neg C$ is true), proceeds
+        forward using the forward directoy approach that eventually leads to
+      the negation of the hypothesis $H$ (ie: $\neg H$ is true).
+  \end{itemize}
+}
+
+\newglossaryentry{indirectproof}
+{
+  name={Indirect Proof/Proof by Contradiction \textit{(reductio ad absurdum)}},
+  text=indirect proof,
+  description={Prove if $H$ then $C$. Assume the hypothesis $H$ is true and
+    conclusion $C$ is false. Proceeds forward with a sequence of logical
+    arguments until a contradiction is formed.
+    \begin{note}
+    proving $\neg(H\Rightarrow C)$
+      is always false (a contradiction) is logically equivalent to proving
+      that $H\Rightarrow C$ is true
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{induction}
+{
+  name=Mathematical Induction,
+  text=induction
+} {A special type of direct proof that can often be used with theorems of
+  the nature:\\
+  The statement $P(n)$ holds for every natural number $n$ (ie: holds for a
+  statement indexed by $n$ for all $n\in\mathbb{N}$).
+  \begin{itemize}[align=left]
+    \item[Weak Induction] Prove
+        $\forall n\in\mathbb{N}P(n)$.
+        \begin{itemize}[align=left]
+          \item[Initial Step (Base Case)] show $P(1)$ is true
+          \item[Induction Step] if $P(k)$ is true for an arbitrary but fixed
+            (ABF) value of $k$ in $\mathbb{N}$, then it follows that $P(k+1)$
+            is also true
+        \end{itemize}
+    \item[Strong Induction] Same as \textit{Weak Induction} except in the
+      \textit{Induction Step}: instead of assuming only $P(k)$ is true,
+      assume that $P(1),\dots,P(k)$ are all true for an ABF value of $k$ in
+      $\mathbb{N}$
+  \end{itemize}
+  \begin{note}
+    \textit{Weak} and \textit{Strong} inductions are logically
+    equivalent to each other. In general, attempt a proof with weak induction,
+    if a stronger inductive hypthothesis is required, use strong induction.
+    It is important that the initial step must lead to the induction step (ie:
+    $P(1)$ leads to $P(2)$, $P(1)$ is true leads to $P(2)$ being true).
+  \end{note}
+}
+
+\newglossaryentry{uniquenessproof}
+{
+  name=Uniqueness Proof,
+  text=uniqueness proof,
+  description={is used to prove an \textit{Uniqueness Theorem} of the
+    nature:
+    \begin{center}
+      \textit{Object $A$ that is an element of the set $C$ is the only
+      (unique) object having a property $P$}
+    \end{center}
+    An uniqueness proof shows that one and only one object has the special
+    property $P$. Uniqueness theorems in general can be proved via proof by
+    contradiction: show object $A\in C$ has property $P$, assume $A$ is not
+    unique (ie: another object $B\in C$ exists with property $P$ where
+    $B\neq A$), then using logical arguments, show that $B=A$.
+  }
+}
+
+\newglossaryentry{existenceproof}
+{
+  name=Existence Proof,
+  text=existence proof,
+  description={is used to prove an \textit{Existence Theorem} of the
+    nature:
+    \begin{center}
+      \textit{There exists an object $A$ that is an element of the set $C$
+      that has property $P$}
+    \end{center}
+    Proof of an existence theorem requires showing that
+    $\exists A\in C$ that has the property $P$,
+    can be as simple as constructing an object $A$ in $C$ with property
+    $P$.
+    \begin{note}
+      this may require a great deal of creative thinking and
+      mathematical insight to construct/create the object required for the
+      proof. It is not unusual that a mathematical trick or an uncommon
+      approach is required to construct the object.
+    \end{note}
+  }
+}
+
+\newglossaryentry{proofbycases}
+{
+  name=Proof by Cases,
+  text=proof by cases,
+  description={is a proof where the paths of the logical arguments leads to a statement
+    involving an either/or statement such as conditions $S_1$ or condition
+    $S_2$, it is often useful to consider separate proofs for each of the
+    cases.
+    If the same arguments are used for proofs of two or more cases, then the
+    cases should be combined into a single case. In the situation of similar
+    cases, a \textit{without loss of generality (WLOG)} statement may be
+    used to shorten the proof of a similar case.
+    \begin{note}
+      there may be more than 2 cases
+    \end{note}
+  }
+}
+
+\newglossaryentry{binaryoperation}
+{
+  name=Binary Operation,
+  text=binary operation,
+  description={is a rule defined on a set $\Omega$ that assigns the objects
+  $a, b\in\Omega$ to an object $c$.},
+  symbol={$\circ$}
+}
+
+\newglossaryentry{commutative}
+{
+  name=Commutative/Abelian,
+  text=commutative,
+  description={A binary operation $\circ$ is said to be \textbf{commutative} on a set
+    $\Omega$ and is called an \textit{abelian operation} if and only if
+    $\forall a,b\in\Omega, a\circ b=b\circ a$.\\
+    To prove, let $a,b$ be arbitrary but fixed elements in $\Omega$,
+  compute $a\circ b$ and $b\circ a$ and show that $a\circ b=b\circ a$.}
+}
+
+\newglossaryentry{associative}
+{
+  name=Associative,
+  text=associative,
+  description={A binary operation $\circ$ is said to be \textbf{associative}
+    on a set $\Omega$ if and only if $\forall a,b,c\in\Omega, (a\circ
+    b)\circ c=a\circ (b\circ c)$\\
+    To prove, let $a,b,c$ be arbitrary but fixed elements in $\Omega$,
+    compute $(a\circ b)\circ c$ and $a\circ (b\circ c)$ and show that
+  $(a\circ b)\circ c=a\circ (b\circ c)$.}
+}
+
+\newglossaryentry{closure}
+{
+  name=Closure,
+  text=closure,
+  description={A set $\Omega$ is \textbf{closed} under a binary operation
+    $\circ$ if and only if $a\circ b\in\Omega$ whenever $a,b\in\Omega$.\\
+    To prove, let $a,b$ be arbitrary but fixed elements in $\Omega$, compute
+  $a\circ b$ and show that $a\circ b\in\Omega$.}
+}
+
+\longnewglossaryentry{identityelement}
+{
+  name=Identity Element,
+  text=identity element,
+} {
+  An element $e\in\Omega$ is said to be an \textbf{identity
+  element} under the binary operator $o$ if and only if $\forall
+  a\in\Omega$:
+  \begin{equation*}
+    a\circ e=e\circ a=a
+  \end{equation*}
+  In order for $e$ to be an \textbf{identity element}, $e$ must statisfy
+  the following:
+  \begin{enumerate}
+    \item $e\in\Omega$
+    \item $\forall a\in\Omega, a\circ e=a$
+    \item $\forall a\in\Omega, e\circ a=a$
+  \end{enumerate}
+  ie: the identity element $e$ must be in $\Omega$ and commute with every
+  element in $\Omega$.
+  \begin{note}
+    if the binary operator $\circ$ is \textit{abelian}, only conditions
+    $1.$ and $2.$ \textit{or} $3.$ is necessary.
+  \end{note}
+  To prove, let $a\in\Omega$ be arbitrary but fixed. Compute $a\circ x$,
+  $x\circ a$ and solve for $x$ where $a\circ x=x\circ a$. Show that
+  $x\in\Omega$ does not depend on $a$. Conclude $e=x$ is an identity
+  element in $\Omega$ under the binary operator $\circ$.
+  \begin{note}[Theorem]
+    If $\Omega$ is closed under the $\circ$ binary operation and $e$ is an
+    identity element under $\circ$, then $e$ is unique
+  \end{note}
+}
+
+\longnewglossaryentry{inverseelement}
+{
+  name=Inverse Element,
+  text=inverse element
+} {
+  An element $a\in\Omega$ is said to have an \textbf{inverse element}
+  $a^{-1}\in\Omega$ under the binary operator $\circ$ if and only if:
+  \begin{equation*}
+    a\circ a^{-1}=a^{-1}\circ a=e
+  \end{equation*}
+  where $e$ is the identity element in $\Omega$.\\
+
+  To prove, determine the identity element $e$ and let $a\in\Omega$ be
+  arbitrary but fixed. Compute $a\circ x$, $x\circ a$, solve for $x$
+  where $a\circ x=e=x\circ a$ and show that $x\in\Omega$. Conc
+  that $a^{-1}=x$ is the inverse of the element $a$ under the binary
+  operator $\circ$.
+  \begin{note}[Theorem]
+    Let $o$ be an associative binary operator. If $\Omega$ is closed under
+    $\circ$ and $a^{-1}\in\Omega$ whenever $a\in\Omega$, then $a^{-1}$ is
+    unique
+  \end{note}
+  \begin{note}[Theorem]
+    If $\Omega$ is closed under $\circ$ and $a^{-1}\in\Omega$ whenever
+    $a\in\Omega$, then $(a^{-1})^{-1}=a$
+  \end{note}
+}
+
+\newglossaryentry{identity}
+{
+  name=Identity,
+  text=identity,
+  description={is a mathematical expression giving the equality of two
+    (often variable) quantities. (Ex: \textit{trignometric identities,
+  Euler's identity})}
+}
+
+\newglossaryentry{paradox}
+{
+  name=Paradox,
+  text=paradox,
+  description={is a statement that can be shown, using a given set of axioms
+    and definitions, to be both true and false. A paradox is often used to
+    show the inconsistencies in a flawed theory \textit{(Russell's
+    paradox)}, used informally to describe a surprising or counterintuitive
+    result that follows from a given set of rules \textit{(Banach-Tarki
+  paradox, Alabama paradox, Gabriel's horn)}.}
+}
+
+\title{Math Preliminaries}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+\maketitle
+A glossary reference for some basic mathematical terms which I found useful
+with a formal definition.
+
+\clearpage
+
+\glsaddall
+\setglossarystyle{tree}
+\printglossaries
+\end{document}
