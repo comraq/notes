@@ -3,9 +3,10 @@
 % Last Change: Mon Dec 19 06:00 PM 2016 P
 %
 \documentclass[a4paper]{article}
-\usepackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
 \usepackage[xindy, nonumberlist, nopostdot]{glossaries}
 
 \newenvironment{note}[1][Note]
@@ -44,7 +45,6 @@
     $t\in T$. The ordered pair $(s,t)$ is determined uniquely by the fact that
   its first cordinate is $s$ and its second coordinate is $t$.}
 }
-
 
 \newglossaryentry{orderedtuple}
 {
@@ -130,12 +130,130 @@
   \textbf{mapping} from $s$ to $t$.}
 }
 
+\newglossaryentry{inclusion}
+{
+  name=Inclusion Function,
+  text=inclusion,
+  description={If a set $S$ is a subset of a set $T$ (denoted by $S\subset
+    T$), then there is an \textbf{inclusion function} $i:S\rightarrow T$
+    for which $i(x)=x$ for all $x\in S$.
+    \begin{note}
+      the functions $id_S$ and $i$ are different functions because they
+      have different codomains, even though their value at each element of
+      their (common) domain is the same
+  \end{note}}
+}
+
 \newglossaryentry{image}
 {
   name=Image,
   text=image,
   description={is the set of values of a function $f:S\rightarrow T$,
   $\{t\in T|\exists s\in S, f(s)=t\}$.}
+}
+
+\newglossaryentry{injective}
+{
+  name=Injection,
+  text=injective,
+  description={Also known as \textbf{one to one}, a function $f:S\rightarrow
+    T$ is \textbf{injective} if whenever $s\neq s'$ in $S$, then $f(s)\neq
+    f(s')$ in $T$.
+  \begin{note}
+    Do not confuse the definition of \textbf{injective} with the property
+    that if $s=s'$, then $f(s)=f(s')$. Another way to say that a function is
+    injective is via the contrapositive: if $f(s)=f(s')$, then $s=s'$
+  \end{note}
+  }
+}
+
+\newglossaryentry{surjective}
+{
+  name=Surjection,
+  text=surjective,
+  description={Also known as \textbf{onto}, a function $f:S\rightarrow T$ is
+    \textbf{surjective} if its image is $T$. For instance, the
+    identity function on any set is \textbf{surjective}, but no
+  other inclusion function is.}
+}
+
+\newglossaryentry{bijective}
+{
+  name=Bijection,
+  text=bijective,
+  description={A function is \textbf{bijective} if it is both
+    \textit{injective} and \textit{surjective}. Sometimes also called a
+  \textit{one to one correspondence}.}
+}
+
+\newglossaryentry{projection}
+{
+  name=Projection (Coordinate) Function,
+  text=projection,
+  description={If $S$ and $T$ are sets, their cartesian product
+    $S\times T$ is equipped with two \textbf{coordinate} or
+    \textbf{projection functions} $proj_1:S\times T\rightarrow S$ and
+    $proj_2:S\times T\rightarrow T$. The coordinate functions are
+  surjective if $S$ and $T$ are both nonempty.}
+}
+
+\newglossaryentry{composition}
+{
+  name=Composite Function (Composition),
+  text=composition,
+  description={If $f:S\rightarrow T$ and $g:T\rightarrow U$, then the
+    \textbf{composite function} $g\circ f:S\rightarrow U$ is defined to be the
+    unique function with domain $S$ and codomain $U$ for which $(g\circ
+    f)(x)=g(f(x))$ for all $x\in S$. In category theory, it is necessary that
+    the codomain of $f$ be the domain of $g$ in order for $g\circ f$ to be
+  defined.}
+}
+
+\newglossaryentry{restriction}
+{
+  name=Restriction,
+  text=restriction,
+  description={If $g:S\rightarrow T$, $f:A\rightarrow T$ and $A\subset S$,
+    then $f$ is the \textbf{restriction} of $g$ to $A$ if $f=g\circ i$ where
+  $i:A\rightarrow S$ is the inclusion function of $A$ in $S$.}
+}
+
+\newglossaryentry{corestriction}
+{
+  name=Corestriction,
+  text=corestriction,
+  description={If $f:S\rightarrow T$, $g:S\rightarrow B$ and $T\subset B$,
+    then $f$ is the \textbf{corestriction} of $g$ to $T$ if $g=i\circ
+  f$, where $i$ is the inclusion of $T$ in $B$.}
+}
+
+\longnewglossaryentry{homomorphism}
+{
+  name=Homomorphism,
+  text=homomorphism
+} {
+  is a structure preserving map between two \textit{algebraic
+  structures} of the same type (such as \textit{groups, graphs, rings, vector
+  spaces})\\
+
+  \begin{note}[Graph Homomorphism]
+  \item[]
+    For a graph $\mathscr{G}$, let $G_0$ denote the set of nodes and $G_1$
+    denote the set of paths/arrows. A \textit{graph homomorphism} $\phi$
+    from a graph $\mathscr{G}$ to a graph $\mathscr{H}$ denoted
+    $\phi:\mathscr{G}\rightarrow\mathscr{H}$, is a pair of functions
+    ${\phi}_0:\mathscr{G}_0\rightarrow\mathscr{H}_0$ and
+    ${\phi}_1:\mathscr{G}_1\rightarrow\mathscr{H}_1$ with the property that
+    if $u:m\rightarrow n$ is an arrow of $\mathscr{G}$, then
+    ${\phi}_1(u):{\phi}_0(m)\rightarrow{\phi}_0(n)$ in $\mathscr{H}$.
+  \end{note}
+
+  \begin{note}[Monoid Homomorphism]
+  \item[]
+    A \textit{monoid homomorphism} between two monoids $(M, \ast)$ and $(N,
+    \bullet)$ is a function $f:M\rightarrow N$ such that $f(x\ast
+    y)=f(x)\bullet f(y)$ for all $x,y\in M$ and $f(e_M)=e_N$.
+  \end{note}
 }
 
 \newglossaryentry{inductivereasoning}
@@ -184,7 +302,7 @@
   A \textit{counterexample} to the conjecture $H\Rightarrow C$ is a specific
   example where the hypothesis $H$ is true, but the conclusion $C$ is false.
   \begin{note}
-    only a single \textit{counterexample} is needed to disprove a
+    only a single counterexample is needed to disprove a
     \textbf{conjecture}
   \end{note}
 }
@@ -203,7 +321,7 @@
         conclusion is true
       \item no method of proof begins with the assumption that the
         hypthesis is false
-      \item if a \textit{conjecture} cannot be proved, it may be false. To disprove,
+      \item if a conjecture cannot be proved, it may be false. To disprove,
         provide a counterexample
     \end{itemize}
   \end{note}
@@ -553,7 +671,7 @@
     cases.
     If the same arguments are used for proofs of two or more cases, then the
     cases should be combined into a single case. In the situation of similar
-    cases, a \textit{without loss of generality (WLOG)} statement may be
+    cases, a \textit{without loss of generality} (WLOG) statement may be
     used to shorten the proof of a similar case.
     \begin{note}
       there may be more than 2 cases
@@ -624,8 +742,8 @@
   ie: the identity element $e$ must be in $\Omega$ and commute with every
   element in $\Omega$.
   \begin{note}
-    if the binary operator $\circ$ is \textit{abelian}, only conditions
-    $1.$ and $2.$ \textit{or} $3.$ is necessary.
+    if the binary operator $\circ$ is abelian, only conditions
+    $1.$ and $2.$ or $3.$ is necessary.
   \end{note}
   To prove, let $a\in\Omega$ be arbitrary but fixed. Compute $a\circ x$,
   $x\circ a$ and solve for $x$ where $a\circ x=x\circ a$. Show that
