@@ -1,0 +1,111 @@
+%        File: category_theory.tex
+%     Created: Wed Dec 21 03:00 PM 2016 P
+% Last Change: Wed Dec 21 03:00 PM 2016 P
+%
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage[xindy, nonumberlist, nopostdot]{glossaries}
+
+% My Custom Macros Package
+\usepackage{mymacros}
+
+\makeindex
+\makeglossaries
+
+\newglossaryentry{homset}
+{
+  name=Hom Set,
+  text=hom set,
+  description={A \textbf{hom set} $\Hom{S}{T}$ is the set of all morphisms
+  from $S$ to $T$ for any objects $S$ and $T$ in a category.}
+}
+
+\newglossaryentry{homfunction}
+{
+  name=Hom Function,
+  text=hom function,
+  description={
+    Let $S$ be an object and $f:T\rightarrow V$ an arrow in a
+    category, a \textit{covariant} \textbf{hom function}
+    $\Hom{S}{f}:\Hom{S}{T}\rightarrow\Hom{S}{V}$, if defined by:
+    \begin{center}
+      $\Hom{S}{f}(g)=f\circ g$
+    \end{center}
+    for some $g\in\Hom{S}{T}$.\\
+%
+    Similarily, a \textit{contravariant} \textbf{hom function}
+    $\Hom{f}{S}:\Hom{V}{S}\rightarrow\Hom{T}{S}$, if defined by:
+    \begin{center}
+      $\Hom{f}{S}(g)=g\circ f$
+    \end{center}
+    for some $g\in\Hom{V}{S}$.
+  }
+}
+
+\newglossaryentry{morphism}
+{
+  name=Morphism/Arrow,
+  text=morphism,
+  description={is a directed connective between two objects (\textit{source}
+    and \textit{target} objects) in a category, synonymous
+    with \textit{map} or a \textit{directed edge} in a \textit{directed
+    graph}. A morphism $f$ with source $x$ and target $y$ objects is denoted
+    as:
+    \begin{center}
+      $f:x\rightarrow y$
+    \end{center}
+  }
+}
+
+\longnewglossaryentry{category}
+{
+  name=Category,
+  text=category
+} {
+  A \textbf{category} $\mathscr{C}$ contains a collection of
+  \textit{objects} (denoted as $\mathscr{C}_0$) and a collection of
+  \textit{morphisms} (denoted as $\mathscr{C}_1$) where every morphism has
+  $source, target:\mathscr{C}_1\rightarrow\mathscr{C}_0$ functions mapping
+  each arrow to its \textit{source} and \textit{target} objects respectively
+  into the collection of objects.\\
+
+  For any two arrows $f,g$ where the $target(f)=source(g)$, the
+  \textit{composition} of $f$ and $g$ are written as $g\circ
+  f:source(f)\rightarrow target(g)\in\mathscr{C}_1$. Composition is
+  associative, $(h\circ g)\circ f=h\circ (g\circ f)$ when either side is
+  defined.\\
+
+  $\forall A\in\mathscr{C}_0$, there exists the \textit{identity} arrow,
+  $id_A:A\rightarrow A$ and for any $f:A\rightarrow B$, $f\circ id_A=id_B\circ
+  f=f$.\\
+
+  A category is \textit{small} if its objects and arrows constitute sets;
+  otherwise it is \textit{large}.
+}
+
+\newglossaryentry{locallysmall}
+{
+  name=Locally Small Category,
+  text=locally small,
+  description={is a category $\mathscr{C}$ with the property that $\Hom{A}{B}$ is a set
+  for all objects $A,B\in\mathscr{C}$.}
+}
+
+\title{Category Theory}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+\maketitle
+A glossary reference for Category Theory and relevant terms which I have
+came across.
+
+\clearpage
+
+\glsaddall
+\setglossarystyle{tree}
+\printglossaries
+\end{document}
