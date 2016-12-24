@@ -801,6 +801,130 @@
   paradox, Alabama paradox, Gabriel's horn)}.}
 }
 
+\newglossaryentry{partialfunction}
+{
+  name=Partial Function,
+  text=partial function,
+  description={A \textbf{partial function} $f:S\rightarrow T$ is a function
+  where $f$ is only defined on $S_0\subseteq S$.}
+}
+
+\newglossaryentry{preorder}
+{
+  name=Preorder,
+  text=preorder,
+  description={is a binary relation that is both \textit{reflexive} and
+  \textit{transitive}.}
+}
+
+\newglossaryentry{partialorder}
+{
+  name=Partial Order,
+  text=partial order,
+  description={is a binary relation that is \textit{reflexive},
+    \textit{antisymmetric} and \textit{transitive} (ie: a partial order is
+  an antisymmetric preorder).}
+}
+
+\newglossaryentry{semigroup}
+{
+  name=Semigroup,
+  text=semigroup,
+  description={is a set $S$ together with an associative and closed binary
+  operation, $m:S\times S\rightarrow S$.}
+}
+
+\newglossaryentry{monoid}
+{
+  name=Monoid,
+  text=monoid,
+  description={is a \textit{semigroup} with an \textit{identity element}.}
+}
+
+\newglossaryentry{kleeneclosure}
+{
+  name=Kleene Closure,
+  text=kleene closure,
+  description={The \textbf{Kleene Closure} $A^*$ of a set $A$ is the set of
+    lists of finite length of elements of $A$. Example, $(a,b,d,a)$ is an
+    element of $\{a,b,c,d\}^*$.
+    \begin{note}
+      $A^*$ contains the empty list $()$ and $\forall a\in A$, the lists
+      $(a)$ with length 1.
+    \end{note}
+  },
+  symbol={$^*$}
+}
+
+\newglossaryentry{preorderedset}
+{
+  name=Preordered Set,
+  text=preordered set,
+  description={is a set $S$ with a preorder $\alpha$ defined on its
+  elements, denoted as $(S,\alpha)$.}
+}
+
+\newglossaryentry{partiallyorderedset}
+{
+  name=Partially Ordered Set/Poset,
+  text=partially ordered set,
+  description={is a \textit{preordered set} $(S,\alpha)$ where $\alpha$ is
+  \textit{antisymmetric}, (ie: a set $S$ with a partial order).}
+}
+
+\newglossaryentry{reflexive}
+{
+  name=Reflexive,
+  text=reflexive,
+  description={is a binary relation $\alpha$ over a set $S$ where $\forall
+  s\in S, s\alpha s$.}
+}
+
+\newglossaryentry{antisymmetric}
+{
+  name=Antisymmetric,
+  text=antisymmetric,
+  description={is a binary relation $\alpha$ over a set $S$ where no pair of
+    distinct elements of $S$ is related by $\alpha$ to the other. Thus,
+  $\forall a,b\in S$, $(a\alpha b\wedge b\alpha a)\Rightarrow a=b$.}
+}
+
+\newglossaryentry{transitive}
+{
+  name=Transitive,
+  text=transitive,
+  description={is a binary relation $alpha$ over a set $S$ if whenever an
+    element $a$ is related to an element $b$, and $b$ is related to an
+    element $c$, then $a$ is also related to $c$. Thus, $\forall a,b,c\in S,
+  (a\alpha b\wedge b\alpha c)\Rightarrow a\alpha c$.}
+}
+
+\newglossaryentry{monotonefunction}
+{
+  name=Monotone Function,
+  text=monotone function,
+  description={is a function between \textit{ordered sets} that preserves or
+  reverses the given order.}
+}
+
+\newglossaryentry{fixedpoint}
+{
+  name=Fixed Point,
+  text=fixed point,
+  description={A \textbf{fixed point} of a function $f:S\rightarrow S$
+  for a set $S$ is an element $x\in S$ such that $f(x)=x$.}
+}
+
+\newglossaryentry{isomorphism}
+{
+  name=Isomorphism,
+  text=isomorphism,
+  description={is a \textit{homomorphism} with an \textit{inverse}, usually
+    this means that the composition of a homomorphism with its inverse must be
+    the identity homomorphism. Two mathematical objects are
+  \textit{isomorphic} if an isomorphism exists between them.}
+}
+
 \title{Math Preliminaries}
 \author{Adam Yin}
 \date{}

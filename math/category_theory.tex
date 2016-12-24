@@ -17,9 +17,9 @@
 
 \newglossaryentry{homset}
 {
-  name=Hom Set,
-  text=hom set,
-  description={A \textbf{hom set} $\Hom{S}{T}$ is the set of all morphisms
+  name=Hom-Set,
+  text=hom-set,
+  description={A \textbf{hom-set} $\Hom{S}{T}$ is the set of all morphisms
   from $S$ to $T$ for any objects $S$ and $T$ in a category.}
 }
 
@@ -92,6 +92,77 @@
   text=locally small,
   description={is a category $\mathscr{C}$ with the property that $\Hom{A}{B}$ is a set
   for all objects $A,B\in\mathscr{C}$.}
+}
+
+\longnewglossaryentry{categoryexamples}
+{
+  name={Examples of Categories:}
+} {
+  \begin{itemize}[align=left]
+    \item[\textbf{Set}]
+      is the category whose objects are sets and arrows are functions
+      between sets. Composition is function composition and the identity
+      arrow is the identity function $id_S$ for a set $S$.
+
+    \item[\textbf{Fin}]
+      is the category whose objects are finite sets and arrows are all the
+      functions between finite sets.
+
+    \item[\textbf{Pfn}]
+      is the category whose objects are sets but all arrows are all partial
+      functions. If $f:S\rightarrow T, g:T\rightarrow V$ are partial
+      functions with $f$ defined on $S_0\subseteq S$ and $g$ defined on
+      $T_0\subseteq T$, then the composite $g\circ f:S\rightarrow V$ is the
+      partial function from $S$ to $V$ defined on the subset $\{x\in
+      S_0|f(x)\in T_0\}$ of $S$ by the requirement $(g\circ f)(x)=g(f(x))$.
+
+    \item[\textbf{Rel}]
+      is the category whose objects are sets and arrows are relations
+      relations between sets. The composite $\beta\circ\alpha$ of relations
+      $\alpha$ from sets $S$ to $T$ and $\beta$ from $T$ to $U$ is a
+      relation from $S$ to $U$ defined as follows:
+      \begin{center}
+        If $x\in S$ and $z\in U$, $(x,z)\in\beta\circ\alpha$ if and only if
+        there is an element $y\in T$ for which $(x,y)\in\alpha$ and
+        $(y,z)\in\beta$.
+      \end{center}
+      The identity arrow for a set $S$ is the \textit{diagonal relation}
+      $\Delta_S=\{(x,x)|x\in S\}$
+
+    \item [\textbf{Poset}]
+      is the category whose objects are elements of a poset $P$ and arrows
+      are the partially ordered relation between those elements. The
+      reflexive and transitive properties provides the identity and
+      composition of arrows.
+      \begin{note}
+        Every hom-set in this category has at most ONE element.
+        Equivalently, any category where every hom-set has at most one element
+        is a poset.
+      \end{note}
+
+    \item [\textbf{Monoid}]
+      is the category whose only object is the Monoid itself and arrows are
+      the elements of the monoid. The identity arrow is the identity element
+      and composition being the monoid binary operation.
+      \begin{note}
+        Any category with one object is a monoid.
+      \end{note}
+
+    \item [\textbf{Grf}]
+      is the category whose objects are graphs and arrows are graph
+      homomorphisms. Identity arrow being the identity homormophism and
+      composition being composition of homomorphisms.
+
+    \item [\textbf{Posets and Monotone Functions}]
+      is the category whose objects are posets and arrows are monotone
+      functions between posets.
+
+    \item [\textbf{Sem}]
+      is the category whose objects are semigroups and arrows are semigroup
+      homomorphisms. (This can be extended to monoids as well, denoted as
+      \textbf{Mon}).
+
+  \end{itemize}
 }
 
 \title{Category Theory}
