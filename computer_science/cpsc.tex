@@ -1,0 +1,104 @@
+%        File: computation.tex
+%     Created: Wed Dec 21 03:00 PM 2016 P
+% Last Change: Wed Dec 21 03:00 PM 2016 P
+%
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage[xindy, nonumberlist, nopostdot]{glossaries}
+
+% My Custom Macros Package
+\usepackage{mymacros}
+
+\makeindex
+\makeglossaries
+
+\newglossaryentry{cpo}
+{
+  name={$\omega$-Complete Partial Order},
+  text={$\omega$-complete partial order},
+  description={is a poset in which every \textit{$\omega$-chain} has a
+  \textit{supremum}.
+  \begin{note}
+    If such a poset also has minimum element, it is called a \textit{strict
+    $\omega$-CPO} and such an element is commonly known as \textit{bottom},
+    $\bot$.
+  \end{note}
+  },
+  symbol={$\omega$-CPO}
+}
+
+\newglossaryentry{bottom}
+{
+  name=Bottom,
+  text=bottom,
+  description={is the least element of a poset. Sometimes also known as
+  \textit{zero}, $\mathbf{0}$},
+  symbol={$\bot$}
+}
+
+\newglossaryentry{top}
+{
+  name=Top,
+  text=top,
+  description={is the greatest element of a poset. Sometimes also known as
+  \textit{unit}, $\mathbf{1}$},
+  symbol={$\top$}
+}
+
+\newglossaryentry{omegachain}
+{
+  name={$\omega$-Chain},
+  text={$\omega$-chain},
+  description={is an infinite sequence in a poset $(S,\leq)$ of the form
+    $s_0,s_1,s_2,\dots$ where $\forall i\in\mathbb{N}, s_i\in S$ and $s_i\leq
+  s_{i+1}$.}
+}
+
+\newglossaryentry{scottcontinuous}
+{
+  name=Scott-continuous Function,
+  text=Scott-continuous function,
+  description={For two posets $S$ and $T$, a function $f:S\rightarrow T$ is
+    \textbf{Scott-continuous} if whenever $s$ is the supremum of a chain
+    $\mathscr{C}=(c_0,c_1,c_2,\dots)\in S$, then $f(s)$ is the supremum of the
+    image $f(\mathscr{C})=\{f(c_i)|i\in\mathbb{N}\}$ (ie: Scott-continuous
+    functions preserves the supremum).
+    \begin{note}
+      Such a function is \textit{strict} if it also preserves the bottom
+      element between strict $\omega$-CPOs.
+    \end{note}
+  }
+}
+
+\newglossaryentry{kleeneclosurehomomorphism}
+{
+  name=Kleene Closure Induced Homormophism,
+  text=kleene closure induced homormophism,
+  description={For a function $f:A\rightarrow B$, between sets $A$ and $B$,
+    $f^*:A^*\rightarrow B^*$ is a monoid homomorphism defined by
+    $f^*((a_1,a_2,\dots,a_k))=(f(a_1),f(a_2),\dots,f(a_k))$.
+    \begin{note}
+      This function $f^*$ is commonly known as \textit{map $f$}, for
+      lists/arrays in programming current languages.
+    \end{note}
+}
+}
+
+\title{Computer Science}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+\maketitle
+A glossary reference for Computer Science relevant terms which I have
+came across.
+
+\clearpage
+
+\glsaddall
+\setglossarystyle{tree}
+\printglossaries
+\end{document}

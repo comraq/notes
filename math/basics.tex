@@ -915,14 +915,43 @@
   for a set $S$ is an element $x\in S$ such that $f(x)=x$.}
 }
 
-\newglossaryentry{isomorphism}
+\longnewglossaryentry{supremum}
 {
-  name=Isomorphism,
-  text=isomorphism,
-  description={is a \textit{homomorphism} with an \textit{inverse}, usually
-    this means that the composition of a homomorphism with its inverse must be
-    the identity homomorphism. Two mathematical objects are
-  \textit{isomorphic} if an isomorphism exists between them.}
+  name=Supremum,
+  text=supremum
+} {
+  is the \textit{least upper bound} of a subset $T$ of a poset $(S,\leq)$.
+  That is, for a subset $T\subseteq S$, a \textbf{supremum} is an element
+  $v\in S$ such that:
+  \begin{itemize}
+    \item $\forall t\in T, t\leq v$
+    \item If $w\in S$ has the property that $t\leq w$ for every $t\in T$,
+      then $v\leq w$
+  \end{itemize}
+}
+
+\newglossaryentry{infimum}
+{
+  name=Infimum,
+  text=infimum,
+  description={is the \textit{greatest lower bound} of a subset $T$ of a
+  poset $S$, if such an element exists.}
+}
+
+\longnewglossaryentry{path}
+{
+  name=Path,
+  text=path
+} {
+  In a graph $\mathscr{G}$, a \textbf{path} from a node $x$ to
+  a node $y$ of length $k$ is a sequence $(f_1,f_2,\dots,f_k)$ of directed
+  edges for which:
+  \begin{itemize}
+    \item $source(f_k)=x$
+    \item $target(f_i)=source(f_{i-1})$ for $i=2,\dots,k$
+    \item $target(f_1)=y$
+  \end{itemize}
+  The empty path is denoted as $()$.
 }
 
 \title{Math Preliminaries}
