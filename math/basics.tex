@@ -954,6 +954,81 @@
   The empty path is denoted as $()$.
 }
 
+\newglossaryentry{cayleystheorem}
+{
+  name=Cayley's Theorem,
+  description={Every group $G$ is isomorphic to a subgroup of the symmetric
+    group acting on $G$.
+    \begin{note}
+      The same can be stated about monoids and monoid actions.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{groupaction}
+{
+  name=Group Action,
+  text=group action
+} {
+  is a way of interpreting elements of group ``acting'' on some space, thus
+  if $G$ is a group and $X$ is a set, the action of $G$ on $X$ is a group
+  homomorphism from $G$ to the symmetry group on $X$. The group action
+  $\alpha:G\times X\rightarrow X$ may be defined as follows:
+  \begin{itemize}
+    \item $\alpha(1, x)=x$ where $1$ is the identity in $G$ for any $x\in
+      X$\\
+      Also written as: $1x=x$
+    \item $\alpha(gh,x)=\alpha(g,\alpha(h,x))$ for all $g,h\in G, x\in X$\\
+      Also written as: $(gh)x=g(hx)$
+  \end{itemize}
+
+  \begin{note}
+    A similar construct can be defined for monoids.
+  \end{note}
+
+  \begin{note}
+    One way to think of group actions would be the set $X$ is a
+    \textit{state space} and elements of $G$ acting on $X$ induces
+    \textit{transitions} from one state to another.
+  \end{note}
+}
+
+\newglossaryentry{powerset}
+{
+  name=Power Set,
+  text=power set,
+  description={The \textbf{power set} $\mathcal{P}(S)$ of any set $S$ is the
+  set of all subsets of $S$, including the empty set.},
+  symbol={$\mathcal{P}$}
+}
+
+\newglossaryentry{preimage}
+{
+  name=Preimage/Inverse Image,
+  text=preimage,
+  description={For a set function $f:X\rightarrow Y$, the \textbf{preimage}
+    $f^{-1}:\mathcal{P}(B)\rightarrow\mathcal{P}(A)$ of a set $B\subseteq Y$
+    is a subset of $X$ defined by:
+    \begin{center}
+      $f^{-1}(B)=\{x\in X|f(x)\in B\}$
+    \end{center}
+  },
+  symbol={$^{-1}$}
+}
+
+\newglossaryentry{equivariantmap}
+{
+  name=Equivariant Map,
+  text=equivariant map,
+  description={is a function that commutes with the action of the group on
+    either its domain or codomain. Thus, for a group $G$ and an equivariant map
+    $\phi:S\rightarrow T$ for sets $S$ and $T$:
+    \begin{center}
+      $\forall g\in G, \forall s\in S, g\phi(s)=\phi(gs)$
+    \end{center}
+  }
+}
+
 \title{Math Preliminaries}
 \author{Adam Yin}
 \date{}
