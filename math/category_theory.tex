@@ -628,6 +628,18 @@
       arrow is the identity equivariant map and composition is function
       composition.
 
+    \item[\textbf{FBool}]
+      is the category whose objects are finite Boolean algebras and arrows
+      are homormophisms between them.
+
+    \item[\textbf{Pts}]
+      is the category whose objects are pointed sets and arrows are
+      functions that preserves the pointed object.
+
+    \item[$\mathbf{Func}(\mathscr{C},\mathscr{D})$]
+      is the category whose objects are functors from categories
+      $\mathscr{C}$ to $\mathscr{D}$ and arrows are natural transformations.
+
   \end{itemize}
   \end{itemize}
 }
@@ -674,6 +686,12 @@
         \item $F_\alpha(*)=S$ where $*$ denotes the single object in $C(M)$
         \item $F_\alpha(m)=s\mapsto\alpha(m,s)$ for $m\in M$, $s\in S$
       \end{itemize}
+
+    \item[\textbf{Quotient Functor}]
+      $Q:\mathscr{C}\rightarrow\mathscr{C}/\sim$\\
+      is the functor thats takes a category to its quotient category by
+      where $Q(A)=A$ for any object $A$ and $Q(f)=[f]$ for arrows $f$ in the
+      category $\mathscr{C}$.
 
   \end{itemize}
   \end{itemize}
@@ -913,6 +931,128 @@
   }
 }
 
+\newglossaryentry{indiscrete}
+{
+  name=Indiscrete,
+  text=indiscrete,
+  description={A category in which there is exactly one arrow between any
+  two objects is called \textbf{indiscrete}.}
+}
+
+\longnewglossaryentry{categoryequivalence}
+{
+  name=Category Equivalence,
+  text=category equivalence,
+} {
+  A functor $F:\mathscr{C}\rightarrow\mathscr{D}$ is an \textbf{equivalence
+  of categories} if there is a functor $G:\mathscr{D}\rightarrow\mathscr{C}$
+  such that:
+  \begin{itemize}[nosep]
+    \item A family $u_C:C\rightarrow G(F(C))$ of isomorphisms of
+      $\mathscr{C}$ indexed by the objects of $\mathscr{C}$ with the
+      property that for every arrow $f:C\rightarrow C'$ in
+      $\mathscr{C}$, $G(F(f))=u_{C'}\circ f\circ u_C^{-1}$
+
+    \item A family $v_D:D\rightarrow F(G(D))$ of isomorphisms of
+      $\mathscr{D}$ indexed by the objects of $\mathscr{D}$ with the
+      property that for every arrow $g:D\rightarrow D'$ in $\mathscr{D}$,
+      $F(G(g))=v_{D'}\circ g\circ v_D^{-1}$
+  \end{itemize}
+
+  \begin{note}
+    In this case, the functor $G$ is called a \textit{pseudo-inverse} of $F$
+    and $u,v$ are \textit{natural isomorphisms}.
+  \end{note}
+
+  \begin{note}
+    $F$ and $G$ are both full and faithful.
+  \end{note}
+}
+
+\longnewglossaryentry{congruence}
+{
+  name=Congruence Relation,
+  text=congruence relation,
+  symbol={$\sim$}
+} {
+  is an equivalence relation $\sim$ on the arrows of a category
+  $\mathscr{C}$ if:
+  \begin{itemize}
+    \item Whenever $f\sim g$, then $f$ and $g$ have the same domain and the
+      same codomain
+    \item If $f\sim g$, then $f\circ h\sim g\circ h$ and $k\circ f\sim
+      k\circ g$ for arrows $h,k$ where $target(h)=source(f)$ and
+      $source(k)=target(f)$
+  \end{itemize}
+  \begin{note}
+    The congruence class containing the arrow $f$ is denoted by $[f]$.
+  \end{note}
+}
+
+\longnewglossaryentry{quotientcategory}
+{
+  name=Quotient Category,
+  text=quotient category,
+  symbol={$/\sim$}
+} {
+  For a congruence relation $\sim$ on the arrows of a category
+  $\mathscr{C}$, the \textbf{quotient category} $\mathscr{C}/\sim$ is
+  defined as follows:
+  \begin{itemize}
+    \item The objects of $\mathscr{C}/\sim$ are the objects of $\mathscr{C}$
+    \item The arrows of $\mathscr{C}/\sim$ are the congruence classes of
+      arrows of $\mathscr{C}$
+    \item If $f:A\rightarrow B$ in $\mathscr{C}$, then $[f]:A\rightarrow B$
+      in $\mathscr{C}/\sim$
+    \item If $f:A\rightarrow B$ and $g:B\rightarrow C$ in $\mathscr{C}$,
+      then $[g]\circ[f]=[g\circ f]:A\rightarrow C$ in $\mathscr{C}$
+  \end{itemize}
+
+  \begin{note}
+    For any functor $F:\mathscr{C}\rightarrow\mathscr{D}$ with the property
+    that if $f\sim g$ then $F(f)=F(g)$, then there is an unique functor
+    $F_0:\mathscr{C}/\sim\rightarrow\mathscr{D}$ for which $F_0\circ Q=F$.
+    Here, $Q$ is the quotient functor,
+    $Q:\mathscr{C}\rightarrow\mathscr{C}/\sim$.
+  \end{note}
+}
+
+\newglossaryentry{naturalisomorphism}
+{
+  name=Natural Isomorphism,
+  text=natural isomorphism,
+  description={is a natural transformation $\alpha:F\rightarrow G$ in which
+    there is a natural transformation $\beta:G\rightarrow F$ is an inverse
+    to $\alpha$ in $\mathbf{Func}(\mathscr{C},\mathscr{D})$.
+    \begin{note}
+      Natural isomorphisms are also known as \textit{natural equivalences}.
+    \end{note}
+    \begin{note}[Theorem]
+      Suppose $F:\mathscr{C}\rightarrow\mathscr{D},
+      G:\mathscr{D}\rightarrow\mathscr{C}$ are functors and
+      $\alpha:F\rightarrow G$ is a natural transformation between them. Then
+      $\alpha$ is a \textit{natural isomorphism} if and only if for each
+      object $C\in\mathscr{C}$, $\alpha C:F(C)\rightarrow G(C)$ is an
+      isomorphism in $\mathscr{D}$.
+    \end{note}
+  }
+}
+
+\newglossaryentry{subfunctor}
+{
+  name=Subfunctor,
+  text=subfunctor,
+  description={A \textbf{subfunctor} of a functor
+    $F:\mathscr{C}\rightarrow\mathbf{Set}$ is a functor
+    $G:\mathscr{C}\rightarrow\mathbf{Set}$ with the property that for each
+    object $C\in\mathscr{C}$, $G(C)\subseteq F(C)$ and for each arrow
+    $f:C\rightarrow C'$ and element $x\in G(C)$, $G(f)(x)=F(f)(x)$.
+    \begin{note}
+      The inclusion function $i_C:G(C)\rightarrow F(C)$ that takes the
+      the subfunctor $G$ to the functor $F$ is a natural transformation.
+    \end{note}
+  }
+}
 \title{Category Theory}
 \author{Adam Yin}
 \date{}
