@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{mathrsfs}
+\usepackage{tikz-cd}
 \usepackage[xindy, nonumberlist, nopostdot]{glossaries}
 
 % My Custom Macros Package
@@ -413,8 +414,8 @@
     \begin{note}[Properties]
       Let $f:A\rightarrow B$ and $g:B\rightarrow C$ be arrows:
       \begin{itemize}
-        \item If $f$ and $g$ are monomorphisms, so is $g\circ f$
-        \item If $g\circ f$ is a monomorphism, so is $f$
+        \item If $f$ and $g$ are monomorphisms, so is $g\circ f$.
+        \item If $g\circ f$ is a monomorphism, so is $f$.
       \end{itemize}
     \end{note}
     \begin{note}
@@ -440,8 +441,8 @@
     \begin{note}[Properties]
       Let $f:A\rightarrow B$ and $g:B\rightarrow C$ be arrows:
       \begin{itemize}
-        \item If $f$ and $g$ are epimorphisms, so is $g\circ f$
-        \item If $g\circ f$ is an epimorphism, so is $g$
+        \item If $f$ and $g$ are epimorphisms, so is $g\circ f$.
+        \item If $g\circ f$ is an epimorphism, so is $g$.
       \end{itemize}
     \end{note}
     \begin{note}
@@ -508,13 +509,13 @@
   $F:\mathscr{C}\rightarrow\mathscr{D}$ from the category $\mathscr{C}$ to
   the category $\mathscr{D}$ defined as follows:
   \begin{itemize}
-    \item $\forall A\in\mathscr{C}$, $F(A)\in\mathscr{D}$
+    \item $\forall A\in\mathscr{C}$, $F(A)\in\mathscr{D}$.
     \item If $f:A\rightarrow B$ in $\mathscr{C}$, then $F(f):F(A)\rightarrow
       F(B)$ is an arrow in $\mathscr{D}$ such that:
       \begin{itemize}
-        \item $F(id_A)=id_{F(A)}$ for every object $A\in\mathscr{C}$
+        \item $F(id_A)=id_{F(A)}$ for every object $A\in\mathscr{C}$.
         \item $F(g\circ f)=F(g)\circ F(f)$ for all arrows $f:X\rightarrow
-          Y, g:Y\rightarrow Z$ in $\mathscr{C}$
+          Y, g:Y\rightarrow Z$ in $\mathscr{C}$.
       \end{itemize}
   \end{itemize}
 
@@ -683,8 +684,8 @@
       be the category determined by $M$ and the action $\alpha$ determines a
       functor $F_\alpha:C(M)\rightarrow\mathbf{Set}$ defined as:
       \begin{itemize}[nosep, label={-}]
-        \item $F_\alpha(*)=S$ where $*$ denotes the single object in $C(M)$
-        \item $F_\alpha(m)=s\mapsto\alpha(m,s)$ for $m\in M$, $s\in S$
+        \item $F_\alpha(*)=S$ where $*$ denotes the single object in $C(M)$.
+        \item $F_\alpha(m)=s\mapsto\alpha(m,s)$ for $m\in M$, $s\in S$.
       \end{itemize}
 
     \item[\textbf{Quotient Functor}]
@@ -838,27 +839,29 @@
         \item[\textbf{Covariant Hom Functor}]
           $\Hom(C,-):\mathscr{C}\rightarrow\mathbf{Set}$
           \begin{itemize}[nosep]
-            \item $\Hom(C,-)(A)=\Hom(C,A)$ for each object $A\in\mathscr{C}$
+            \item $\Hom(C,-)(A)=\Hom(C,A)$ for each object
+              $A\in\mathscr{C}$.
             \item $\Hom(C,-)(f)=\Hom(C,f):\Hom(C,A)\rightarrow\Hom(C,B)$ for
-              an arrow $f:A\rightarrow B$ in $\mathscr{C}$
+              an arrow $f:A\rightarrow B$ in $\mathscr{C}$.
           \end{itemize}
 
         \item[\textbf{Contravariant Hom Functor}]
           $\Hom(-,C):\mathscr{C}^{op}\rightarrow\mathbf{Set}$
           \begin{itemize}[nosep]
-            \item $\Hom(-,C)(A)=\Hom(A,C)$ for each object $A\in\mathscr{C}$
+            \item $\Hom(-,C)(A)=\Hom(A,C)$ for each object
+              $A\in\mathscr{C}$.
             \item $\Hom(-,C)(f)=\Hom(f,C):\Hom(B,C)\rightarrow\Hom(A,C)$ for
-              an arrow $f:A\rightarrow B$ in $\mathscr{C}$
+              an arrow $f:A\rightarrow B$ in $\mathscr{C}$.
           \end{itemize}
 
         \item[\textbf{Two-Variable Hom Functor}]
           $\Hom(-,-):\mathscr{C}^{op}\times\mathscr{C}\rightarrow\mathbf{Set}$
           \begin{itemize}[nosep]
             \item $\Hom(-,-)((A,B))=\Hom(A,B)$ for each object
-              $(A,B)\in\mathscr{C}^{op}\times\mathscr{C}$
+              $(A,B)\in\mathscr{C}^{op}\times\mathscr{C}$.
             \item $\Hom(-,-)((f,g))=\Hom(f,g):\Hom(B,C)\rightarrow\Hom(A,D)$ for
               an arrow $(f:A\rightarrow B, g:C\rightarrow D)$ in
-              $\mathscr{C}^{op}\times\mathscr{C}$
+              $\mathscr{C}^{op}\times\mathscr{C}$.
           \end{itemize}
 
       \end{itemize}
@@ -951,12 +954,12 @@
     \item A family $u_C:C\rightarrow G(F(C))$ of isomorphisms of
       $\mathscr{C}$ indexed by the objects of $\mathscr{C}$ with the
       property that for every arrow $f:C\rightarrow C'$ in
-      $\mathscr{C}$, $G(F(f))=u_{C'}\circ f\circ u_C^{-1}$
+      $\mathscr{C}$, $G(F(f))=u_{C'}\circ f\circ u_C^{-1}$.
 
     \item A family $v_D:D\rightarrow F(G(D))$ of isomorphisms of
       $\mathscr{D}$ indexed by the objects of $\mathscr{D}$ with the
       property that for every arrow $g:D\rightarrow D'$ in $\mathscr{D}$,
-      $F(G(g))=v_{D'}\circ g\circ v_D^{-1}$
+      $F(G(g))=v_{D'}\circ g\circ v_D^{-1}$.
   \end{itemize}
 
   \begin{note}
@@ -979,10 +982,16 @@
   $\mathscr{C}$ if:
   \begin{itemize}
     \item Whenever $f\sim g$, then $f$ and $g$ have the same domain and the
-      same codomain
-    \item If $f\sim g$, then $f\circ h\sim g\circ h$ and $k\circ f\sim
+      same codomain.
+    \item In the diagram below:
+      \begin{mytikzcd}
+        A \ar[r,"h"] \& B \ar[r,"f",shift left] \ar[r,"g"',shift right]
+                     \& C \ar[r,"k"]
+                     \& D
+      \end{mytikzcd}
+      If $f\sim g$, then $f\circ h\sim g\circ h$ and $k\circ f\sim
       k\circ g$ for arrows $h,k$ where $target(h)=source(f)$ and
-      $source(k)=target(f)$
+      $source(k)=target(f)$.
   \end{itemize}
   \begin{note}
     The congruence class containing the arrow $f$ is denoted by $[f]$.
@@ -999,13 +1008,14 @@
   $\mathscr{C}$, the \textbf{quotient category} $\mathscr{C}/\sim$ is
   defined as follows:
   \begin{itemize}
-    \item The objects of $\mathscr{C}/\sim$ are the objects of $\mathscr{C}$
+    \item The objects of $\mathscr{C}/\sim$ are the objects of
+      $\mathscr{C}$.
     \item The arrows of $\mathscr{C}/\sim$ are the congruence classes of
-      arrows of $\mathscr{C}$
+      arrows of $\mathscr{C}$.
     \item If $f:A\rightarrow B$ in $\mathscr{C}$, then $[f]:A\rightarrow B$
-      in $\mathscr{C}/\sim$
+      in $\mathscr{C}/\sim$.
     \item If $f:A\rightarrow B$ and $g:B\rightarrow C$ in $\mathscr{C}$,
-      then $[g]\circ[f]=[g\circ f]:A\rightarrow C$ in $\mathscr{C}$
+      then $[g]\circ[f]=[g\circ f]:A\rightarrow C$ in $\mathscr{C}$.
   \end{itemize}
 
   \begin{note}
@@ -1053,6 +1063,37 @@
     \end{note}
   }
 }
+
+\newcommand{\testing}[1]{\newglossaryentry{asdf}{name=asdf,description={#1}}}
+\newcommand\makeampletter{\catcode`&=12\relax}
+\makeampletter
+
+\longnewglossaryentry{factorizationsystem}
+{
+  name=Factorization System,
+  text=factorization system,
+} {
+  A \textbf{factorization system} in a category $\mathscr{C}$ consists of
+  two subclasses $\mathscr{E}$ and $\mathscr{M}$ of the arrows of
+  $\mathscr{C}$ such that:
+  \begin{itemize}
+    \item If $\mathscr{I}$ is the class of isomorphisms, then
+      $\mathscr{M}\circ\mathscr{I}\subseteq\mathscr{M}$ and
+      $\mathscr{I}\circ\mathscr{E}\subseteq\mathscr{E}$.
+
+    \item Every arrow $f\in\mathscr{C}$ factors as $f=m\circ e$ where
+      $m\in\mathscr{M}$ and $e\in\mathscr{E}$.
+
+    \item In any commutative square
+      \begin{mytikzcd}
+        A \ar[r,"e",twoheadrightarrow] \ar[d,"f"'] \& B \ar[d,"g"] \\
+        C \ar[r,"m"',rightarrowtail]               \& D
+      \end{mytikzcd}
+      with $e\in\mathscr{E}$ and $m\in\mathscr{M}$, there is a unique
+      $h:B\rightarrow C$ such that $h\circ e=f$ and $m\circ h=g$.
+  \end{itemize}
+}
+
 \title{Category Theory}
 \author{Adam Yin}
 \date{}
