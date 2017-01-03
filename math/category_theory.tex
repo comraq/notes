@@ -1094,6 +1094,209 @@
   \end{itemize}
 }
 
+\longnewglossaryentry{naturaltransformation}
+{
+  name=Natural Transformation,
+  text=natural transformation
+} {
+  Let $F,G:\mathscr{C}\rightarrow\mathscr{D}$ be 2 functors with the same
+  domain and codomain. A \textbf{natural transformation}
+  $\alpha:F\rightarrow G$ is given by a family of arrows $\alpha C$ for each
+  object $C\in\mathscr{C}$ such that:
+  \begin{itemize}
+    \item $\alpha C:F(C)\rightarrow G(C)$ for each object $C\in\mathscr{C}$,
+      also say that $\alpha$ is natural in $C$.
+    \item For any arrow $f:C\rightarrow D$ in $\mathscr{C}$, the following
+      diagram commutes.
+      \begin{mytikzcd}
+        F(C) \ar[r, "\alpha C"]  \ar[d, "F(f)"'] \& G(C) \ar[d, "G(f)"] \\
+        F(D) \ar[r, "\alpha D"']                 \& G(D)
+      \end{mytikzcd}
+  \end{itemize}
+
+  \begin{note}[Composition with Functors]
+    Let $H:\mathscr{B}\rightarrow\mathscr{C}$ be a functor and
+    $\alpha:F\rightarrow G$ where $F,G:\mathscr{A}\rightarrow\mathscr{B}$ be
+    are functors. Then, postcomposing $\alpha$ with the functor $H$ is a
+    natural transformation $H\alpha:H\circ F\rightarrow H\circ G$ defined by
+    $(H\alpha)A=H(\alpha A)$ for any object $A\in\mathscr{A}$.\\
+    A similar result can be shown when precomposing a natural transformation
+    with a functor.
+  \end{note}
+}
+
+\newglossaryentry{verticalcomposition}
+{
+  name=Vertical Composition,
+  text=vertical composition,
+  description={Composition of natural transformations $\alpha:F\rightarrow
+    G$ and $\beta:G\rightarrow H$ is $\beta\circ\alpha:F\rightarrow H$ and
+    is known as \textbf{vertical composition}, where $F, G$ and $H$ are
+    functors from the categories $\mathscr{C}$ to $\mathscr{D}$. This
+    follows from the fact that the outer rectangle of the following diagram
+    is commutative:
+    \begin{mytikzcd}
+         F(A) \ar[r, "\alpha A"] \ar[d, "F(f)"']
+      \& G(A) \ar[r, "\beta A"]  \ar[d, "G(f)"]
+      \& H(A)                    \ar[d, "H(f)"] \\
+         F(B) \ar[r, "\alpha B"']
+      \& G(B) \ar[r, "\beta B"']
+      \& H(B)
+    \end{mytikzcd}
+    for each arrow $f:A\rightarrow B$.
+    \begin{note}
+      The vertical composite of natural transformations is also a natural
+      transformation.
+      \begin{equation*}
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{C} \ar[r, bend left=70, "F"] \ar[r, phantom, bend left=70, ""{name=F, below}]
+                         \ar[r, "G"']              \ar[r, phantom, ""{name=G, above}]
+                         \ar[Rightarrow, from=F, to=G, "\alpha"]
+          \& \mathscr{D}
+        \end{tikzcd}
+        \circ
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{C} \ar[r, bend right=70, "H"'] \ar[r, phantom, bend right=70, ""{name=H, above}]
+                         \ar[r, "G"]                 \ar[r, phantom, ""{name=G, below}]
+                         \ar[Rightarrow, from=G, to=H, "\beta"]
+          \& \mathscr{D}
+        \end{tikzcd}
+        \longmapsto
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{C} \ar[r, bend left=70, "F"]   \ar[r, phantom, bend left=70, ""{name=F, below}]
+                         \ar[r, bend right=70, "H"'] \ar[r, phantom, bend right=70, ""{name=H, above}]
+                         \ar[Rightarrow, from=F, to=H, "\beta\circ\alpha"]
+          \& \mathscr{D}
+        \end{tikzcd}
+      \end{equation*}
+    \end{note}
+  },
+  symbol={$\circ$}
+}
+
+\newglossaryentry{horizontalcomposition}
+{
+  name=Horizontal Composition,
+  text=horizontal composition,
+  description={Let $\mathscr{A}, \mathscr{B}$ and $\mathscr{C}$ be
+    categories, and $F,F':\mathscr{A}\rightarrow\mathscr{B},
+    G,G':\mathscr{B}\rightarrow\mathscr{C}$ be functors. \textbf{Horizontal
+    composition} between natural transformation
+    transformations $\alpha:F\rightarrow F'$ and $\beta:G\rightarrow G'$ is
+    $\beta\ast\alpha:G\circ F\rightarrow G'\circ F'$.
+    \begin{note}
+      The horizontal composite of natural transformations is also a natural
+      transformation.
+      \begin{equation*}
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{A} \ar[r, bend left=70, "F"]    \ar[r, phantom, bend left=70, ""{name=F, below}]
+                         \ar[r, bend right=70, "F'"'] \ar[r, phantom, bend right=70, ""{name=F', above}]
+                         \ar[Rightarrow, from=F, to=F', "\alpha"]
+          \& \mathscr{B}
+        \end{tikzcd}
+        \ast
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{B} \ar[r, bend left=70, "G"]    \ar[r, phantom, bend left=70, ""{name=G, below}]
+                         \ar[r, bend right=70, "G'"'] \ar[r, phantom, bend right=70, ""{name=G', above}]
+                         \ar[Rightarrow, from=G, to=G', "\beta"]
+          \& \mathscr{C}
+        \end{tikzcd}
+        \longmapsto
+        \begin{tikzcd}[ampersand replacement=\&]
+             \mathscr{A} \ar[r, bend left=70, "G\circ F"]     \ar[r, phantom, bend left=70, ""{name=GF, below}]
+                         \ar[r, bend right=70, "G'\circ F'"'] \ar[r, phantom, bend right=70, ""{name=G'F', above}]
+                         \ar[Rightarrow, from=GF, to=G'F', "\beta\ast\alpha"]
+          \& \mathscr{C}
+        \end{tikzcd}
+      \end{equation*}
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{yonedaembedding}
+{
+  name=Yoneda Embedding,
+  text=yoneda embedding
+} {
+  For any category $\mathscr{C}$, there is a contravariant \textit{Yoneda
+  Functor} $Y:\mathscr{C}^{op}\rightarrow\mathbf{Func}(C,\mathbf{Set})$
+  defined as:
+  \begin{itemize}
+    \item for objects $C\in\mathscr{C}, Y(C)=\Hom(C,-)$
+    \item for an arrow $f:D\rightarrow C$ and an object $A\in\mathscr{C},
+      Y(f)=\Hom(f,-)$ and $Y(f)(A):\Hom(C,A)\rightarrow\Hom(D,A)$
+  \end{itemize}
+
+  Thus, the following diagram commutes
+  \begin{equation*}\begin{tikzcd}[column sep=huge, ampersand replacement=\&]
+    {\Hom(D,A)} \ar[r, "{\Hom(D,k)}"] \& {\Hom(D,B)} \\
+    {\Hom(C,A)} \ar[u, "Y(f)A"] \ar[r, "{\Hom(C,k)}"'] \& {\Hom(C,B)} \ar[u, "Y(f)B"']
+  \end{tikzcd}\end{equation*}
+  for an arrow $k:A\rightarrow B$.\\
+
+  \begin{note}
+    $Y(f):\Hom(C,-)\rightarrow\Hom(D,-)$ is the induced natural
+    transformation between hom functors corresponding to $f$. Generalizing
+    $\Hom(D,-)$ to an arbitary set valued functor, by the \textit{Yoneda
+    Lemma}, $Y$ is both full and faithful.
+  \end{note}
+
+  \begin{note}
+    By the contravariant \textit{Yoneda Lemma}, there also exists the
+    covariant functor
+    $J:\mathscr{C}\rightarrow\mathbf{Func}(\mathscr{C}^{op},\mathbf{Set})$.
+  \end{note}
+}
+
+\longnewglossaryentry{godementcalculus}
+{
+  name=Godement Calculus,
+  text=Godement Calculus
+} {
+  Let $\mathscr{A,B,C,D,E}$ be categories, $E, F_1, F_2,
+  F_3, G_1, G_2, G_3, H$ be functors and $\alpha,\beta,\gamma,\delta$ be
+  natrual morphisms as shown in the following diagram:
+  \begin{mytikzcd}
+       \mathscr{A} \ar[r,"E"]
+    \& \mathscr{B} \ar[r,bend left=70,"F_1"]
+                   \ar[r,phantom,bend left=70,""{name=F1,below}]
+                   \ar[r,"F_2" description]
+                   \ar[r,phantom,""{name=F2A,above}]
+                   \ar[r,phantom,""{name=F2B,below}]
+                   \ar[r,bend right=70,"F_3"']
+                   \ar[r,phantom,bend right=70,""{name=F3,above}]
+                   \ar[Rightarrow,from=F1,to=F2A,"\alpha"]
+                   \ar[Rightarrow,from=F2B,to=F3,"\beta"]
+    \& \mathscr{C} \ar[r,bend left=70,"G_1"]
+                   \ar[r,phantom,bend left=70,""{name=G1,below}]
+                   \ar[r,"G_2" description]
+                   \ar[r,phantom,""{name=G2A,above}]
+                   \ar[r,phantom,""{name=G2B,below}]
+                   \ar[r,bend right=70,"G_3"']
+                   \ar[r,phantom,bend right=70,""{name=G3,above}]
+                   \ar[Rightarrow,from=G1,to=G2A,"\gamma"]
+                   \ar[Rightarrow,from=G2B,to=G3,"\delta"]
+    \& \mathscr{D} \ar[r,"H"]
+    \& \mathscr{E}
+  \end{mytikzcd}
+  There are 5 laws/equational rules between composition of functors and
+  natural transformations:
+  \begin{enumerate}
+    \item
+      $(\delta\circ\gamma)\ast(\beta\circ\alpha)=(\delta\ast\beta)\circ(\gamma\circ\alpha)$
+    \item $(H\circ G_1)\alpha=H(G_1\alpha)$
+    \item $\gamma(F_1\circ E)=(\gamma F_1)E$
+    \item $G_1(\beta\circ\alpha)E=(G_1\beta E)\circ(G_1\alpha E)$
+    \item
+      $\gamma\ast\alpha=(\gamma F_2)\circ(G_1\alpha)=(G_2\alpha)\circ(\gamma F_1)$
+  \end{enumerate}
+  \begin{note}
+    The first rule is also known as the \textit{Interchange Law}.
+  \end{note}
+}
+
+
+
 \title{Category Theory}
 \author{Adam Yin}
 \date{}
