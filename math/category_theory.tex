@@ -1295,6 +1295,200 @@
   \end{note}
 }
 
+\longnewglossaryentry{yonedalemma}
+{
+  name=Yoneda Lemma,
+  text=yoneda lemma
+} {
+  Let $F:\mathscr{C}\rightarrow\mathbf{Set}$ be a \textit{set-valued
+  functor} and $C$ is an object in $C$. There is a one-to-one correspondance
+  between elements of $F(C)$ and $h^C:\Hom(C,-)\rightarrow F$, that is:
+  \begin{equation*}
+    Nat(h^C,F)\cong F(C)
+  \end{equation*}
+  Thus, this is an isomorphism that is both an injective and surjective
+  mapping between elements of $F(C)$ and $h^C$.
+
+  \begin{note}
+    $h^C(X)=\Hom(C,X)\rightarrow F(X)$ for an object $X\in\mathscr{C}$
+    is defined as $h^C(X)(f)=F(f)(c)$ where $f:C\rightarrow X$ is an arrow
+    and $c\in F(C)$ is an element.
+  \end{note}
+  \begin{note}
+    There is also a contravariant version of Yoneda Lemma involving the
+    contravariant hom functor $h_C:\Hom(-,C)\rightarrow F$.
+  \end{note}
+}
+
+\longnewglossaryentry{universalelement}
+{
+  name=Universal Element,
+  text=universal element
+} {
+  By the \textit{Yoneda Lemma}, an element $c\in F(C)$ is given by
+  $c=h^C(id_C)$. $c$ is an \textbf{universal element} of a functor
+  $F:\mathscr{C}\rightarrow\mathbf{Set}$ if and only if the induced
+  $h^C:Hom(C,-)\rightarrow F$ is a \textit{natural isomorphism}.
+  Consequently, for any object $C'\in\mathscr{C}$ and any element $x\in
+  F(C')$, there is an unique arrow $f:C\rightarrow C'$ in $\mathscr{C}$ for
+  which $x=F(f)(c)$.
+
+  \begin{note}
+    There is a one-to-one correspondance between representations and
+    universal elements of $F$.
+  \end{note}
+  \begin{note}
+    A similar argument for contravariant set valued functors of the form
+    $F:\mathscr{C}^{op}\rightarrow\mathbf{Set}$ can be made where $c\in
+    F(C)$ is an \textbf{universal element} if for any object
+    $C'\in\mathscr{C}$ and any element $x\in F(C')$, there is an unique
+    arrow $f:C'\rightarrow C$ for which $x=F(f)(c)$.
+  \end{note}
+}
+
+\longnewglossaryentry{2category}
+{
+  name=2-Category,
+  text=2-category,
+} {
+  is a category \textbf{C} with the following additional structure:
+  \begin{itemize}
+    \item A set of objects of \textbf{C} (called \textit{0-cells}).
+
+    \item $\forall A,B\in\mathbf{C}_0$ (for every pair of 0-cells), a small
+      category $\mathbf{C}(A,B)$ whose objects are arrows from $A$ to $B$ in
+      \textbf{C} (objects and arrows in $\mathbf{C}(A,B)$ are called
+      \textit{1-cells} and \textit{2-cells} respectively).
+
+    \item $\forall A,B,C\in\mathbf{C}_0$ (for every triple of 0-cells),
+      there is a composition functor:
+      \begin{equation*}
+        comp:\mathbf{C}(B,C)\times\mathbf{C}(A,B)\longrightarrow\mathbf{C}(A,C)
+      \end{equation*}
+      and that the following diagram commutes:
+      \begin{equation*}\begin{tikzcd}[column sep=huge,ampersand replacement=\&]
+           {\mathbf{C}(C,D)\times\mathbf{C}(B,C)\times\mathbf{C}(A,B)}
+             \ar[r,"comp\times id"]
+             \ar[d,"id\times comp"']
+        \& {\mathbf{C}(B,D)\times\mathbf{C}(A,B)}
+             \ar[d,"comp"]
+        \\
+           {\mathbf{C}(C,D)\times\mathbf{C}(A,C)}
+             \ar[r,"comp"']
+        \& {\mathbf{C}(A,D)}
+      \end{tikzcd}\end{equation*}
+      ie: $comp$ is associative
+
+    \item For each object $A\in\mathbf{C}$, there is the identity functor:
+      \begin{equation*}
+        unit_A:1\rightarrow\mathbf{C}(A,A)
+      \end{equation*}
+      where $1$ is the terminal object in \textbf{Cat} (ie: the category
+      with one object denoted as $0$ and its identity arrow) defined as
+      $unit_A(0)=id_A$ and that the following diagram commutes:
+      \begin{equation*}\begin{tikzcd}[column sep=huge,ampersand replacement=\&]
+           \& {\mathbf{C}(A,B)} \ar[ld,"unit_B\times id"']
+                               \ar[d,"id"]
+                               \ar[rd,"id\times unit_A"]
+        \\    {\mathbf{C}(B,B)\times\mathbf{C}(A,B)} \ar[r,"comp"']
+           \& {\mathbf{C}(A,B)}
+           \& {\mathbf{C}(A,B)\times\mathbf{C}(A,A)} \ar[l,"comp"']
+      \end{tikzcd}\end{equation*}
+      ie: $unit$ is the identity functor with respect to $comp$
+
+  \end{itemize}
+
+  The structure of a 2-category can be summarized as follows:
+  \begin{itemize}
+    \item A \textit{horizontal category} whose objects are 0-cells, arrows are
+      2-cells.
+    \item A \textit{vertical category} whose objects are 1-cells, arrows are
+      2-cells.
+    \item A \textit{base category} (that can be derived from the horizontal
+      and vertical categories) whose objects are 0-cells, arrows are
+      1-cells.
+  \end{itemize}
+
+  \begin{note}[Visual Depictions]
+     \item[]
+     \begin{itemize}
+       \item[0-cells] $x,y$
+       \item[1-cells] $x\rightarrow y$
+       \item[2-cells]
+         \begin{tikzcd}[ampersand replacement=\&]
+              x \ar[r,bend left=70,""{name=F,below}]
+                \ar[r,bend right=70,""{name=G,above}]
+                \ar[Rightarrow,from=F,to=G]
+           \& y
+         \end{tikzcd}
+     \end{itemize}
+  \end{note}
+
+  \textbf{Cat} as a 2-category:
+  \begin{itemize}
+    \item 0-cells are small categories.
+    \item 1-cells are functors.
+    \item 2-cells are natural transformations.
+    \item $comp$ on 1-cells is composition of functors:
+      \begin{equation*}
+        comp(G,F)=G\circ F
+      \end{equation*}
+      for arrows $F:A\rightarrow B,G:B\rightarrow C$ in \textbf{Cat}.
+    \item $comp$ on 2-cells is horizontal composition of natural
+      transformations:
+      \begin{equation*}
+        comp(\beta,\alpha)=\beta\ast\alpha
+      \end{equation*}
+      where $F,F':A\rightarrow B$ and $G,G':B\rightarrow C$ are functors
+      $\alpha:F\rightarrow F',\beta:G\rightarrow G'$ are natural
+      transformations between them.
+    \item By the \textit{Interchange Law}
+      \begin{equation*}
+        comp((\beta',\alpha')\circ(\beta,\alpha))=comp(\beta',\alpha')\circ comp(\beta,\alpha)
+      \end{equation*}
+  \end{itemize}
+}
+
+\newglossaryentry{2functor}
+{
+  name=2-Functor,
+  text=2-functor,
+  description={If \textbf{C} and \textbf{D} are 2-categories, a
+    \textbf{2-functor} $F:\mathbf{C}\rightarrow\mathbf{D}$ consists of three
+    maps of the form $F_i:\mathscr{C}_i\rightarrow\mathscr{D}_i$ where
+    $i=b,v,h$ and $\mathscr{C}_i,\mathscr{D}_i$ are base, vertical or
+  horizontal categories respectively.}
+}
+
+\newglossaryentry{posetenrichedcategory}
+{
+  name=Poset-Enriched Category,
+  text=poset-enriched category,
+  description={is a category $\mathscr{C}$ with a partial ordering on every
+    $\Hom_\mathscr{C}(A,B)$ such that for every triple of objects
+    $A,B,C\in\mathscr{C}$, the composition of hom-sets:
+    \begin{equation*}
+      \Hom(A,B)\times\Hom(B,C)\longrightarrow\Hom(A,C)
+    \end{equation*}
+    is monotone. Thus if $f\leq f':A\rightarrow B, g\leq g':B\rightarrow C$
+    then $g\circ f\leq g'\circ f':A\rightarrow C$.
+    \begin{note}[As a 2-category]
+      Exactly ONE 2-cell can be defined from $f$ to $g$ for arrows
+      $f,g:A\rightarrow B$ if and only if $f\leq g$. Otherwise, no 2-cells
+      from $f$ to $g$. For each pair of objects $A$ and $B$, the category
+      $C(\Hom(A,B))$ can be constructed as a poset.
+    \end{note}
+  }
+}
+
+\newglossaryentry{orderenrichedcategory}
+{
+  name=Order-Enriched Category,
+  text=order-enriched category,
+  description={is a poset-enriched category in which each poset $\Hom(A,B)$
+    is a strict $\omega$-CPO where every pair of elements has a supremum
+  (least upper bound) and an infimum (greatest lower bound).}
+}
 
 
 \title{Category Theory}
