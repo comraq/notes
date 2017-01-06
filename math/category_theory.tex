@@ -866,6 +866,10 @@
 
       \end{itemize}
   \end{itemize}
+
+  \begin{note}
+    All covariant hom functors preserves products.
+  \end{note}
 }
 
 \newglossaryentry{fullfunctor}
@@ -1488,6 +1492,185 @@
   description={is a poset-enriched category in which each poset $\Hom(A,B)$
     is a strict $\omega$-CPO where every pair of elements has a supremum
   (least upper bound) and an infimum (greatest lower bound).}
+}
+
+\longnewglossaryentry{product}
+{
+  name=Product,
+  text=product,
+  symbol={$\times$}
+} {
+  Let $A,B$ be objects in a category $\mathscr{C}$. A \textbf{product} of $A$ and
+  $B$ is an object $A\times B$ together with projections/arrows
+  $p_1:A\times B\rightarrow A$ and $p_2:A\times B\rightarrow B$ such that
+  for any object $D$ and arrows
+  $q_1:D\rightarrow A$, $q_2:D\rightarrow B$, there is an unique arrow
+  $q:D\rightarrow A\times B$ and that the following diagram commutes:
+  \begin{mytikzcd}
+      \& D \ar[ld,"q_1"'] \ar[d,"q"] \ar[rd,"q_2"] \\
+    A \&
+    {A\times B} \ar[l,"p_1"] \ar[r,"p_2"'] \&
+    B
+  \end{mytikzcd}
+  ie, $p_1\circ q=q_1$ and $p_2\circ q=q_2$.\\
+
+  The concept of a product is defined up to an unique isomorphism and is
+  defined by a \textit{universal mapping property}. Thus, all products of
+  the objects $A$ and $B$ are isomorphic and any object isomorphic to
+  $A\times B$ is a product of $A$ and $B$.\\
+
+  Since for each pair of arrows $(q1,q2)$ produces an unique arrow $q$,
+  there is a natural isomorphism:
+  \begin{equation*}
+    \pi:\Hom_\mathscr{C}(-,A)\times\Hom_\mathscr{C}(-,B)\rightarrow
+    \Hom_\mathscr{C}(-,A\times B)
+  \end{equation*}
+  such that $\pi D(q_1,q_2)=q$ and is denoted as $\langle q_1,q_2\rangle$.
+
+  \begin{note}
+    $(p1,p2)$ is an \textit{universal element} of the functor
+    $\Hom(-,A)\times\Hom(-,B)$.
+  \end{note}
+}
+
+\newglossaryentry{binaryoperation}
+{
+  name=Binary Operation,
+  text=binary operation,
+  description={A \textbf{binary operation} on an object $S$ is a function
+  $S\times S\rightarrow S$ given that the product $S\times S$ exists.}
+}
+
+\newglossaryentry{switchmap}
+{
+  name=Switch Map,
+  text=switch map,
+  description={is a function that takes $A\times B$ with projections
+    $p_1,p_2$ to $ B\times A$ denoted as $\langle p_2,p_1\rangle:A\times B\rightarrow
+  B\times A$.}
+}
+
+\longnewglossaryentry{pointwiseproducts}
+{
+  name=Pointwise Products,
+  text=pointwise products
+} {
+  For categories $\mathscr{C,D}$, if $\mathscr{D}$ has products
+  then $\mathbf{Func}(\mathscr{C},\mathscr{D})$ has \textbf{pointwise
+  products} defined as:
+  \begin{itemize}
+    \item $(F\times G)(C)=F(C)\times G(C)$ for any object $C\in\mathscr{C}$
+    \item $(F\times G)(f)=F(f)\times G(f)$ for any arrow $f\in\mathscr{C}$
+  \end{itemize}
+  where $F,G:\mathscr{C}\rightarrow\mathscr{D}$ are functors.
+}
+
+\longnewglossaryentry{productofarrows}
+{
+  name=Product of Arrows,
+  text=product of arrows
+} {
+  For arrows $f:S\rightarrow S',t:T\rightarrow T'$, the \textbf{product of
+  arrows}, $f\times g$ is defined such that the following diagram commutes:
+  \begin{mytikzcd}
+       S \ar[d,"f"']
+    \& {S\times T} \ar[l,"p1"'] \ar[r,"p2"] \ar[d,"f\times g"]
+    \& T \ar[d,"g"] \\
+       S'
+    \& {S'\times T'} \ar[l,"p1'"] \ar[r,"p2'"']
+    \& T'
+  \end{mytikzcd}
+  where $p1,p2$ and $p1',p2'$ are the projections of $S\times T$ to $S,T$ and
+  $S'\times T'$ to $S',T'$ respectively.
+
+  \begin{note}
+    Products are distributed through composition, for arrows
+    $f_i:A_i\rightarrow B_i,g_i:B_i\rightarrow C_i$ for $i=1,2$:
+    \begin{equation*}
+      (g_1\circ f_1)\times(g_2\circ f_2)=(g_1\times g_2)\circ(f_1\times f_2)
+    \end{equation*}
+  \end{note}
+}
+
+\longnewglossaryentry{naryproduct}
+{
+  name=n-Ary Product,
+  text=n-ary product
+} {
+  is the product of a list of $n$ objects $A_1,\dots,A_n$ with
+  projectiions $p_i:\Pi^n_{i=1}A_i\rightarrow A_i$ and the property that
+  given any object $B$ and arrows $f_i:B\rightarrow A_i$, there is an unique
+  arrow $\langle f_1,\dots,f_n\rangle:B\rightarrow\Pi^n_{i=1}A_i$ for which
+  $p_i\circ\langle f_1,\dots,f_n\rangle=f_i$.\\
+
+  Let the product of $n$ number of the object $A$, $A\times\dots\times A$ be
+  denoted as $A_n$:
+  \begin{itemize}[align=left,nosep]
+    \item [\textit{Nullary Product}] denoted as $A_0$, is the terminal
+      object.
+    \item [\textit{Unary Product}] denoted as $A_1$, is effectively a
+      product ''wrapper`` around $A$, where the only projection arrow is
+      $id_A$. (Analogous to characters vs strings of length 1).
+  \end{itemize}
+
+  \begin{note}
+    \textit{Binary products} (2-ary product) can be used to construct
+    \textit{Ternary products} (3-ary products) as
+    \begin{equation*}
+      A\times B\times C\cong(A\times B)\times C\cong A\times(B\times C)
+    \end{equation*}
+  \end{note}
+}
+
+\newglossaryentry{canonicalproduct}
+{
+  name=Canonical Product,
+  text=canonical product,
+  description={A category has \textbf{canonical products} if a specific
+  diagram/representation of the product can be given to each product.}
+}
+
+\newglossaryentry{cartesiancategory}
+{
+  name=Cartesian Category,
+  text=Cartesian Category,
+  description={If the products exists for a finite number of objects, a
+    category is said to be a \textbf{cartesian category} or has
+    \textit{finite products}.
+    \begin{note}
+      If a category has a terminal object and binary products, then it has
+      finite products. Similarily, if a functor preserves terminal objects
+      and binary products, it preserves all finite products.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{strictinitialobject}
+{
+  name=Strict Initial Object,
+  text=strict initial object
+} {
+  Let $\mathscr{C}$ be a category with products. An initial product, $0$, in
+  $\mathscr{C}$ is a \textbf{strict initial object} if it has one of the
+  following equivalent properties:
+  \begin{itemize}
+    \item $\forall A\in\mathscr{C}$, if there is an $u:A\rightarrow 0$, then
+      $A\cong 0$.
+    \item $\forall A\in\mathscr{C}, 0\times A\cong 0$.
+  \end{itemize}
+}
+
+\newglossaryentry{infiniteproduct}
+{
+  name=Infinite Product,
+  text=infinite product,
+  description={is a product of infinitely many objects. Let $I$ be a set and
+    $\{A_i|i\in I\}$ be an indexed set of objects in the category
+    $\mathscr{C}$. An \textbf{infinite product} $\Pi_{i=1}A_i$ of an indexed set
+    is an object $P$ with an indexed set of arrows $p_i:P\rightarrow A_i$ such
+    that for any object $A\in\mathscr{C}$ with arrows $q_i:A\rightarrow A_i$,
+    there is an unique arrow $q=\langle q_i\rangle:A\rightarrow P$ and $p_i\circ
+  q=q_i$ for all $i\in I$.}
 }
 
 
