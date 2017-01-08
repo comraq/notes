@@ -332,7 +332,8 @@
   text=initial object,
   description={is the dual of \textit{terminal object} in which the
     \textbf{initial object} has an unique arrow to each object (including
-    itself). The initial object is usually denoted $0$.
+    itself). This object is usually denoted $0$ and the unique arrow
+    $!:0\rightarrow A$ for every object $A$.
     \begin{note}
       Any two initial objects in a category are isomorphic.
     \end{note}
@@ -1642,6 +1643,11 @@
       finite products. Similarily, if a functor preserves terminal objects
       and binary products, it preserves all finite products.
     \end{note}
+    \begin{note}
+      A lower semilattice is exactly a category that has all finite
+      products. Dually, a upper semilattice is a category that has all
+      finite coproducts.
+    \end{note}
   }
 }
 
@@ -1671,6 +1677,83 @@
     that for any object $A\in\mathscr{C}$ with arrows $q_i:A\rightarrow A_i$,
     there is an unique arrow $q=\langle q_i\rangle:A\rightarrow P$ and $p_i\circ
   q=q_i$ for all $i\in I$.}
+}
+
+\longnewglossaryentry{coproduct}
+{
+  name=Coproduct/Sum,
+  text=coproduct,
+  symbol={$+$}
+} {
+  is the categorial dual of \textit{product}. A \textbf{coproduct} $A+B$ of
+  two objects $A$ and $B$ in a category consists of an object $A+B$ together
+  with arrows/\textit{coprojections} $i_1:A\rightarrow A+B$ and
+  $i_2:B\rightarrow A+B$ such that given any arrows $f:A\rightarrow C$ and
+  $g:B\rightarrow C$, the following diagram commutes:
+  \begin{mytikzcd}
+       A \ar[r,"f"] \ar[rd,"i_1"']
+    \& C
+    \& B \ar[l,"g"'] \ar[ld,"i_2"] \\
+    \& {A+B} \ar[u,"\langle f|g\rangle"]
+  \end{mytikzcd}
+  ie, $\langle f|g\rangle\circ i_1=f$ and $\langle f|g\rangle\circ i_2=g$.\\
+
+  \begin{note}
+    The arrows $i_1,i_2$ are also known as \textit{canonical injections} or
+    \textit{inclusions}.
+  \end{note}
+
+  \begin{note}
+    The functor $\Hom(A,-)\times\Hom(B,-)$ is represented by $A+B$ and the
+    universal element is the pair of canonical injections.
+  \end{note}
+}
+
+\longnewglossaryentry{distributivecategory}
+{
+  name=Distributive Category,
+  text=distributive category
+} {
+  is a category with both finite products and coproducts. Thus for all
+  objects $A,B$ and $C$, the following diagram commutes
+  \begin{mytikzcd}
+       {A\times B} \ar[r,"i_1'"] \ar[rd,"A\times i_1"']
+    \& {A\times B+A\times C} \ar[d,"d"]
+    \& {A\times C} \ar[l,"i_2'"'] \ar[ld,"A\times i_2"] \\
+    \& {A\times(B+C)}
+  \end{mytikzcd}
+  and $d$ is an isomorphism.\\
+
+  In a distributive category $\mathscr{C}$, all canonical projections are
+  monic and for any object $A\in\mathscr{C}$, the arrow $\langle
+  id_0,!\rangle:0\rightarrow 0\times A$ is an ismorphism (ie: $0\cong
+  0\times A$ and thus all distributive categories has a strict initial
+  object).
+
+  \begin{note}[Example]
+    A \textit{Boolean Algebra} is a distributive category with $\wedge$ as
+    product and $\vee$ as coproduct.
+  \end{note}
+}
+
+\longnewglossaryentry{naturalnumberobject}
+{
+  name=Natural Number Object (NNO),
+  text=natural number object
+} {
+  An object $\mathbf{N}$ in a category $\mathscr{C}$ together with arrows
+  $zero:1\rightarrow\mathbf{N}$ and $succ:\mathbf{N}\rightarrow\mathbf{N}$
+  is a parametrized \textbf{natural numbers object} if for all objects $A,B$
+  and arrows $f_0:A\rightarrow X,t:X\rightarrow X$, there is an unique arrow
+  $f:A\times\mathbf{N}\rightarrow X$ such that the following diagram
+  commutes:
+  \begin{equation*}\begin{tikzcd}[ampersand replacement=\&,column sep=huge]
+    \& {A\times\mathbf{N}} \ar[dd,"f"] \ar[r,"id_A\times succ"]
+    \& {A\times\mathbf{N}} \ar[dd,"f"] \\
+       A \ar[ur,"{\langle id_A,zero\rangle}"] \ar[rd,"f_0"'] \\
+    \& X \ar[r,"t"']
+    \& X
+  \end{tikzcd}\end{equation*}
 }
 
 

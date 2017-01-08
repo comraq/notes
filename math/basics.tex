@@ -1037,6 +1037,49 @@
   This element is called a \textit{pointed object}.}
 }
 
+\newglossaryentry{lattice}
+{
+  name=Lattice,
+  text=lattice,
+  description={is a poset in which every pair of elements have an unique
+  supremum and infimum}.
+}
+
+\newglossaryentry{semilattice}
+{
+  name=Semilattice,
+  text=semilattice,
+  description={A poset with a join for any nonempty finite subset is a
+    \textbf{join-semilatice/upper semilattice}. Dually, a poset with a meet
+    for any nonempty finite subset is a {meet-semilattice/lower
+  semilattice}.}
+}
+
+\longnewglossaryentry{booleanalgebra}
+{
+  name=Boolean Algebra,
+  text=boolean algebra
+} {
+  is a poset $B$ that satisfies the following:
+  \begin{itemize}
+    \item $\forall x,y\in B$, there exists a \textit{supremum}, $x\vee y$.
+    \item $\forall x,y\in B$, there exists a \textit{infimum}, $x\wedge y$.
+    \item $\wedge$ distributes over $\vee$ such that $\forall x,y,z\in B,
+      x\wedge(y\vee z)=(x\wedge y)\vee(x\wedge z)$.
+    \item $B$ contains the least element $0$ and the greatest element $1$ of
+      $B$.
+    \item Each element $x$ has a \textit{complement} $\neg x$, such that
+      $x\wedge\neg x=0$ and $x\vee\neg x=1$.
+  \end{itemize}
+
+  \begin{note}
+    By definition, a Boolean Algebra is a lattice (thus also known as Boolean
+    lattice).
+  \end{note}
+}
+
+
+
 \title{Math Preliminaries}
 \author{Adam Yin}
 \date{}
