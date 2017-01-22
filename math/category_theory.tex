@@ -1631,13 +1631,16 @@
   diagram/representation of the product can be given to each product.}
 }
 
-\newglossaryentry{cartesiancategory}
+\newglossaryentry{cartesianmonoidalcategory}
 {
-  name=Cartesian Category,
-  text=Cartesian Category,
+  name=Cartesian Monoidal Category,
+  text=cartesian monoidal category,
   description={If the products exists for a finite number of objects, a
-    category is said to be a \textbf{cartesian category} or has
-    \textit{finite products}.
+    category is said to be a \textbf{cartesian monoidal category} or has
+    \textit{finite products}. An alternative definition is that a
+    \textbf{cartesian monoidal category} is a monoidal category whose
+    monoidal structure is the categorical product and unit is the terminal
+    object.
     \begin{note}
       If a category has a terminal object and binary products, then it has
       finite products. Similarily, if a functor preserves terminal objects
@@ -1756,6 +1759,179 @@
   \end{tikzcd}\end{equation*}
 }
 
+\longnewglossaryentry{cartesianclosedcategory}
+{
+  name=Cartesian Closed Category (CCC),
+  text=cartesian closed category
+} {
+  is a cartesian monoidal category $\mathscr{C}$ such that for every pair of
+  object $A$ and $B$, there is an \textit{exponential object} $B^A$ and an
+  arrow $eval:B^A\times A\rightarrow B$ with the property that for any arrow
+  $f:C\times A\rightarrow B$, there is an unique arrow $g:C\rightarrow B^A$
+  such that
+  \begin{equation*}
+    f=eval\circ(g\times id_A)
+  \end{equation*}
+}
+
+\newglossaryentry{exponentialobject}
+{
+  name=Exponential Object,
+  text=exponential object,
+  description={An \textbf{exponential object} $B^A$ is an \textit{internal
+    hom}$[A,B]$ in a \textit{cartesian closed category}. $B^A$ is equipped
+    with the arrow $eval:B^A\times A\rightarrow B$ and is the universal
+    element of the functor $\Hom(-\times A,B)$. This means for any other
+    object $C$ and the $eval':C\times A\rightarrow B$, there is an unique
+    arrow from $f:C\rightarrow B^A$ such that
+    \begin{equation*}
+      eval'=eval\circ(f\times id_A)
+    \end{equation*}
+    An exponential object is also known as \textit{internal hom}.
+    \begin{note}
+      Since $eval$ is an universal element of the functor $\Hom(-\times
+      A,B)$, the process of \textit{currying}, which takes the function
+      $f:C\times A\rightarrow B$ to $f':C\rightarrow B^A$ forms a natural
+      isomorphism of functors
+      \begin{equation*}
+        \Hom(-\times A,B)\cong\Hom(-,B^A)
+      \end{equation*}
+    \end{note}
+    \begin{note}
+      Consider the sets $A,B$ where $|A|$ is the cardinality of $A$. The
+      exponential object $B^A$ is a set of functions from $A$ to $B$.
+      $\forall f\in B^A$, $f$ maps each element of $A$ to an element of $B$,
+      which can be described as $|A|$-tuple of elements of $B$. Hence, the
+      notation for $B^A$ which is an $|A|$ product of $B$.
+    \end{note}
+    \begin{note}
+      Any cartesian closed category with finite coproducts is a
+      distributive category.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{cccexamples}
+{
+  name={Examples of Cartesian Closed Categories:}
+} {
+  \begin{itemize}[label={}]
+    \item
+  \begin{itemize}[align=left]
+    \item [\textbf{Set}]
+      For any objects $A$ and $B$, the exponential object $B^A$ is the set
+      of functions from $A$ to $B$, effectively the same as $\Hom(A,B)$.
+      $eval:B^A\times A\rightarrow B$ is the application of $f$ to $a$ in
+      $(f,a)\in B^A\times A$, ie: $eval(f,a)=f(a)$.
+
+    \item [\textit{Boolean Algebra}]
+      In addition to being a distributive category, the exponential object
+      $q^p$ is $\neg p\vee q$. $eval:q^p\times p\rightarrow q$ follows from
+      the distributive law, $(\neg p\vee q)\wedge p\Rightarrow q$.
+
+    \item [\textit{Heyting Algebra}]
+      The meet operation is product, implication is the exponential object
+      and the arrow $eval$ is \textit{modus ponens}.
+
+    \item [\textbf{Grf}]
+      Let No be the graph with 1 node and no arrows and Ar be the graph with
+      2 nodes and 1 arrow between them.  The exponential object between two
+      graphs $\mathscr{G}$ and $\mathscr{H}$, $\mathscr{H}^\mathscr{G}$, is
+      a graph which has a set of nodes
+      $\Hom(\mathscr{G}\times\text{No},\mathscr{H})$ and a set of arrows
+      $\Hom(\mathscr{G}\times\text{Ar},\mathscr{H})$. Both sets of nodes and
+      arrows are sets of graph homorphisms.
+
+    \item [\textbf{Func($\mathscr{C}$,\textbf{Set})}]
+      For any category $\mathscr{C}$,
+      \textbf{Func($\mathscr{C}$,\textbf{Set})} is a cartesian closed
+      category. For any two functors
+      $F,G:\mathscr{C}\rightarrow\mathbf{Set}$, the exponential object $G^F$
+      is a functor defined as follows:
+      \begin{itemize}[label={$-$}]
+        \item For any object $C$, $G^F(C)=(\Hom(C,-)\times F)\rightarrow G$
+          is a set of natural transformations.
+        \item For any arrow $f:C\rightarrow D$, $G^F(f)$ takes a natural
+          transformation $\alpha:\Hom(C,-)\times F\rightarrow G$ to a
+          natural tranformation (with component at an object $A$) that is
+          $G^F(f)(\alpha):\Hom(D,A)\times F(A)\rightarrow G(A)$, defined as
+          $G^F(f)(\alpha)(g,a)=\alpha A(v\circ f,x)$ for an arrow
+          $g:D\rightarrow A$ and an object $a\in F(A)$.
+      \end{itemize}
+
+    \item [\textbf{Cat}]
+      The exponential object of any two categories $\mathscr{C}$ and
+      $\mathscr{D}$ is
+      $\mathscr{D}^\mathscr{C}=\mathbf{Func}(\mathscr{C},\mathscr{D})$.
+
+    \item[\textbf{$\omega$-CPOs and Scott-continuous Functions}]
+    \item[\textbf{Functional Programming Language}]
+      The exponential object is the function type and the $eval$ arrow is
+      simply the function application function.
+
+    \item[\textbf{Typed Lambda Calculus}]
+      Objects are types and an arrow from an object $A$ to and object $B$ is
+      an equivalence class of terms of type $B$ with one free variable of
+      type $A$. The exponential object $B^A$ is the lambda abstraction with
+      a bound variable of type $A$ and a body of body $B$.
+
+  \end{itemize}
+  \end{itemize}
+}
+
+\longnewglossaryentry{internalhomfunctors}
+{
+  name=Internal Hom Functors,
+  text=internal hom functors
+} {
+  In any Cartesian Closed Category $\mathscr{C}$, for an object $A$, there
+  are two \textbf{internal hom functors}
+  $F:\mathscr{C}\rightarrow\mathscr{C}$ and
+  $G:\mathscr{C}^{op}\rightarrow\mathscr{C}$ defined as:
+  \begin{itemize}
+    \item For any object $B$, $F(B)=B^A$ and $G(B)=A^B$
+    \item For an arrow $f:B\rightarrow C$,
+      $F(f)=F(B)\rightarrow F(C)$ and $G(f)=G(C)\rightarrow G(B)$
+  \end{itemize}
+}
+
+\newglossaryentry{partiallyorderedobject}
+{
+  name=Partially Ordered Object,
+  text=partially ordered object,
+  description={$D$ is a \textbf{partially ordered object} in a cartesian
+    closed category if for every $\Hom(A,D)$ where $A$ is any object, there
+    is a partial order relation such that for any $f:B\rightarrow A$ and
+    $g\leq h$ in $\Hom(A,D)$, $g\circ f\leq h\circ f$ in $\Hom(B,D)$.
+    \begin{note}
+      $D$ is an $\omega$-CPO object if for every $\Hom(A,D)$ for any object
+      $A$, $\Hom(A,D)$ is an $\omega$-CPO (ie: $\Hom(A,D)$ is $\omega$-CPO).
+    \end{note}
+    \begin{note}
+      $D$ is \textit{strict} if there is an arrow $\bot:1\rightarrow D$ such
+      that for any object $A$ and any $f\in\Hom(A,D)$,
+      $\bot\circ\langle\rangle\leq f$.
+    \end{note}
+    \begin{note}
+      If $D$ is a strict $\omega$-CPO and $f:D\rightarrow D$ is an
+      $\omega$-continuous arrow, then $fix(f):1\rightarrow D$ is the least
+      element with the property $f\circ fix(f)=fix(f)$.
+    \end{note}
+  }
+}
+
+\newglossaryentry{omegacontinuous}
+{
+  name={$\omega$-Continuous},
+  text={$\omega$-continuous},
+  description={For any two $\omega$-CPO objects $D$ and $D'$,
+    $f:D\rightarrow D'$ is an \textbf{$\omega$-continuous} arrow if for any
+    object $A$ and $g_0\leq g_1\leq\dots$ where $g_0,g_1,\dots$ are arrows in
+    $\Hom(A,D)$ with supremum $g$, $f\circ g$ is the supremum of $f\circ
+    g_0\leq f\circ g_1\leq\dots$. It is easy to see that $f$ is monotone
+  (order preserving).}
+}
+
 
 \title{Category Theory}
 \author{Adam Yin}
@@ -1764,11 +1940,17 @@
 \begin{document}
 \maketitle
 A glossary reference for Category Theory and relevant terms which I have
-came across.
+came across. Most of the definitions are from \textit{Category Theory for
+Computing Science} \cite{ctforcpsc}.
 
 \clearpage
 
 \glsaddall
 \setglossarystyle{tree}
 \printglossaries
+
+\medskip
+
+\bibliographystyle{unsrt}
+\bibliography{references}
 \end{document}
