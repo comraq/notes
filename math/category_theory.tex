@@ -476,10 +476,19 @@
   $C\in\mathscr{C}$ is an equivalence class of monomorphisms under the
   relation $\sim$. The subobject is a \textbf{proper subobject} if it does not
   contain $id_C$. The equivalence relation $\sim$ is defined as follows:
-  \begin{center}
-    For monomorphisms $f_0:C_0\rightarrowtail C$ and $f_1:C_1\rightarrowtail
-    C$, $f_0\sim f_1$ if both $f_0$ and $f_1$ factors through each other.
-  \end{center}
+  \begin{itemize}
+    \item For monomorphisms $f_0:C_0\rightarrowtail C$ and $f_1:C_1\rightarrowtail
+      C$, $f_0\sim f_1$ if both $f_0$ and $f_1$ factors through each other.
+  \end{itemize}
+
+  \begin{note}
+    A preorder for subobjects $(i:A\rightarrow C)\leq(j:B\rightarrow C)$ is
+    defined by the condition that there exists $k:A\rightarrow B$ such that
+    $i=j\circ k$. Since $j$ is monic, $k$ is unique. And $i$ is monic
+    implies $k$ is monic. In \textbf{Set}, $A\subseteq B\subseteq C$
+    where $i$ is the inclusion of $A$ to $C$, $j$ the inclusion of $B$ to
+    $C$ and $k$ the inclusion of $A$ to $B$.
+  \end{note}
 }
 
 \newglossaryentry{splitmonomorphism}
@@ -641,6 +650,10 @@
     \item[$\mathbf{Func}(\mathscr{C},\mathscr{D})$]
       is the category whose objects are functors from categories
       $\mathscr{C}$ to $\mathscr{D}$ and arrows are natural transformations.
+
+    \item[$cone(D)$]
+      is the category whose objects are cones with base $D$ and arrows are
+      morphisms between cones.
 
   \end{itemize}
   \end{itemize}
@@ -1931,6 +1944,363 @@
     g_0\leq f\circ g_1\leq\dots$. It is easy to see that $f$ is monotone
   (order preserving).}
 }
+
+\longnewglossaryentry{extremalmorphisms}
+{
+  name=Extremal Morphisms,
+  text=extremal morphisms,
+  description={An \textbf{extremal epimorphism} in a category $\mathscr{C}$
+    is a morphism $e$ such that if $e=m\circ g$ where $m$ is monic, then $m$
+    is an isomorphism. Dually, an \textbf{extremal monomoprhism} is a a
+    morphism $m$ such that if $m=g\circ e$ where $e$ is epic, then $e$ is an
+  isomorphism.}
+}
+
+\newglossaryentry{parallelmorphisms}
+{
+  name=Parallel Morphisms,
+  text=parallel morphisms,
+  description={Morphisms which have the same \textit{source} and
+    \textit{target} are \textbf{parallel}.
+    \begin{note}
+      The limit of a \textit{parallel pair} of arrows is their equalizer.
+      Dually, the colimit of a parallel pair of arrows is their
+      coequalizer.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{equalizer}
+{
+  name=Equalizer,
+  text=equalizer
+} {
+  is the limit over a parallel pair of arrows. Let
+  $f,g:A\rightarrow B$ be a parallel pair of arrows. An \textbf{equalizer}
+  of $f$ and $g$ is an object $E$ together with an arrow $j:E\rightarrow
+  A$ such that:
+  \begin{itemize}[nosep]
+    \item $f\circ j=g\circ j$
+    \item If $h:C\rightarrow A$ and $f\circ h=g\circ h$, there is an
+      unique arrow $k:C\rightarrow E$ such that $j\circ k=h$ (ie: $h$
+      factors through $j$).
+  \end{itemize}
+
+  \begin{note}
+    An arrow that is an equalizer of some parallel pair of arrows is a
+    monomorphism. In addition, any two equalizers for the same pair of
+    arrows belong to the same subobject class of monomorphisms.
+  \end{note}
+
+  \begin{note}
+    Equalizers can be thought of as the largest subobject on which an
+    equation or set of equations is true.
+  \end{note}
+}
+
+\newglossaryentry{regularmonomorphism}
+{
+  name=Regular Monomorphism,
+  text=regular monomorphism,
+  description={is a monomorphism that is also an equalizer of a parallel
+  pair of arrows.
+  \begin{note}
+    An arrow that is both a regular monomorphism and an epimorphism is an
+    isomorphism.
+  \end{note}
+  }
+}
+
+\newglossaryentry{regularepimorphism}
+{
+  name=Regular Epimorphism,
+  text=regular epimorphism,
+  description={is an epimorphism that is also a coequalizer of a parallel
+  pair of arrows.}
+}
+
+\newglossaryentry{diagram}
+{
+  name=Diagram,
+  text=diagram,
+  description={A \textbf{diagram} in a category $\mathscr{C}$ of shape
+    $\mathbb{I}$ is a functor $D:\mathbb{I}\rightarrow\mathscr{C}$ where
+    $\mathbb{I}$ is also a category (usually small or finite).
+    \begin{note}
+      The purpose of $\mathbb{I}$ is to give shape to the diagram functor.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{cone}
+{
+  name=Cone,
+  text=cone,
+} {
+  A \textbf{cone} over a diagram
+  $D:\mathbb{I}\rightarrow\mathscr{C}$ (also known as the base) with an
+  object $U\in\mathscr{C}$ (also known as the vertex) is a family of arrows
+  of in $\mathscr{C}$ from indexed by $D(a)$ for each object
+  $a\in\mathbb{I}$, where each arrow has the form $p_a:U\rightarrow D(a)$.
+
+
+  A cone is \textit{commutative} if for any arrow $s:a\rightarrow
+  b$ in $\mathbb{I}$, $D(s)\circ p_a=p_b$, ie: the following diagram
+  commutes:
+  \begin{mytikzcd}
+       \& U \ar[ld,"p_a"'] \ar[rd,"p_b"]
+    \\ D(a) \ar[rr,"D(s)"']
+       \& \& D(b)
+  \end{mytikzcd}
+  \begin{note}
+    A commutative cone over $D$ with vertex $U$ is precisely a natural
+    transformation from the constant functor $\Delta_U$ (the functor that
+    takes every object to $U$ and morphism to $id_U$) to $D$, where the
+    commutativity is given by naturality.
+  \end{note}
+  \begin{note}
+    A cone over a discrete diagram is vacuously commutative.
+  \end{note}
+  \begin{note}
+    A \textit{morphism} between two cones $\alpha:\Delta_U\rightarrow D$ and
+    $\alpha':\Delta_{U'}\rightarrow D$ is an arrow $f:U\rightarrow U'$ such
+    that for every object $a\in\mathbb{I}$, the following diagram commutes:
+    \begin{mytikzcd}
+      U \ar[rr,"f"] \ar[rd,"\alpha_a"'] \&\& U' \ar[ld,"\alpha'_a"] \\
+      \& D(a)
+    \end{mytikzcd}
+  \end{note}
+}
+
+\longnewglossaryentry{limit}
+{
+  name=Limit,
+  text=limit,
+  symbol={$\underset{\longleftarrow}{\lim}$}
+} {
+  A \textbf{limit} is an universal commutative cone
+  $\alpha:\Delta_U\rightarrow D$ such that for every other cone over the
+  same diagram $D:\mathbb{I}\rightarrow\mathscr{C}$, there exists an unique
+  arrow to it. Thus:
+  \begin{itemize}
+    \item For every arrow $s:a\rightarrow b\in\mathbb{I}$,
+      $D(s)\circ\alpha_a=\alpha_b$.
+    \item If $\alpha':\Delta_U'\rightarrow D$ is another commutative cone,
+      there exists an unique arrow $f:U'\rightarrow U$ such that for each
+      object $a\in\mathbb{I}$, $\alpha_a\circ f=\alpha'_a$.
+  \end{itemize}
+
+  \begin{note}
+    A limit can also be defined as a terminal object in the category $cone(D)$.
+  \end{note}
+
+  \begin{note}
+    A limit is also an universal element of the functor
+    $cone(-,D):\mathscr{C}^{op}\rightarrow\mathbf{Set}$, where $cone(U,D)$
+    is the set of commutative cones with vertex $U$ over the diagram $D$,
+    and $cone(f:U'\rightarrow U,D):cone(U,D)\rightarrow cone(U',D)$ defined
+    as $cone(f,D)(\alpha_a:\Delta_{Ua}\rightarrow D_a)=\alpha_a\circ f$
+    where $a$ is some object in the domain of $D$. A universal element of
+    such a functor is precisely a cone with which there is an unique arrow
+    to it from any other cone with the same base.
+  \end{note}
+}
+
+\newglossaryentry{completecategory}
+{
+  name=Complete Category,
+  text=complete category,
+  description={is a category $\mathscr{C}$ in which every diagram
+    $D:\mathbb{I}\rightarrow\mathscr{C}$ has a limit in $\mathscr{C}$, where
+    $\mathbb{I}$ is a small category. $\mathscr{C}$ has all finite limits or
+  is \textbf{finitely complete} if $\mathbb{I}$ is a finite category.}
+}
+
+\newglossaryentry{finitecategory}
+{
+  name=Finite Category,
+  text=finite category,
+  description={is a category which consists of a finite set of objects and
+  a finite set of arrows.}
+}
+
+\longnewglossaryentry{pullback}
+{
+  name=Pullback,
+  text=pullback
+} {
+  For the diagram:
+  \begin{mytikzcd}
+    B \ar[r,"g"] \& C \& A \ar[l,"f"']
+  \end{mytikzcd}
+  a \textbf{pullback} is its limit:
+  \begin{mytikzcd}
+    P \ar[r,"p_1"] \ar[d,"p_2"'] \& A \ar[d,"f"] \\
+    B \ar[r,"g"']                \& C
+  \end{mytikzcd}
+  This is known as the pullback diagram and the composite arrow $f\circ
+  p_1=g\circ p_2:P\rightarrow C$ is omitted by convention.
+
+  \begin{note}[Other Names]
+    $P$ together with $p_1$ and $p_2$ is a pullback or \textit{fiber
+    product} of $f$ and $g$.  $p_2$ is the pullback of $f$ along $g$, $p_1$
+    is the pullback of $g$ along $f$. $P$ is sometimes be denoted as
+    $A\times_C B$.
+  \end{note}
+
+  \begin{note}
+    In \textbf{Set}, $P=\{(a,b)|\forall a\in A,\forall b\in B,f(a)=g(b)\}$.
+    $p_1$ and $p_2$ are just the coordinate projections of $P$.
+  \end{note}
+}
+
+\newglossaryentry{coequalizer}
+{
+  name=Coequalizer,
+  text=coequalizer,
+  description={is the dual of \textit{equalizer}. For a parallel pair of
+    arrows $f,g:A\rightarrow B$, an arrow $h:B\rightarrow C$ is the
+    coequalizer of $f$ and $g$ provided $h\circ f=h\circ g$ and for any
+    arrow $k:B\rightarrow D$ where $k\circ f=k\circ g$, there is an unique
+    arrow $l:C\rightarrow D$ such that $k=l\circ h$.
+    \begin{note}
+      Coequalizers can be thought of as the least destructive identification
+      necessary (by quotienting into equivalence classes) to force an
+      equation or set of equations to be true.
+    \end{note}
+    \begin{note}[Example]
+      The \textit{unification} of expressions by finding a common
+      substitution is an example of a coequalizer.
+    \end{note}
+  }
+}
+
+
+\newglossaryentry{regularcategory}
+{
+  name=Regular Category,
+  text=regular Category,
+  description={is a finitely complete category which has finite limits, all
+    arrows are coequalizers of its kernel pair and the pullback of any regular
+    epimorphism along any other arrow is an regular epimorphism.
+    \begin{note}
+      A functor between regular categories is called a \textit{regular
+      functor} if it preserves finite limits and regular epimorphisms.
+    \end{note}
+  }
+}
+
+\newglossaryentry{cocone}
+{
+  name=Cocone,
+  text=cocone,
+  description={is the dual of a cone. Thus, a cocone in a category
+  $\mathscr{C}$ is a cone in $\mathscr{C}^{op}$.}
+}
+
+\newglossaryentry{colimit}
+{
+  name=Colimit,
+  text=colimit,
+  description={is the dual of a limit, which is an universal commutative
+    cocone. A \textbf{colimit} is the initial object of the category of
+    cocones.
+    \begin{note}
+      A category that has all colimits is \textit{cocomplete}, if it has all
+      finite colimits, it is \textit{finitely cocomplete}.
+    \end{note}
+  },
+  symbol={$\underset{\longrightarrow}{\lim}$}
+}
+
+\longnewglossaryentry{pushout}
+{
+  name=Pushout,
+  text=pushout
+} {
+  is the dual of pullback, such that
+  \begin{mytikzcd}
+    C \ar[r,"f"] \ar[d,"g"'] \& A \ar[d,"q_1"] \\
+    B \ar[r,"q_2"']          \& Q
+  \end{mytikzcd}
+  is a commutative square for any object $R$ and arrows
+  $r_1:A\rightarrow R,r_2:B\rightarrow R,r_1\circ f=r_2\circ g$, there is an
+  unique arrow $r:Q\rightarrow R$ where $r\circ q_1=r_1$ and $r\circ
+  q_2=r_2$.
+}
+
+\longnewglossaryentry{disjointcoproduct}
+{
+  name=Disjoint Coproduct,
+  text=disjoint coproduct
+} {
+  A coproduct $A+B$ in a category is \textbf{disjoint} if the injections
+  $A\rightarrow A+B$ and $B\rightarrow A+B$ are monic and the pullback of
+  the injections along each other is the initial object (since the
+  injections are monic, these injections are subobjects and their
+  intersection is the initial object). ie:
+  \begin{mytikzcd}
+    0 \ar[r] \ar[d] \& A \ar[d] \\
+    B \ar[r]        \& {A+B}
+  \end{mytikzcd}
+  is a pullback diagram (this is also a pushout diagram by the definition of
+  coproducts).
+
+  \begin{note}
+    In \textbf{Set}, this precisely captures the idea of a disjoint union
+    between sets $A$ and $B$ where $A\cap B=\emptyset$.
+  \end{note}
+
+  \begin{note}
+    If $A+B$ is disjoint, the subobjects $A$ and $B$ are known as
+    \textit{complemneted subobjects} and $A$ is the complement of $B$ in $C$
+    and conversely.
+  \end{note}
+}
+
+\longnewglossaryentry{intersection}
+{
+  name=Intersection,
+  text=intersection
+} {
+  If $C$ is an object of $\mathscr{C}$ with subobjects $C_1$ and $C_2$, the
+  \textbf{intersection} of $C_1$ and $C_2$, if it exists, is the pullback:
+  \begin{mytikzcd}
+    C_0 \ar[r] \ar[d] \& C_1 \ar[d] \\
+    C_2 \ar[r]        \& C
+  \end{mytikzcd}
+
+  \begin{note}
+    A category has \textit{wide intersections} if every object $C$ and every
+    class of subobjects $\{C_i\}$ of $C$, there is an intersection.
+  \end{note}
+
+  \begin{note}
+    If exists, the intersection is the meet of the poset of subobjects of
+    $C$.
+  \end{note}
+}
+
+\longnewglossaryentry{kernelpair}
+{
+  name=Kernel Pair,
+  text=kernel pair,
+} {
+  A \textbf{kernel pair} of an arrow $f:X\rightarrow Y$ is a
+  parallel pair of arrows from any object $R$ to $X$ that forms a limit:
+  \begin{mytikzcd}
+    R \ar[r] \ar[d] \& X \ar[d] \\
+    X \ar[r]        \& Y
+  \end{mytikzcd}
+  This is also the fiber product $X\times_Y X$, or the pullback of $f$
+  along itself.
+
+  \begin{note}
+    Dually, a \textit{cokernel pair} of $f$ is the pushout of $f$ along
+    itself.
+  \end{note}
+}
+
 
 
 \title{Category Theory}
