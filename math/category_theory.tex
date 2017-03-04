@@ -655,6 +655,13 @@
       is the category whose objects are cones with base $D$ and arrows are
       morphisms between cones.
 
+    \item[$\mathbf{SO}(\mathscr{C})$]
+      is the category whose objects are split opfibrations of the category
+      $\mathscr{C}$ and arrows are homomorphisms of split opfibrations.
+
+    \item[$\mathbf{End}(M)$]
+      is the category of endomorphisms for the monoid $M$.
+
   \end{itemize}
   \end{itemize}
 }
@@ -2301,6 +2308,306 @@
   \end{note}
 }
 
+\longnewglossaryentry{cartesianmorphism}
+{
+  name=Cartesian Morphism,
+  text=cartesian morphism
+} {
+  Let $P:\mathscr{E}\rightarrow\mathscr{C}$ be a functor, $f:D\rightarrow
+  C$ is an arrow in $\mathscr{C}$ and $P(Y)=D$ for some object
+  $Y\in\mathscr{E}$. A morphism/arrow $u:X\rightarrow Y$ in $\mathscr{E}$ is
+  \textbf{cartesian} for $f$ and $Y$ if:
+
+  \begin{itemize}
+    \item $P(u)=f$.
+    \item $\forall v:Z\rightarrow Y$ in $\mathscr{E}$, $\forall
+      h:P(Z)\rightarrow C$ in $\mathscr{C}$ where $f\circ h=P(v)$, $\exists
+      w:Z\rightarrow X$ in $\mathscr{E}$ such that $u\circ w=v$ and
+      $P(w)=h$.
+  \end{itemize}
+
+  \begin{note}
+    A cartesian arrow is universal for $f$ and $Y$ as for any other arrow
+    $v\in\mathscr{E}$, $f\circ h\in\mathscr{C}$ where $target(v)=Y$,
+    $P(v)=f\circ h$, there is an unique factorization $w,v$ factors throughn
+    $u$.
+  \end{note}
+
+  \begin{note}
+    Dually, $u:X\rightarrow Y$ is \textbf{opcatesian/cocartesian} for
+    $f:C\rightarrow D$ and $P(X)=C$ if $P(u)=f$ and $\forall v:X\rightarrow
+    Z$, $\forall g:D\rightarrow P(Z)$ where $P(v)=g\circ f$,
+    there exists an unique arrow $w:Y\rightarrow Z$ such that $P(w)=g$.
+  \end{note}
+}
+
+\longnewglossaryentry{fibration}
+{
+  name=Fibration,
+  text=fibration
+} {
+  A functor $P:\mathscr{E}\rightarrow \mathscr{C}$ is a \textbf{fibration}
+  if there is a cartesian arrow for every $f:C\rightarrow D$ in
+  $\mathscr{C}$ and object $Y\in\mathscr{E}$ such that $P(Y)=D$. Dually, $P$
+  is an \textbf{opfibration} if there is an opcartesian arrow for every $f$
+  and object $X\in\mathscr{E}$ such that $P(X)=C$.
+
+  \begin{note}
+    $P$ is a fibration if and only if
+    $P^{op}:\mathscr{E}^{op}\rightarrow\mathscr{C}^{op}$ is an opfibration.
+  \end{note}
+  \begin{note}
+    If $P:\mathscr{E}\rightarrow\mathscr{C}$ is a functor, then
+    $\mathscr{E}$ is \textit{fibered over} $\mathscr{C}$. $\mathscr{C}$ is
+    also known as the \textit{base category}, $\mathscr{E}$ as the
+    \textit{total category}.
+  \end{note}
+}
+
+\longnewglossaryentry{cleavage}
+{
+  name=Cleavage,
+  text=cleavage
+} {
+  A \textbf{cleavage} for a fibration $P:\mathscr{E}\rightarrow\mathscr{C}$
+  is a function $\gamma$ that takes an arrow $f:C\rightarrow D$ in
+  $\mathscr{C}$ and each object $Y\in\mathscr{E}$ where $P(Y)=D$ to an arrow
+  $\gamma(f,Y)\in\mathscr{E}$ that is cartesian for $f$ and $Y$. Dually, an
+  \textbf{opcleavage} $\kappa$ takes $f$ and each object $X\in\mathscr{E}$
+  where $P(X)=C$ to the arrow $\kappa(f,X)\in\mathscr{E}$ that is
+  opcartesian for $f$ and $X$.
+
+  \begin{note}
+    A cleavage is \textit{normal} if $\gamma(id_D,Y)=id_Y$.
+  \end{note}
+
+  \begin{note}
+    A cleavage is \textit{splitting} if it is normal and the composite of
+    cartesian arrows is a cartesian arrow of the composite, thus
+    $\gamma(g,Z)\circ\gamma(f,Y)=\gamma(g\circ f,Z)$ where $g:D\rightarrow
+    E$ is in $\mathscr{C}$ and $P(Z)=E$. Note that this is well defined as
+    as the domain of $\gamma(g,Z)$ is $D$, and $P(Y)=D$.
+  \end{note}
+
+  \begin{note}
+    A fibration is \textit{split} if it has a splitting. The same can be
+    said for opfibrations and opcleavages that are splitting.
+  \end{note}
+}
+
+\longnewglossaryentry{fiber}
+{
+  name=Fiber,
+  text=fiber
+} {
+  For any functor $P:\mathscr{E}\rightarrow\mathscr{C}$, the \textbf{fiber}
+  over an object $C\in\mathscr{C}$ is the collection of objects $X$ and
+  arrows $f$ where $P(X)=C$ and $P(f)=id_C$. It can be shown that this fiber
+  is a subcategory of $\mathscr{E}$.
+
+  \begin{note}
+    The fibers of a functor forms an ``indexed category''.  A functor
+    $F:\mathscr{C}\rightarrow\mathbf{Cat}$ can be defined for an opfibration
+    $P:\mathscr{E}\rightarrow\mathscr{C}$ with opcleavage $\kappa$, where
+    $\forall C\in\mathscr{C}, F(C)$ is the fiber over $C$ and for any arrow
+    $f:C\rightarrow D$ in $\mathscr{C}$, $F(C)$ is the functor between the
+    fiber over $C$ and $D$. Dually, a contravariant functor
+    $F:\mathscr{C}^{op}\rightarrow\mathbf{Cat}$ can be defined for a
+    fibration $P:\mathscr{E}\rightarrow\mathscr{C}$ with cleavage $\gamma$.
+  \end{note}
+}
+
+
+\longnewglossaryentry{shapefunctor}
+{
+  name=Shape Functor,
+  text=shape functor
+} {
+  Let $\mathscr{A},\mathscr{B}$ be categories,
+  $G:\mathscr{A}\rightarrow\mathbf{Cat}$ be a functor.
+  $S(G,\mathscr{B}):\mathscr{A}^{op}\rightarrow\mathbf{Cat}$ is a
+  \textbf{shape functor} such that:
+  \begin{itemize}[align=left]
+    \item[On \underline{objects},] $\forall A\in\mathscr{A}$,
+      $S(G,\mathscr{B})(A)=\mathbf{Func}(G(A),\mathscr{B})$.
+
+    \item[On \underline{arrows},] for any arrow $f:A\rightarrow A'$ in
+      $\mathscr{A}$,
+      $S(G,\mathscr{B})(f):\mathbf{Func}(G(A'),\mathscr{B})\rightarrow\mathbf{Func}(G(A),\mathscr{B})$
+      is a functor. On objects/functors,
+      $S(G,\mathscr{B})(f)(H:G(A')\rightarrow\mathscr{B})=H\circ G(f)$. On
+      arrows/natural transformations,
+      $S(G,\mathscr{B})(f)(\alpha:H\rightarrow
+      H':G(A')\rightarrow\mathscr{B})=\alpha G(f):H\circ G(f)\rightarrow
+      H'\circ G(f)$. The component at an object $X\in G(A)$ for
+      $S(G,\mathscr{B})(f)(\alpha)$ is the component of $\alpha$ for
+      $G(f)(X)$, ie: $\alpha G(f)X:H[G(f)(X)]\rightarrow H'[G(f)(X)]$.
+  \end{itemize}
+
+  \begin{note}
+    $S(G,\mathscr{B})(A)$ is the category of diagrams (diagram functors) of
+    shape $G(A)$ in $\mathscr{B}$, where arrows are diagram homomorphisms
+    (natural transformations between these diagram functors).
+  \end{note}
+}
+
+\longnewglossaryentry{grothendieckconstruction}
+{
+  name=Grothendieck Construction,
+  text=grothendieck construction
+} {
+  For any category valued functor, $F:\mathscr{C}\rightarrow\mathbf{Cat}$,
+  the \textbf{Grothendieck Construction} constructs a split opfibration from
+  $\mathbf{G}(\mathscr{C},F)$ to $\mathscr{C}$ which is induced by $F$. The category
+  $\mathbf{G}(\mathscr{C},F)$ is defined as:
+  \begin{itemize}
+    \item Objects are pairs $(x,C)$, where $C$ is an object in $\mathscr{C}$
+      and $x$ is an object in $F(C)$.
+    \item Arrows are pairs $(u,f):(x,C)\rightarrow(x',C')$ where
+      $f:C\rightarrow C'$ is an arrow in $\mathscr{C}$ and
+      $u:F(f)(x)\rightarrow x'$ is an arrow in $F(C')$.
+    \item Composition of $(u,f):(x,C)\rightarrow(x',C')$ and
+      $(v,g):(x',C')\rightarrow(x'',C'')$ is
+      $(v,g):(x,C)\rightarrow(x'',C'')$ defined by $(v,g)\circ(u,f)=(v\circ
+      F(g)(u),g\circ f)$
+  \end{itemize}
+
+  The corresponding opfibration is the second projection functor of the
+  pairs and has a splitting
+  $\kappa(f,X)=(id_{F(f)(x)},f):(x,C)\rightarrow(F(f)(x),C')$ where
+  $f:C\rightarrow C'$ is an arrow in $\mathscr{C}$ and $(x,C)$ is an object
+  in $\mathbf{G}(\mathscr{C},F)$.
+
+  \begin{note}
+    On set-valued functors $F:\mathscr{C}\rightarrow\mathbf{Set}$, the
+    Grothendieck construction constructs a \textit{split discrete
+    opfibration} where the fibers are discrete categories (sets can be
+    viewed as discrete categories where elements are objects and the only
+    arrows are the identity arrows).
+  \end{note}
+
+  \begin{note}
+    The monoid homomorphism for a semidirect product of $M$ and $T$ is
+    $\phi:M\rightarrow\mathbf{End}(T)$, which is also a category valued
+    functor. By the Grothendieck construction, the category
+    $\mathbf{G}(M,\phi)$ is exactly the semidirect product of $M$ and $T$.
+  \end{note}
+}
+
+\longnewglossaryentry{grothendieckfunctor}
+{
+  name=Grothendieck Functor,
+  text=grothendieck functor
+} {
+  is a functor
+  $\mathbf{G}:\mathbf{Func}(\mathscr{C},\mathbf{Cat})\rightarrow\mathbf{SO}(\mathscr{C})$
+  defined as:
+  \begin{itemize}[align=left]
+    \item[On \underline{objects},]
+      $\mathbf{G}(F:\mathscr{C}\rightarrow\mathbf{Cat})=\mathbf{G}(\mathscr{C},F)$.
+
+    \item[On \underline{arrows},]
+      $\mathbf{G}(\alpha:F\rightarrow
+      G:\mathscr{C}\rightarrow\mathbf{Cat}):\mathbf{G}(F)\rightarrow\mathbf{G}(G)$
+      is a functor. Let $\mathbf{G}\alpha=\mathbf{G}(\alpha)$, on objects,
+      $\mathbf{G}\alpha(x,C)=(\alpha C(x),C)$. On arrows,
+      $\mathbf{G}\alpha((u,f):(x,C)\rightarrow(x',C'))=(\alpha C'(u),f)$.
+      \begin{note}
+        $\alpha C:F(C)\rightarrow G(C)$ is a natural transformation
+        indexed at $C$ but is also functor because $F(C)$ and $G(C)$ are
+        categories.
+      \end{note}
+  \end{itemize}
+}
+
+\longnewglossaryentry{sohomormophism}
+{
+  name=Homomorphism of Split Opfibrations,
+  text=homomorphism of split opfibrations
+} {
+  For split opfibrations $P:\mathscr{E}\rightarrow\mathscr{C}$ and
+  $P:\mathscr{E}'\rightarrow\mathscr{C}$ with splitting $\kappa$ and
+  $\kappa'$ respectively, a \textbf{homomorphism of split opfibrations}
+  $\zeta:\mathscr{E}\rightarrow\mathscr{E}'$ is a functor such that for any
+  arrow $f:C\rightarrow D$ in $\mathscr{C}$ and object $X$ in $\mathscr{E}$
+  where $P(X)=C$, $\zeta(\kappa(f,X))=\kappa'(f,\zeta(X))$ and the following
+  diagram commutes:
+  \begin{mytikzcd}
+    \mathscr{E} \ar[rr,"\zeta"] \ar[rd,"P"'] \& \&
+    \mathscr{E}' \ar[ld,"P'"] \\
+    \& \mathscr{C}
+  \end{mytikzcd}
+}
+
+\longnewglossaryentry{wreathproduct}
+{
+  name=Wreath Product,
+  text=wreath product
+} {
+  Let $\mathscr{A}$, $\mathscr{B}$ be categories and
+  $G:\mathscr{A}\rightarrow\mathbf{Cat}$ be a functor. The \textbf{wreath
+  product} $\mathscr{A}$ $\text{wr}^{G}$ $\mathscr{B}$ is category of the
+  split opfibration from the Grothendieck construction
+  $\mathbf{G}(\mathscr{A},S(G,\mathscr{B}))$.
+  \begin{note}
+    If $G$ is a set valued functor, then the construction produces a
+    \textit{discrete wreath product}.
+  \end{note}
+}
+
+\newglossaryentry{rightregularrepresentation}
+{
+  name=Right Regular Representation,
+  text=right regular representation,
+  description={
+    The \textbf{right regular representation} for a category $\mathscr{C}$
+    is the functor $R_\mathscr{C}:\mathscr{C}\rightarrow\mathbf{Set}$ where
+    objects $R_\mathscr{C}(C)$ for any object $C$ in $\mathscr{C}$ is the
+    set of arrows in $\mathscr{C}$ with codomain is $C$. For any arrow
+    $f:C\rightarrow C'$ in $\mathscr{C}$, $R_\mathscr{C}(f)(g)=f\circ g$ for
+    any $g\in R_\mathscr{C}(C)$.
+    \begin{note}
+      The \textit{standard wreath product} for $\mathscr{A}$ and
+      $\mathscr{B}$ is $\mathscr{A}$ $\text{wr}^{R_\mathscr{A}}$
+      $\mathscr{B}$.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{wreathproductinducedaction}
+{
+  name=Action Induced by Wreath Product,
+  text=action induced by wreath product
+} {
+  Let $\mathscr{A}$, $\mathscr{B}$ be small categories,
+  $G:\mathscr{A}\rightarrow\mathbf{Cat}$,
+  $H:\mathscr{B}\rightarrow\mathbf{Cat}$ be functors. There is an
+  \textbf{induced functor} $G\text{ wr }H:\mathscr{A}\text{ wr}^G\text{
+  }\mathscr{B}\rightarrow\mathbf{Cat}$ defined by:
+  \begin{itemize}
+    \item For an object $(A,P)$ in $\mathscr{A}\text{ wr}^G\text{
+      }\mathscr{B}$, $(G\text{ wr }H)(A,P)$ is the split opfibration induced
+      by $H\circ P:G(A)\rightarrow\mathbf{Cat}$. Thus, objects in this
+      category are $(t,x)$ where $x$ is an object in $G(A)$ and $t$ is an
+      object in $(H\circ P)(x)$. Arrows are $(u,f):(t,x)\rightarrow(t',x')$
+      where $f:x\rightarrow x'$ is an arrow in $G(A)$ and $u:(H\circ
+      P)(f)(x)\rightarrow x'$ is an arrow in $G(A')$.
+
+    \item For an arrow $(h,\lambda):(G\text{ wr }H)(A,P)\rightarrow(G\text{
+      wr }H)(A',P')$ in $\mathscr{A}\text{ wr}^G\text{
+      }\mathscr{B}$ is a functor where $h:A\rightarrow A'$ is an arrow in
+      $\mathscr{A}$ and $\lambda:P\rightarrow(P'\circ G(h))$ ($\lambda$ is a
+      natural transformation). For objects $(t,x)$ in $(G\text{ wr
+      }H)(A,P)$, $(G\text{ wr }H)(h,\lambda)(t,x)=(H(\lambda x)(t),G(h)(x))$
+      where $\lambda x$ is a the natural transformation $\lambda$ indexed by
+      $x$ in $G(A)$, $\lambda x:P(x)\rightarrow P'[G(h)(x)]$ and $H(\lambda
+      x):H[P(x)]\rightarrow H(P'[G(h)(x)])$ is a natural transformation
+      $H\lambda$ indexed at $x$. For arrows $(u,f):(t,x)\rightarrow(t',x')$
+      in $(G\text{ wr }H)(A,P)$, $(G\text{ wr }H)(h,\lambda)(h,f)=(H(\lambda
+      x')(u),G(h)(f))$.
+
+  \end{itemize}
+}
 
 
 \title{Category Theory}

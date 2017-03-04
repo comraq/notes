@@ -1078,6 +1078,35 @@
   \end{note}
 }
 
+\longnewglossaryentry{semidirectproduct}
+{
+  name=Semidirect Product,
+  text=semidirect product
+} {
+  The \textbf{semidirect product} of monoids $M$ and $T$ with the action
+  $\alpha:M\times T\rightarrow T$ is the monoid with the underlying set
+  $T\times M$ where $\alpha$ is defined as:
+  \begin{itemize}
+    \item $\forall m\in M, \alpha(m,1_T)=1_T$
+    \item $\forall m\in M, \forall t,t'\in T,
+      \alpha(m,tt')=\alpha(m,t)\alpha(m,t')$
+    \item $\forall t\in T, \alpha(1_M,t)=t$
+    \item $\forall m,m'\in M, \forall t\in T,
+      \alpha(mm',t)=\alpha(m,\alpha(m',t))$
+  \end{itemize}
+  and multiplication of the semidirect product is:
+  \begin{equation*}
+    (t,m)(t',m')=(t\alpha(m,t'),mm')
+  \end{equation*}
+  for all $t,t'\in T$ and $m,m'\in M$.
+
+  \begin{note}
+    The action $\alpha$ can be thought of a monoid homomorphism
+    $\phi:M\rightarrow\mathbf{End}(T)$ where $\mathbf{End}(T)$ is the monoid
+    of endomorphisms of $T$.
+  \end{note}
+}
+
 
 
 \title{Math Preliminaries}
