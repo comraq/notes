@@ -662,6 +662,33 @@
     \item[$\mathbf{End}(M)$]
       is the category of endomorphisms for the monoid $M$.
 
+    \item[$(F:\mathscr{C})$]
+      is the category of F-algebras and homomorphisms between F-algebras for
+      the endofunctor $F:\mathscr{C}\rightarrow\mathscr{C}$.
+
+    \item[$act(A)$]
+      is the category of algebras for the functor $A\times -$ where $A$ is
+      an object in $\mathscr{C}$. Thus, objects of $act(A)$ are $x:A\times
+      X\rightarrow X$ for each object $X$ in $\mathscr{C}$ and arrows are
+      homomorphisms between these algebras.
+
+    \item[$\mathscr{K}(M)$]
+      is the \textit{Kleisli} category for a monad $(M,\eta,\mu)$ in a
+      category $\mathscr{C}$. $\mathscr{K}(M)$ has the same objects as
+      $\mathscr{C}$ but an arrow from $A$ to $B$ is an arrow of the form
+      $f:A\rightarrow M(B)$ where $A$ and $B$ are objects in $\mathscr{C}$.
+      Let $\ast$ denote composition in $\mathscr{K}(M)$, for another arrow
+      $g:B\rightarrow M(C)$, composition is defined as $g\ast f=\mu C\circ
+      M(g)\circ f:A\rightarrow M(C)$. For any object $A$, the identity arrow
+      is $\eta A:A\rightarrow M(A)$.
+      \begin{note}
+        There are functors $U:\mathscr{K}(M)\rightarrow\mathscr{C}$ and
+        $F:\mathscr{C}\rightarrow\mathscr{K}(M)$ defined by $U(A)=M(A)$,
+        $U(f:A\rightarrow B)=\mu B\circ M(f)$ and $F(A)=A$,
+        $F(g:A\rightarrow B)=M(g)\circ\eta A$. Then $F\dashv U$ and
+        $M=U\circ F$.
+      \end{note}
+
   \end{itemize}
   \end{itemize}
 }
@@ -714,6 +741,30 @@
       is the functor thats takes a category to its quotient category by
       where $Q(A)=A$ for any object $A$ and $Q(f)=[f]$ for arrows $f$ in the
       category $\mathscr{C}$.
+
+    \item[\textbf{Pullback Functor}]
+      Let $\mathscr{C}$ be a category with pullbacks and $f:A\rightarrow B$
+      is an arrow in $\mathscr{C}$. The \textbf{pullback functor}
+      $f^*:\mathscr{C}/B\rightarrow\mathscr{C}/A$ is defined as:
+      \begin{itemize}
+        \item For an object $x:X\rightarrow B$, $f^*(x)=p_1:P\rightarrow A$
+          of the following pullback diagram:
+          \begin{mytikzcd}
+            P \ar[r,"p_2"] \ar[d,"p_1"'] \& X \ar[d,"x"] \\
+            A \ar[r,"f"'] \& B
+          \end{mytikzcd}
+        \item For an arrow $t:x\rightarrow x'$ and objects $x:X\rightarrow
+          B$, $x':X'\rightarrow B$, $x'\circ t=x$ and $f^*(t)=s$ of the
+          following pullback diagram:
+          \begin{mytikzcd}
+            P \ar[rd,"s"] \ar[rdd,bend right=25,"p_1"']
+                          \ar[rrd,bend left=25,"t"] \\
+            \& P' \ar[r,"p_2'"] \ar[d,"p_1'"'] \& X' \ar[d,"x'"] \\
+            \& A \ar[r,"f"'] \& B
+          \end{mytikzcd}
+          where $s:P\rightarrow P'$ is the unique arrow by the definition of
+          a pullback.
+      \end{itemize}
 
   \end{itemize}
   \end{itemize}
@@ -1088,10 +1139,6 @@
     \end{note}
   }
 }
-
-\newcommand{\testing}[1]{\newglossaryentry{asdf}{name=asdf,description={#1}}}
-\newcommand\makeampletter{\catcode`&=12\relax}
-\makeampletter
 
 \longnewglossaryentry{factorizationsystem}
 {
@@ -2607,6 +2654,218 @@
       x')(u),G(h)(f))$.
 
   \end{itemize}
+}
+
+\newglossaryentry{dualadjunction}
+{
+  name=Dual Adjunction,
+  text=dual adjunction,
+  description={is an adjunction $F\dashv G$ where $F:C\rightarrow D^{op}$
+  and $G:D\rightarrow C^{op}$.
+  \begin{note}[Example]
+    Let $A$ and $B$ be posets. A \textit{Galois Connection} is a dual
+    adjunction between order-reversing maps $f:A\rightarrow B$ and
+    $g:B\rightarrow A$ such that $a\leq g(f(a))$ and $b\leq f(g(b))$ for
+    all $a\in A$, $b\in B$ (these are the unit and counit of the dual
+    adjunction).
+  \end{note}
+  }
+}
+
+\longnewglossaryentry{adjunction}
+{
+  name=Adjunction,
+  text=adjunction,
+  symbol={$\dashv$}
+} {
+  Let $GF$ denote $G\circ F$ and $GFA$ denote $(G\circ F)(A)$.  Between
+  functors $F:\mathscr{A}\rightarrow\mathscr{B}$ and
+  $G:\mathscr{B}\rightarrow\mathscr{A}$, $F$ and $G$ form an
+  \textbf{adjunction} (denoted as $F\dashv G$) provided that there is a
+  natural transformation $\eta:id\rightarrow GF$ such that for any objects
+  $A\in\mathscr{A}$, $B\in\mathscr{B}$ and arrow $f:A\rightarrow UB$, there
+  is an unique arrow $g:FA\rightarrow B$ such that the following diagram
+  commutes:
+  \begin{mytikzcd}
+    A \ar[r,"\eta A"] \ar[rd,"f"'] \& UFA
+    \ar[d,"Ug"] \\ \& UB
+  \end{mytikzcd}
+
+  \begin{note}
+    Dually, for any adjunction $F\dashv G$, there is a natural
+    transformation $\epsilon:FG\rightarrow id$ such that for any
+    $g:FA\rightarrow B$, there exists an unique arrow $f:A\rightarrow UB$
+    such that the following diagram commutes:
+    \begin{mytikzcd}
+      \& FUB \ar[d,"\epsilon B"] \\
+      FA \ar[ru,"Ff"] \ar[r,"g"'] \& B
+    \end{mytikzcd}
+  \end{note}
+
+  \begin{note}
+    If $F\dashv G$, then $F$ is \textit{left adjoint} to $G$ and $G$ is
+    \textit{right adjoint} to $F$. $G$ preserves limits and $F$ preserves
+    colimits.
+  \end{note}
+
+  \begin{note}
+    $\eta$ and $\epsilon$ are called the \textit{unit} and \textit{counit}
+    of the adjunction.
+  \end{note}
+
+  \begin{note}[Theorem]
+    Let $F:\mathscr{A}\rightarrow\mathscr{B}$ and
+    $G:\mathscr{B}\rightarrow\mathscr{A}$ be functors, then $F\dashv G$ if
+    and only if $\Hom(F-,-)$ and $\Hom(-,U-)$ are naturally isomorphic as
+    functors of $\mathscr{A}^{op}\times\mathscr{B}\rightarrow\mathbf{Set}$.
+  \end{note}
+
+  \begin{note}
+    Adjoint functors are unique up to natural isomorphisms.
+  \end{note}
+}
+
+\newglossaryentry{locallycartesianclosedcategory}
+{
+  name=Locally Cartesian Closed Category,
+  text=locally cartesian closed category,
+  description={is a category $\mathscr{C}$
+    if for every object $A\in\mathscr{C}$, the slice category $\mathscr{C}/A$
+    is cartesian closed. In other words, $\mathscr{C}$ has pullbacks and for
+    each arrow $f:A\rightarrow B$, the pullback functor
+    $f^*:\mathscr{C}/B\rightarrow\mathscr{C}/A$ has a right adjoint.
+    \begin{note}
+      Since $\mathscr{C}/1$ is isomorphic to $\mathscr{C}$, a locally
+      cartesian closed category which has a terminal object $1$ is cartesian
+      closed.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{algebraforanendofunctor}
+{
+  name=Algebra for an Endofunctor,
+  text=algebra for an endofunctor
+} {
+  For an endofunctor $F:\mathscr{C}\rightarrow\mathscr{C}$, a
+  F-\textbf{algebra} is a pair $(A,\alpha)$ where $A$ is an object in
+  $\mathscr{C}$ and $\alpha:F(A)\rightarrow A$ ($A$ is called the \textit{carrier}
+  of the algebra).
+  \\
+  A homomorphism between F-algebras $(A,\alpha)$ and $(B,\beta)$ is an arrow
+  $f:A\rightarrow B$ such that
+  \begin{mytikzcd}
+    F(A) \ar[r,"\alpha"] \ar[d,"F(f)"'] \&
+    A \ar[d,"f"] \\
+    F(B) \ar[r,"\beta"'] \&
+    B
+  \end{mytikzcd}
+  commutes.
+
+  \begin{note}
+    An object $(A,\alpha)$ in $(F:\mathscr{C})$ is a \textit{fixed point}
+    for $F$ if $\alpha$ is an isomorphism.
+  \end{note}
+
+  \begin{note}
+    An initial object in $(F:\mathscr{C})$ is \textit{least fixed point}
+    for $F$.
+  \end{note}
+}
+
+\newglossaryentry{finitaryfunctor}
+{
+  name=Finitary Functor,
+  text=finitary functor,
+  description={A set-valued endofunctor $R$ is \textbf{finitary} if for each
+    set $S$ and element $x\in R(S)$, there is a finite subset $S_0\subseteq S$
+    and an element $x_0\in R(S_0)$ such that $x=R(i_0)(x_0)$ where
+  $i_0:S_0\rightarrow S$ is the inclusion.}
+}
+
+\longnewglossaryentry{recursivecategory}
+{
+  name=Recursive Category,
+  text=recursive category
+}
+{
+  is a category $\mathscr{C}$ if for every object $A$, the
+  underlying functor $U_A:act(A)\rightarrow\mathscr{C}$ has a left adjoint
+  $F_A:\mathscr{C}\rightarrow act(A)$.
+
+  \begin{note}
+    $U_A:act(A)\rightarrow\mathscr{C}$ is defined as $U_A(x:A\times
+    X\rightarrow X)=X$ and $U_A(f_A:(x:A\times X\rightarrow X)\rightarrow
+    y:(A\times Y\rightarrow Y))=f:X\rightarrow Y$.
+  \end{note}
+
+  \begin{note}
+    For an object $B$ and arrow $f:B\rightarrow C$, let
+    $rec(A,B)=U_A(F_A(B))$ and $rec(A,f)=U_A(F_A(f)):rec(A,B))\rightarrow
+    rec(A,C)$. $F_A$ is defined as $F_A(B)=A\times rec(A,B)\rightarrow
+    rec(A,B)$.
+  \end{note}
+
+  \begin{note}
+    If for all $A$ and $B$, $\langle
+    rec(A,\langle\rangle),a\rangle:rec(A,B)\rightarrow rec(A,1)\times B$ is
+    an ismorphism, then $\mathscr{C}$ has \textit{local recursion}. A
+    recursive category with local recursion for which every slice category
+    $\mathscr{C}/C$ is recursive is known as a \textit{locally recursive
+    category}.
+  \end{note}
+
+  \begin{note}
+    A locally recursive category is a \textit{locos} if it is coherent.
+  \end{note}
+}
+
+\newglossaryentry{polynomialendofunctors}
+{
+  name=Polynomial Endofunctors,
+  text=polynomial endofunctors,
+  description={on a category with finite products and coproducts is the
+    least class that contains the constant endofunctors, the identity
+    functor, and is closed under the operations of finite products and
+  coproducts.}
+}
+
+\longnewglossaryentry{monad}
+{
+  name=Monad,
+  text=monad
+} {
+  is a triple $(M,\eta,\mu)$ in a category $\mathscr{C}$, where
+  $M:\mathscr{C}\rightarrow\mathscr{C}$ is an endofunctor,
+  $\eta:id\rightarrow M$ and $\mu:M^2\rightarrow M$ are natural
+  transformations such that the following diagrams commute:
+  \begin{mytikzcd}
+    M \ar[r,"\eta M"] \ar[rd,"id"'] \& M^2 \ar[d,"\mu"]
+    \& M \ar[l,"M\eta"'] \ar[ld,"id"] \\
+    \& M
+  \end{mytikzcd}
+
+  \begin{mytikzcd}
+    M^3 \ar[r,"M\mu"] \ar[d,"\mu M"'] \& M^2 \ar[d,"\mu"] \\
+    M^2 \ar[r,"\mu"'] \& M
+  \end{mytikzcd}
+  $\eta$ is called \textit{unit} and $\mu$ is \textit{multiplication}, the
+  diagrams depict unitary identities and associativity of multiplication.
+
+  \begin{note}
+    For functors $F:\mathscr{A}\rightarrow\mathscr{B}$ and
+    $G:\mathscr{B}\rightarrow\mathscr{A}$ where $F\dashv G$,
+    $(GF,\eta,G\epsilon F)$ is a monad in $\mathscr{A}$ where $\eta$ and
+    $\epsilon$ are the unit and counit of the adjunction.
+  \end{note}
+
+  \begin{note}
+    Dually, a \textit{comonad} $(M',\epsilon,\delta)$ in a
+    category $\mathscr{C}$ is a monad in $\mathscr{C}^{op}$. Thus, $M'$ is
+    an endofunctor in $\mathscr{C}$ and $\epsilon:M'\rightarrow id$,
+    $\delta:M'\rightarrow M'^2$ are natural transformations where the
+    corresponding dual diagrams commute.
+  \end{note}
 }
 
 
