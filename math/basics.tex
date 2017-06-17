@@ -93,7 +93,7 @@
       $x$ in the domain are all determined completely by the function.
     \item Conversely, the data consisting of the domain, the
         codomain, and the value $f(x)$ for each element $x$ of the domain
-      completely determine the function $f$.
+        completely determine the function $f$.
   \end{enumerate}
   The domain and codomain are often called the \textbf{source} and
 \textbf{target} of $f$.}
@@ -1042,7 +1042,16 @@
   name=Lattice,
   text=lattice,
   description={is a poset in which every pair of elements have an unique
-  supremum and infimum}.
+    supremum and infimum.
+    \begin{note}
+      A lattice $L$ is \textit{bounded} if it has a greatest element $1$ and least
+      element $0$ such that for every element $x\in L$, $0\leq x\geq 1$.
+    \end{note}
+    \begin{note}
+      A lattice is \textit{complete} if any subset of elements have a meet
+      and join. Thus, every complete lattice is bounded.
+    \end{note}
+  }
 }
 
 \newglossaryentry{semilattice}
@@ -1104,6 +1113,22 @@
     The action $\alpha$ can be thought of a monoid homomorphism
     $\phi:M\rightarrow\mathbf{End}(T)$ where $\mathbf{End}(T)$ is the monoid
     of endomorphisms of $T$.
+  \end{note}
+}
+
+\longnewglossaryentry{heytingalgebra}
+{
+  name=Heyting Algebra,
+  text=heyting algebra
+} {
+  is a bounded lattice where $\vee$ and $\wedge$ are the join and meet
+  operations and has an implication binary operation
+  $a\Rightarrow b$ that satisifies the condition $(x\wedge a)\leq b$ if and
+  only if $x\leq(a\Rightarrow b)$.
+
+  \begin{note}
+    A heyting algebra is \textit{complete} if its lattice structure is
+    complete.
   \end{note}
 }
 

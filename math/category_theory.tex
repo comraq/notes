@@ -8,6 +8,7 @@
 \usepackage{enumitem}
 \usepackage{mathrsfs}
 \usepackage{tikz-cd}
+\usepackage{multicol}
 \usepackage[xindy, nonumberlist, nopostdot]{glossaries}
 
 % My Custom Macros Package
@@ -689,6 +690,13 @@
         $M=U\circ F$.
       \end{note}
 
+    \item[$\mathbf{Psh}(\mathscr{C})$]
+      is the category where objects are presheaves on $\mathscr{C}$ and
+      arrows are natural transformations between presheaves.
+      \begin{note}
+        The category of presheaves on a category $\mathscr{C}$ forms a
+        topos.
+      \end{note}
   \end{itemize}
   \end{itemize}
 }
@@ -847,6 +855,16 @@
         $F(\phi)(f_n,f_{n-1},\dots,f_1)=(\phi(f_n),\phi(f_{n-1}),\dots,\phi(f_1))$,
         which is clearly a path in $\mathscr{H}$ (and thus an arrow in the
         path category of $\mathscr{H}$).
+
+      \item $F:\mathbf{Set}\rightarrow\mathscr{L}$\\
+        takes a set $S$ to the category $\mathscr{L}$ of join-semilattice
+        and homomorphisms where semilattices are non-empty subsets of $S$
+        with inclusion as ordering. If a join-semilattice has bottom, the
+        empty $\emptyset$ is the bottom element of the semi-lattice.
+        \begin{note}
+          Meet-semilattices can be constructed by dualizing the inclusion
+          for ordering.
+        \end{note}
     \end{itemize}
   \end{itemize}
 }
@@ -2341,10 +2359,11 @@
   text=kernel pair,
 } {
   A \textbf{kernel pair} of an arrow $f:X\rightarrow Y$ is a
-  parallel pair of arrows from any object $R$ to $X$ that forms a limit:
+  parallel pair of arrows $d,e$ from any object $R$ to $X$ that forms a
+  limit:
   \begin{mytikzcd}
-    R \ar[r] \ar[d] \& X \ar[d] \\
-    X \ar[r]        \& Y
+    R \ar[r,"d"] \ar[d,"e"'] \& X \ar[d,"f"] \\
+    X \ar[r,"f"']        \& Y
   \end{mytikzcd}
   This is also the fiber product $X\times_Y X$, or the pullback of $f$
   along itself.
@@ -2853,18 +2872,378 @@
   diagrams depict unitary identities and associativity of multiplication.
 
   \begin{note}
-    For functors $F:\mathscr{A}\rightarrow\mathscr{B}$ and
-    $G:\mathscr{B}\rightarrow\mathscr{A}$ where $F\dashv G$,
-    $(GF,\eta,G\epsilon F)$ is a monad in $\mathscr{A}$ where $\eta$ and
-    $\epsilon$ are the unit and counit of the adjunction.
-  \end{note}
-
-  \begin{note}
     Dually, a \textit{comonad} $(M',\epsilon,\delta)$ in a
     category $\mathscr{C}$ is a monad in $\mathscr{C}^{op}$. Thus, $M'$ is
     an endofunctor in $\mathscr{C}$ and $\epsilon:M'\rightarrow id$,
     $\delta:M'\rightarrow M'^2$ are natural transformations where the
     corresponding dual diagrams commute.
+  \end{note}
+
+  \begin{note}
+    Given functors $F:\mathscr{A}\rightarrow\mathscr{B}$ and
+    $G:\mathscr{B}\rightarrow\mathscr{A}$ where $F\dashv G$,
+    $(GF,\eta,G\epsilon F)$ is a monad in $\mathscr{A}$ where $\eta$ and
+    $\epsilon$ are the unit and counit of the adjunction. Dually,
+    $(FG,\epsilon,F\eta G)$ is a comonad.
+  \end{note}
+}
+
+\longnewglossaryentry{eilenbergmoorecategory}
+{
+  name=Eilenberg-Moore Category,
+  text=eilenberg-moore category
+} {
+  is the category of $M$-Algebras denoted as $\mathscr{C}^M$ for a monad
+  $M:\mathscr{C}\rightarrow\mathscr{C}$. Thus, objects are $(A,v)$
+  where $A$ is an object in $\mathscr{C}$ and $v:T(A)\rightarrow A$. Arrows
+  are homomorphims between such $M$-algebras such that the following
+  diagrams commute:
+
+  \begin{multicols}{2}
+    \begin{mytikzcd}
+      {T^2(A)} \ar[r,"\mu A"] \ar[d,"T(v)"'] \& T(A) \ar[d,"v"] \\
+      T(A) \ar[r,"v"'] \& A
+    \end{mytikzcd}
+
+    \begin{mytikzcd}
+      {A} \ar[r,"\eta A"] \ar[rd,"id"'] \& T(A) \ar[d,"v"] \\
+      \& A
+    \end{mytikzcd}
+  \end{multicols}
+
+  \begin{note}
+    It is apparent that there is a forgetful functor
+    $U:\mathscr{C}^M\rightarrow\mathscr{C}$ and also a free functor
+    $F:\mathscr{C}\rightarrow\mathscr{C}^M$ that is left
+    adjoint to $U$. It can be shown that the monad induced by $U\circ F$ is
+    isomorphic to $M$.
+  \end{note}
+
+  \begin{note}
+    The Kleisli category over $M$ is a full subcategory of $\mathscr{C}^M$.
+  \end{note}
+}
+
+\longnewglossaryentry{subobjectfunctor}
+{
+  name=Subobject Functor,
+  text=subobject functor
+} {
+  is a functor $Sub:\mathscr{C}^{op}\rightarrow\mathbf{Set}$ defined as:
+  \begin{itemize}[label={}]
+    \item On objects $C$ in $\mathscr{C}$, $Sub(C)$ is the set of
+      subobjects of $C$.
+
+    \item On arrows $k:C'\rightarrow C$, $Sub(k):Sub(C)\rightarrow Sub(C')$
+      is a set function that takes a subobject $f_0:C_0\rightarrowtail C$ to
+      $f_0'$ in the
+      following pullback diagram:
+      \begin{mytikzcd}
+        C_0' \ar[r,"k_0"] \ar[d,rightarrowtail,"f_0'"'] \& C_0
+        \ar[d,rightarrowtail,"f_0"] \\
+        C' \ar[r,"k"'] \& C
+      \end{mytikzcd}
+      \begin{note}
+        $f_0'$ is a monic due to being a pullback of a monomorphism.
+      \end{note}
+
+  \end{itemize}
+}
+
+\longnewglossaryentry{subobjectclassifier}
+{
+  name=Subobject Classifier,
+  text=subobject classifier
+} {
+  is the object representing a subobject functor, usually denoted $\Omega$
+  where an universal element is a subobject
+  $true:\Omega_0\rightarrowtail\Omega$ and for any other subobject
+  $A_0\subseteq A$, there is an unique arrow $\chi:A\rightarrow\Omega$ such
+  that the following is a pullback diagram:
+  \begin{mytikzcd}
+    A_0 \ar[r] \ar[d,rightarrowtail] \& \Omega_0
+    \ar[d,rightarrowtail,"true"] \\
+    A \ar[r,"\chi"'] \& \Omega
+  \end{mytikzcd}
+  It can be proven that $\Omega_0$ is a terminal object and thus the arrow
+  from $A_0$ to $\Omega_0$ is the unique arrow by the definition of a
+  terminal object.
+
+  \begin{note}
+    The arrow $\chi$ is called the \textit{characteristic arrow} of the
+    subobject. Since the subobject functor $Sub$ is represented by
+    $\Omega$, there is a natural isomorphism from $Sub(-)$ to
+    $\Hom(-,\Omega)$, which takes a subobject to its characteristic
+    function.
+  \end{note}
+}
+
+\newglossaryentry{topos}
+{
+  name=Topos,
+  text=topos,
+  description={is a cartesian closed category which has finite limits and
+    has a representable subobject functor.
+    \begin{note}
+      $\mathbf{Set}$ is a topos where the subobject classifier is a
+      two-element set, $\Omega=\{True,False\}$. For any set $S_0\subseteq
+      S$, the characteristic function $\chi:S\rightarrow\Omega$ is defined
+      as:
+      \begin{equation*}
+        \chi(x)=
+        \begin{cases}
+          True & \text{if } x\in S_0 \\
+          False & \text{if } x\notin S_0
+        \end{cases}
+      \end{equation*}
+    \end{note}
+    \begin{note}
+      The exponential object $\Omega^A$ has the property that:
+      \begin{equation*}
+        \Hom(B,\Omega^A)\cong\Hom(A\times B,\Omega)\cong Sub(A\times B)
+      \end{equation*}
+      In topos theory, $\Omega^A$ is often called the \textit{power object}
+      of $A$ and is denoted $\mathscr{P}A$
+    \end{note}
+    \begin{note}
+      A topos $\mathscr{E}$ has finite colimits, disjoint sums, universal
+      sums, every epimorphism is regular and $\mathscr{E}$ is a regular
+      category.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{equivalencerelation}
+{
+  name=Equivalence Relation,
+  text=equivalence relation
+} {
+  For $d,e:E\rightarrow A$ a parallel pair of arrows, for an object $B$, the
+  function
+  $\langle\Hom(B,d),\Hom(B,e)\rangle:\Hom(B,E)\rightarrow\Hom(B,A)\times\Hom(B,A)$
+  sends a function $f:B\rightarrow E$ to $(d\circ f,e\circ f)$. If for each
+  object $B$, $\langle\Hom(B,d),\Hom(B,e)\rangle$ is an isomorphism and
+  there is an equivalence relation on the set $\Hom(B,A)$, then $E$ is an
+  \textbf{equivalence relation} on $A$ (note that the image of
+  $\langle\Hom(B,d),\Hom(B,e)\rangle$ is a subset of
+  $\Hom(B,A)\times\Hom(B,A)$ and is an equivalence relation).
+
+  \begin{note}
+    An equivalence relation of $E$ on $A$ is \textit{effective} if it is the
+    kernel pair of some arrow from $A$.
+  \end{note}
+
+  \begin{note}
+    A topos has effective equivalence relations as every equivalence
+    relation is effective.
+  \end{note}
+}
+
+\newglossaryentry{partialmorphism}
+{
+  name=Partial Morphism,
+  text=partial morphism,
+  description={A \textbf{partial morphism} from objects $A$ to $B$ is a
+    subobject $A_0\subseteq A$ and an arrow from $f:A_0\rightarrow B$. If
+    $g:A_1\rightarrow B$ is another partial morphism, $f\leq g$ if
+    $A_0\subseteq A_1$ and $f$ is the restriction to $A_0$ of $g$, ie: $f=
+    g\circ i$ where $i:A_0\rightarrow A_1$ is the inclusion.
+    \begin{note}
+      If both $f\leq g$ and $g\leq f$, then $f$ and $g$ have the same
+      subobject as their domain.
+    \end{note}
+    \begin{note}
+      Partial arrows from $A$ to $B$ are \textit{representable} if
+      $\widetilde{B}$ is an object where $B\rightarrowtail\widetilde{B}$ and
+      $\Hom(A,\widetilde{B})$ is isomorphic to the partial arrows from $A$
+      to $B$. This one to one correspondence is given by the pullback:
+      \begin{mytikzcd}
+        A_0 \ar[r,rightarrowtail] \ar[d,"f"'] \& A \ar[d,"g"] \\
+        B \ar[r,rightarrowtail] \& \widetilde{B}
+      \end{mytikzcd}
+      where there is a one to one correspondence between
+      $f\in\Hom(A,\widetilde{B})$ and $g$, which is an arrow from $A$ to
+      $B$.
+    \end{note}
+  }
+}
+
+\newglossaryentry{presheaf}
+{
+  name=Presheaf,
+  text=presheaf,
+  description={is a contravariant set-valued functor
+    $E:\mathscr{C}^{op}\rightarrow\mathbf{Set}$ on a category $\mathscr{C}$.
+    \begin{note}
+      A presheaf $E:\mathscr{C}^{op}\rightarrow\mathbf{Set}$ is
+      \textit{constant} if $E$ is a constant functor. Thus, for any object
+      $x$ in $\mathscr{C}^{op}$, $E(x)$ is the same set and for any arrow
+      $f$ in $\mathscr{C}^{op}$, $E(f)=id_{E(x)}$.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{sheaf}
+{
+  name=Sheaf,
+  text=sheaf
+} {
+  is a presheaf $E$ over a complete Heyting algebra such that:
+  \begin{equation*}
+    E(\bigvee x_i)\xrightarrow{e}
+    \underset{i}{\prod}E(x_i)
+    \parrightarrow[c][d]
+    \underset{ij}{\prod}E(x_i\wedge x_j)
+  \end{equation*}
+  the arrow $e$ is an equalizer.
+
+  \begin{note}
+    Let $x=\bigvee x_i$ for all $i$.
+    $e:E(x)\xrightarrow{e}\underset{i}{\prod}E(x_i)$ is induced by universal
+    property of the categorical product where since forall $i,E(x\geq
+    x_i):E(x)\rightarrow E(x_i)$, there exists $\underset{i}{\prod}E(x_i)$
+    such that $E(x\geq x_i)=proj_i\circ e$. The arrows $c$ and $d$ are
+    induced by the arrows $E(x_i\geq x_i\wedge x_j):E(x_i)\rightarrow
+    E(x_i\wedge x_j)$, $E(x_j\geq x_i\wedge x_j):E(x_j)\rightarrow
+    E(x_i\wedge x_j)$, $proj_i:\underset{i}{\prod}E(x_i)\rightarrow E(x_i)$,
+    $proj_j:\underset{i}{\prod}E(x_i)\rightarrow E(x_i)$ and thus there
+    exists $\underset{ij}{\prod}E(x_i\wedge x_j)$ such that $proj_{ij}\circ
+    c=E(x_i\geq x_i\wedge x_j)\circ proj_i$ and $proj_{ij}\circ d=E(x_i\geq
+    x_j\wedge x_j)\circ proj_j$.
+  \end{note}
+
+  \begin{note}
+    The category of sheaves on a Heyting algebra is a topos.
+  \end{note}
+}
+
+\longnewglossaryentry{monoidalcategory}
+{
+  name=Monoidal Category,
+  text=monoidal category
+} {
+  is a category $\mathscr{C}$ equipped with an object $\top$ and a functor
+  $\otimes:\mathscr{C}\times\mathscr{C}\rightarrow\mathscr{C}$ with natural
+  isomorphisms:
+  \begin{itemize}
+    \item $a(A,B,C):A\otimes(B\otimes C)\rightarrow(A\otimes B)\otimes C$
+    \item $lA:\top\otimes A\rightarrow A$
+    \item $rA:A\otimes\top\rightarrow A$
+  \end{itemize}
+
+  such that the following diagrams commute:
+  \begin{mytikzcd}
+    {A\otimes(\top\otimes B)} \ar[rr,"{a(A,\top,B)}"]
+                              \ar[rd,"A\otimes l(B)"']
+      \& \& {(A\otimes\top)\otimes B} \ar[ld,"r(A)\otimes B"] \\
+    \& {A\otimes B}
+  \end{mytikzcd}
+
+  \begin{mytikzcd}
+    \& {A\otimes(B\otimes(C\otimes D))}
+      \ar[ld,"{A\otimes a(B,C,D)}"']
+      \ar[rd,"{a(A,B,C\otimes D)}"] \\
+      {A\otimes((B\otimes C)\otimes D)} \ar[d,"{a(A,B\otimes C,D)}"']
+      \& \&
+      {(A\otimes B)\otimes(C\otimes D)} \ar[d,"{a(A\otimes B,C,D)}"] \\
+      {(A\otimes(B\otimes C))\otimes D} \ar[rr,"{a(A,B,C)\otimes D}"']
+      \& \& {((A\otimes B)\otimes C)\otimes D}
+  \end{mytikzcd}
+  illustrating the unit $\top$ with respect to $\otimes$ and the
+  associativity of $\otimes$.
+
+  \begin{note}
+    A monoidal category is \textit{symmetric} if it has an additional
+    natural isomorphism $s(A,B):A\otimes B\rightarrow B\otimes A$ such that
+    the following diagrams commute:
+    \begin{mytikzcd}
+      {A\otimes B} \ar[rr,"{s(A,B)}"] \ar[rd,"id"']
+      \& \& {B\otimes A} \ar[ld,"{s(B,A)}"] \\
+      \& {A\otimes B}
+    \end{mytikzcd}
+
+    \begin{mytikzcd}
+      {A\otimes\top} \ar[rr,"{s(A,\top)}"] \ar[rd,"r(A)"']
+      \& \& {\top\otimes A} \ar[ld,"l(A)"] \\
+      \& {A}
+    \end{mytikzcd}
+
+    \begin{mytikzcd}
+    {A\otimes(B\otimes C)} \ar[rr,"{a(A,B,C)}"] \ar[d,"{A\otimes s(B,C)}"']
+      \& \& {(A\otimes B)\otimes C} \ar[d,"{s(A\otimes B,C)}"] \\
+      {A\otimes(C\otimes B)} \ar[d,"{a(A,C,B)}"']
+      \& \& {C\otimes(A\otimes B)} \ar[d,"{a(C,A,B)}"] \\
+      {(A\otimes C)\otimes B} \ar[rr,"{s(A,C)\otimes B}"']
+      \& \& {(C\otimes A)\otimes B}
+    \end{mytikzcd}
+  \end{note}
+
+  \begin{note}
+    $\otimes$ is often known as the tensor product and
+    $A\otimes -:\mathscr{C}\rightarrow\mathscr{C}$ forms an endofunctor.
+  \end{note}
+
+  \begin{note}
+    A monoidal category $\mathscr{C}$ is \textit{closed} if for each object
+    $A$, the functor $A\otimes -$ has a right adjoint
+    $A\multimap-:\mathscr{C}\rightarrow\mathscr{C}$ where for any object $C$ in
+    $\mathscr{C}$, $A\multimap C$ is the internal hom from $A$ to $C$.
+
+
+    Thus by the definition of adjoints,
+    \begin{equation*}
+      \Hom(A\otimes B,C)\xrightarrow{\cong}\Hom(B,A\multimap C)
+    \end{equation*}
+    is a natural isomorphism that is natural in $B$ and $C$.  It follows
+    that in a symmetric monoidal closed category,
+    \begin{equation*}
+      \Hom(A\otimes B,C)\xrightarrow{\cong}\Hom(A,B\multimap C)
+    \end{equation*}
+    is also a natural isomorphism and
+    \begin{equation*}
+      (A\otimes B)\multimap C\cong A\multimap(B\multimap C)
+    \end{equation*}
+
+    The counit of this adjunction is the evaluation map of the internal hom
+    object, $e:A\otimes(A\multimap B)\rightarrow B$.
+  \end{note}
+}
+
+\longnewglossaryentry{starautonomouscategory}
+{
+  name={$\ast$-Autonomous Category},
+  text={$\ast$-autonomous category}
+} {
+  is a symmetric monoidal closed category $\mathscr{C}$ with a duality
+  functor $(-)^*:\mathscr{C}^{op}\rightarrow\mathscr{C}$ such that there is
+  an natural isomorphism $\Hom(A\otimes B,C^*)\cong\Hom(A,(B\otimes A)^*)$.
+
+  \begin{note}
+    $(-)^*$ is related to the functors $\otimes$ and $\multimap$ by the
+    isomorphisms $A\otimes B\cong(A\multimap B^*)^*$ and $A\multimap
+    B\cong(A\otimes B^*)^*$
+  \end{note}
+
+  \begin{note}
+    There is a second monoidal structure in a $\ast$-autonomous category with
+    $\oplus:\mathscr{C}\times\mathscr{C}\rightarrow\mathscr{C}$ and
+    $\bot=\top^*$ as unit where $A\oplus B=(A^*\otimes B^*)^*$.
+  \end{note}
+
+  \begin{note}
+    There are isomorphisms:
+    \begin{equation*}
+      \Hom(A\otimes B, C)\cong\Hom(B,A\multimap C)\cong\Hom(B,(A\otimes
+      C^*)^*)\cong\Hom(B,A^*\oplus C)
+    \end{equation*}
+    \begin{equation*}
+      A^*\cong\top\multimap A^*\cong A\multimap\top^*\cong
+      A\multimap\bot
+    \end{equation*}
+
+    By the second isomorphism, the duality functor is completely determined
+    by $\multimap$ and $\bot$ and thus $\bot$ is also known as the
+    \textit{dualizing object}.
   \end{note}
 }
 
