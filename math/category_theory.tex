@@ -2379,8 +2379,8 @@
   name=Cartesian Morphism,
   text=cartesian morphism
 } {
-  Let $P:\mathscr{E}\rightarrow\mathscr{C}$ be a functor, $f:D\rightarrow
-  C$ is an arrow in $\mathscr{C}$ and $P(Y)=D$ for some object
+  Let $P:\mathscr{E}\rightarrow\mathscr{C}$ be a functor, $f:C\rightarrow
+  D$ is an arrow in $\mathscr{C}$ and $P(Y)=D$ for some object
   $Y\in\mathscr{E}$. A morphism/arrow $u:X\rightarrow Y$ in $\mathscr{E}$ is
   \textbf{cartesian} for $f$ and $Y$ if:
 
@@ -2395,7 +2395,7 @@
   \begin{note}
     A cartesian arrow is universal for $f$ and $Y$ as for any other arrow
     $v\in\mathscr{E}$, $f\circ h\in\mathscr{C}$ where $target(v)=Y$,
-    $P(v)=f\circ h$, there is an unique factorization $w,v$ factors throughn
+    $P(v)=f\circ h$, there is an unique factorization $w,v$ factors through
     $u$.
   \end{note}
 
@@ -3245,6 +3245,85 @@
     by $\multimap$ and $\bot$ and thus $\bot$ is also known as the
     \textit{dualizing object}.
   \end{note}
+}
+
+\newglossaryentry{retract}
+{
+  name=Retract,
+  text=retract,
+  description={is an object $A$ for an object $B$ when there are arrows
+    $i:A\rightarrow B$ and $r:B\rightarrow A$ such that $r\circ i=id_A$. $r$
+    is also called a \textbf{retraction} of $B$ onto $A$ and $i$ is a
+    section of $r$.
+    \begin{note}
+      Retraction is a split epimorphisms.
+    \end{note}
+  }
+}
+
+\newglossaryentry{section}
+{
+  name=Section,
+  text=section,
+  description={is an arrow that is also a right-inverse, ie: a split
+    monomorphism.
+    \begin{note}
+      The left inverse of a section is also called a retraction or
+      \textit{cosection}.
+    \end{note}
+  }
+}
+
+\newglossaryentry{zeroobject}
+{
+  name=Zero Object,
+  text=zero object,
+  description={is an object in a category that is both an initial and a
+    terminal object.
+    \begin{note}
+      A zero object is also as a \textit{null object}.
+    \end{note}
+    \begin{note}
+      A category with a zero object is sometimes called a \textit{pointed
+      category}.
+    \end{note}
+    \begin{note}
+      In a category with a zero object $0$, between any two objects $A$ and
+      $B$, there exists a canonical morphism given by the composition
+      $A\rightarrow 0\rightarrow B$.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{commacategory}
+{
+  name=Comma Category,
+  text=comma category
+} {
+  Given functors $f:\mathscr{C}\rightarrow\mathscr{E}$ and
+  $g:\mathscr{D}\rightarrow\mathscr{E}$, their \textbf{comma category}
+  $(f/g)$ is defined as:
+  \begin{itemize}
+    \item An object is a triple $(c,d,a)$ where $c,d$ are objects in
+      $\mathscr{C,D}$ respectively and $a:f(c)\rightarrow g(d)$ is an arrow
+      in $\mathscr{E}$
+
+    \item An arrow is a pair
+      $(\beta,\gamma):(c_1,d_1,a_1)\rightarrow(c_2,d_2,a_2)$ where
+      $\beta:c_1\rightarrow c_2$, $\gamma:d_1\rightarrow d_2$ are arrows in
+      $\mathscr{C},\mathscr{D}$ such that $a_2\circ f(\beta)=g(\gamma)\circ
+      a_1$:
+      \begin{mytikzcd}
+        f(c_1) \ar[r,"f(\beta)"] \ar[d,"a_1"'] \& f(c_2) \ar[d,"a_2"] \\
+        g(d_1) \ar[r,"g(\gamma)"'] \& g(d_2)
+      \end{mytikzcd}
+
+    \item Composition of arrows
+      $(\beta,\gamma):(c_1,d_1,a_1)\rightarrow(c_2,d_2,a_2)$ and
+      $(\beta',\gamma'):(c_2,d_2,a_2)\rightarrow(c_3,d_3,a_3)$ is
+      $(\beta'\circ\beta,\gamma'\circ\gamma):(c_1,d_1,a_1)\rightarrow(c_3,d_3,a_3)$
+
+  \end{itemize}
 }
 
 

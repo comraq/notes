@@ -178,6 +178,196 @@
   \end{itemize}
 }
 
+\newglossaryentry{flatlattice}
+{
+  name=Flat Lattice,
+  text=flat lattice,
+  description={is a lattice in which all elements other than $\top$ and
+  $\bot$ are incomparable (have no ordering) with each other.}
+}
+
+\newglossaryentry{chain}
+{
+  name=Chain,
+  text=chain,
+  description={A poset $P$ is a \textbf{chain} (also known as
+    \textit{totally} or \textit{linearly ordered set}) if for all $x,y\in P$,
+    $x\leq y$ or $y\leq x$.
+    \begin{note}
+      Every subset of a chain is a chain.
+    \end{note}
+  }
+}
+
+\newglossaryentry{productlattice}
+{
+  name=Product Lattice,
+  text=product lattice,
+  description={If $D_1,D_2,\dots,D_n$ are complete lattices, $D_1\times
+    D_2\times\dots\times D_n$ is the \textbf{product lattice} (also a
+    complete lattice), whose elements are of the form $\langle
+    x_1,x_2,\dots,x_n\rangle$ where $x_i\in D_i$ for $1\leq i\leq n$. Two
+    such elements are partially ordered by $\langle
+    x_1,x_2,\dots,x_n\rangle\leq\langle y_1,y_2,\dots,y_n\rangle$ if $x_i\leq
+  y_i$ for all $1\leq i\leq n$.}
+}
+
+\longnewglossaryentry{sumlattice}
+{
+  name=Sum Lattice,
+  text=sum lattice
+} {
+  If $D_1,D_2,\dots,D_n$ are complete lattices, $D_1+
+  D_2+\dots+ D_n$ is the \textbf{sum lattice} (also a complete lattice),
+  which is the disjoint union of all the elements of $D_1,D_2,\dots,D_n$
+  with a new $\top$ and $\bot$. $\bot\leq x\leq\top$ for all $x\in D_1+
+  D_2+\dots+ D_n$. If $x$ is an element of $D_i$ and $y$ is an element of
+  $D_j$, then $x\leq y$ in $D_1+ D_2+\dots+ D_n$ if and only
+  if $i=j$ and $x\leq y$ in $D_i$.
+
+  \begin{note}
+    The sum lattice construction with a new $\top$ and $\bot$ is also called
+    a \textit{separated sum}.
+  \end{note}
+
+  \begin{note}
+    An alternative sum lattice construction is to make $\top$ and $\bot$ in
+    the sum domain the images of $\top$ and $\bot$ of each of the component
+    domains. This is also known as a \textit{coalesced sum}.
+  \end{note}
+
+  \begin{note}
+    It is possible for the same lattice to appear as two distinct summands of
+    a sum lattice. In this case, each element of this lattice will appear
+    twice in the sum lattice.
+  \end{note}
+}
+
+\longnewglossaryentry{basis}
+{
+  name=Basis,
+  text=basis
+} {
+  A subset $E$ of a complete lattice $D$ is a \textbf{basis} of $D$ if
+  $x=\bigsqcup\{e|e\in E,e\leq x\}$ for all $x\in D$ and $\bigsqcup E'\in E$
+  for all finite $E'\subseteq E$.
+
+  \begin{note}
+    If the condition $\bigsqcup E'\in E$ for all finite $E'\subseteq E$ is
+    absent, the $E$ is a \textit{subbasis} of $D$.
+  \end{note}
+}
+
+\newglossaryentry{directedset}
+{
+  name=Directed Set,
+  text=directed set,
+  description={is a set $X$ if every finite subset of $X$ has an upper bound
+    in $X$. That is, if $A\subseteq X$ is finite then there is an element
+    $b\in X$ such that $a\leq b$ for all $a\in A$.
+    \begin{note}
+      Finite subsets of $X$ need not have least upper bounds in $X$.
+    \end{note}
+    \begin{note}
+      Directed sets are not empty since the empty et is one of its finite
+      subsets, and thus directed sets must contain an element that is an upper
+      bound of the empty set.
+    \end{note}
+    \begin{note}
+      A directed set is \textit{interesting} if it does not contain its least
+      upper bound, ie: $\bigsqcup X\notin X$.
+    \end{note}
+  }
+}
+
+\newglossaryentry{continuousfunction}
+{
+  name=Continuous Function,
+  text=continuous function,
+  description={A function $f:D\rightarrow D'$ between complete lattices is
+    \textbf{continuous} if $f(\bigsqcup X)=\bigsqcup\{f(x)|x\in X\}$ for all
+    directed $X\subseteq D$.
+    \begin{note}
+      All monotonic functions on finite lattices are continuous.
+    \end{note}
+  }
+}
+
+\newglossaryentry{limitpoint}
+{
+  name=Limit Point,
+  text=limit point,
+  description={is an element $x\in D$ of a complete lattice if that
+  $x=\bigsqcup X$ for some interesting directed $X\subseteq D$.}
+}
+
+\newglossaryentry{wellbelow}
+{
+  name=Well Below,
+  text=well below,
+  symbol={$\ll$},
+  description={For $x,y$ in a continous lattice $D$, $x$ is \textbf{well
+    below} $y$, $x\ll y$ if whenever $y\leq\bigsqcup Z$ for some directed
+  $Z\subseteq D$ then $x\leq z$ for some $z\in Z$.}
+}
+
+\newglossaryentry{isolatedpoint}
+{
+  name=Isolated Point,
+  text=isolated point,
+  description={A point $a\in D$ of a complete lattice is \textbf{isolated}
+    if $a\ll a$.
+    \begin{note}
+      An isolated point cannot be the limit point of any interesting
+      directed set.
+    \end{note}
+  }
+}
+
+\newglossaryentry{continouslattice}
+{
+  name=Continuous Lattice,
+  text=continuous lattice,
+  description={is a complete lattice $D$ such that for all $y\in D$,
+    $y=\bigsqcup\{x\in D|x\ll y\}$.
+    \begin{note}
+      Every point in a continuous lattice that is not isolated is a limit
+      point.
+    \end{note}
+  }
+}
+
+\newglossaryentry{domaintheorydomain}
+{
+  name=Domain (Domain Theory),
+  text=Domain,
+  description={is a continuous complete lattice that has countable basis.
+    Functions between such domains are continuous functions.
+    \begin{note}
+      Products, sums and the function space on a domain are domains.
+    \end{note}
+  }
+}
+
+\newglossaryentry{fixedpointoperator}
+{
+  name=Fixed Point Operator,
+  text=fixed point operator,
+  symbol={$fix$},
+  description={For any domain $D$, the function $fix:(D\rightarrow
+    D)\rightarrow D$ is a fixed point operator defined by
+    $fix(f)=\bigsqcup_{n=0}^\infty f^n(\bot)$.
+    \begin{note}
+      If $f:D\rightarrow D$ is a continuous function, $fix(f)$ is the
+      least fixed point of $f$.
+    \end{note}
+    \begin{note}
+      When applied to a function, fixed point operators produce a fixed
+      point of the function, ie: $fix(f)$ is the fixed point of $f$.
+    \end{note}
+  }
+}
+
 \title{Computer Science}
 \author{Adam Yin}
 \date{}

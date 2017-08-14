@@ -904,7 +904,12 @@
   name=Monotone Function,
   text=monotone function,
   description={is a function between \textit{ordered sets} that preserves or
-  reverses the given order.}
+    reverses the given order.
+    \begin{note}[Example]
+      A function $f:D\rightarrow D'$ between lattices $D$ and $D'$ is
+      monotonic if $f(x)\leq f(y)$ whenever $x\leq y$.
+    \end{note}
+  }
 }
 
 \newglossaryentry{fixedpoint}
@@ -918,7 +923,8 @@
 \longnewglossaryentry{supremum}
 {
   name=Supremum,
-  text=supremum
+  text=supremum,
+  symbol={$\bigsqcup$}
 } {
   is the \textit{least upper bound} of a subset $T$ of a poset $(S,\leq)$.
   That is, for a subset $T\subseteq S$, a \textbf{supremum} is an element
@@ -928,14 +934,18 @@
     \item If $w\in S$ has the property that $t\leq w$ for every $t\in T$,
       then $v\leq w$
   \end{itemize}
+  \begin{note}
+    The supremum of $T$ is denoted as $\bigsqcup T$.
+  \end{note}
 }
 
 \newglossaryentry{infimum}
 {
   name=Infimum,
   text=infimum,
+  symbol={$\bigsqcap$},
   description={is the \textit{greatest lower bound} of a subset $T$ of a
-  poset $S$, if such an element exists.}
+  poset $S$ denoted as $\bigsqcap T$, if such an element exists.}
 }
 
 \longnewglossaryentry{path}
@@ -1048,8 +1058,24 @@
       element $0$ such that for every element $x\in L$, $0\leq x\geq 1$.
     \end{note}
     \begin{note}
-      A lattice is \textit{complete} if any subset of elements have a meet
-      and join. Thus, every complete lattice is bounded.
+      In any lattice, $\top$ and $\bot$ are called \textit{improper
+      elements}. All other elements are called \textit{proper}.
+    \end{note}
+    \begin{note}
+      If $f$ and $g$ are functions from $D$ to $D'$ where $D,D'$ are
+      complete lattices, then $f\leq g$ if $f(x)\leq g(X)$ for all $x\in D$.
+    \end{note}
+  }
+}
+
+\newglossaryentry{completelattice}
+{
+  name=Complete Lattice,
+  text=complete lattice,
+  description={is a lattice such that any subset of elements have a meet
+    and join. Thus, every \textbf{complete} lattice is bounded.
+    \begin{note}
+      Every finite lattice is complete.
     \end{note}
   }
 }
