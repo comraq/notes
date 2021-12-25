@@ -24,7 +24,9 @@
   completely determined by, its elements (if any). For every entity $x$
   and set $S$, the statement $x\in S$, read "\textit{$x$ is an element of
   $S$}", is a sentence that is either true or false.
-
+  \begin{note}
+    When members of a set $A$ are sets themselves, $A$ may be called a \textit{class, collection}, or \textit{family}.
+  \end{note}
   \begin{note}[Set Equality]
     \item[]
     \begin{itemize}
@@ -33,9 +35,6 @@
       \item
         Two sets $A$ and $B$ are equal if and only if $A\subseteq B$ and $B\subseteq A$.
     \end{itemize}
-  \end{note}
-  \begin{note}
-    When members of a set $A$ are sets themselves, $A$ may be called a \textit{class, collection}, or \textit{family}.
   \end{note}
 }
 
@@ -121,13 +120,19 @@
   description={A \textbf{relation} $\alpha$ from a set $S$ to a set $T$ is a subset
     of $S\times T$. Any such subset is a relation from $S$ to $T$. Extreme
     examples of relations are the $\emptyset$ and the set $S\times
-  T$.
-  \begin{note}[Domain and Range]
-    The \textit{domain} of a relation $R$ from $A$ to $B$ is the set of first coodinates of the pairs in $R$ and its \textit{range} is the set of second coordinates. i.e., domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
-  \end{note}
-  \begin{note}[Inverse]
-    The \textit{inverse} of $R$, denoted by $R^{-1}$, is the relation from $B$ to $A$ defined by domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
-  \end{note}
+    T$.
+    \begin{note}[Domain and Range]
+      The \textit{domain} of a relation $R$ from $A$ to $B$ is the set of first coodinates of the pairs in $R$ and its \textit{range} is the set of second coordinates. i.e., domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
+    \end{note}
+    \begin{note}[Inverse]
+      The \textit{inverse} of $R$, denoted by $R^{-1}$, is the relation from $B$ to $A$ defined by domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
+    \end{note}
+    \begin{note}[Composition]
+      Let $U$ be a relation from $A$ to $B$ and let $V$ be a relation from $B$ to $C$ ($U\subseteq A\times B$ and $V\subseteq B\times C$), the \textbf{composition} of $U$ and $V$ is denoted $V\circ U$. Which consists of all ordered pairs $\langle a,c\rangle\in A\times C$ such that for some $b\in B$:
+      \begin{equation*}
+      \langle a,b\rangle\in U\text{ and }\langle b,c\rangle\in V
+      \end{equation*}
+    \end{note}
   }
 }
 
@@ -143,12 +148,63 @@
   symbol={$\Delta _S$}
 }
 
+\longnewglossaryentry{equivalencerelation}
+{
+  name=Equivalence Relation,
+  text=equivalence relation
+} {
+  A relation $R$ in a set $A$ (a subset $R$ of $A\times A$), is an \textbf{equivalence relation} iff it satisfies the following axioms:
+    \begin{note}[Reflexive]
+      For every $a\in A$, $\langle a,a\rangle\in R$
+    \end{note}
+    \begin{note}[Symmetric]
+      If $\langle a,b\rangle\in R$, then $\langle b,a\rangle\in R$
+    \end{note}
+    \begin{note}[Transitive]
+      If $\langle a,b\rangle\in R$ and $\langle b,c\rangle\in R$, then $\langle a,c\rangle\in R$
+    \end{note}
+}
+
+\newglossaryentry{equivalenceclass}
+{
+  name=Equivalence Class,
+  text=equivalence class,
+  description={If $R$ is an equivalence relation in $A$, then the \textbf{equivalence class} of any element $a\in A$ denoted by $[a]$, is the set of elements to which $a4 is related$:
+    \begin{equation*}
+      [a]=\{x:\langle a,x\rangle\in R\}
+    \end{equation*}
+  }
+}
+
+\newglossaryentry{quotientset}
+{
+  name=Quotient Set,
+  text=quotient set,
+  description={is the collection of equivalence classes of $A$ with the equivalence relation $R$, denoted by $A/R$. Also called the \textit{quotient} of $A$ by $R$.
+    \begin{equation*}
+      A/R=\{[a]:a\in A\}
+    \end{equation*}
+  }
+}
+
+\newglossaryentry{partition}
+{
+  name=Partition,
+  text=partition,
+  description={A class $\mathscr{A}$ of non-empty subsets of $A$ is called a \textbf{partition} of $A$ iff (1) each $a\in A$ belongs to some member of $\mathscr{A}$ and (2) the members of $\mathscr{A}$ are pair-wise disjoint.
+    \begin{note}
+      There is a one to one correspondence between the set of equivalence classes (or the quotient set $A/R$) and a partition of $A$.
+    \end{note}
+  }
+}
+
 \longnewglossaryentry{function}
 {
   name=Function,
   text=function,
   symbol={$\rightarrow$}
-}{A \textbf{function} $f$ is a mathematical entity with the
+}{
+  A \textbf{function} $f$ is a mathematical entity with the
   following properities:
   \begin{enumerate}
     \item $f$ has a \textbf{domain} and \textbf{codomain}, each of
@@ -163,7 +219,29 @@
         completely determine the function $f$.
   \end{enumerate}
   The domain and codomain are often called the \textbf{source} and
-\textbf{target} of $f$.}
+  \textbf{target} of $f$.
+  \begin{note}[Range]
+    of $f:A\rightarrow B$, denoted by $f[A]$, is the set of images: $f[A]=\{f(a):A\in A$.
+  \end{note}
+  \begin{note}[Equivalence]
+    Two functions $f:A\rightarrow B$ and $g:A\rightarrow B$ are equal, written $f=g$, iff $f(a)=g(a)$ for every $a\in A$ (i.e. iff they have the same graph).
+  \end{note}
+  \begin{note}[Negation]
+    of $f=g$ is written $f\neq g$ and is the statement $\exists a\in A$ for which $f(a)\neq g(a)$.
+  \end{note}
+  \begin{note}[Relation]
+    A subset $f$ of $A\times B$ (a relation from $A$ to $B$) is a function iff for each $a\in A$ appears as the first coordinate in exactly one ordered pair $\langle a,b\rangle\in f$.
+  \end{note}
+  \begin{note}[Composition]
+    Given functions $f:A\rightarrow B$ and $g:B\rightarrow C$, the function $g\circ f:A\rightarrow C$ (called the \textbf{composition} of and $f$ and $g$ maps the element $a\in A$ into the element $g(f(a))\in C$.
+  \end{note}
+  \begin{note}[Inverse]
+    In general, the inverse relation $f^{-1}$ of a function $f\subseteq A\times B$ need not be a function. However, if $f$ is both \textit{injective} and \textit{sujective}, then $f^{-1}$ is a function from $B$ to $A$ and is the \textbf{inverse function}.
+    \begin{equation*}
+      f^{-1}\circ f=id_A\text{ and }f\circ f^{-1}=id_B
+    \end{equation*}
+  \end{note}
+}
 
 \newglossaryentry{anonymousfunction}
 {
@@ -277,9 +355,14 @@
 {
   name=Restriction,
   text=restriction,
-  description={If $g:S\rightarrow T$, $f:A\rightarrow T$ and $A\subseteq S$,
-    then $f$ is the \textbf{restriction} of $g$ to $A$ if $f=g\circ i$ where
-  $i:A\rightarrow S$ is the inclusion function of $A$ in $S$.}
+  description={
+    If $g:S\rightarrow T$, $f:A\rightarrow T$ and $A\subseteq S$,
+    then $f$ is the \textbf{restriction} of $g$ to $A$ (also denoted $g|A$) if $f=g\circ i$ where
+    $i:A\rightarrow S$ is the inclusion function of $A$ in $S$. Equivalently, $f=g|A=g\cap(A\times Y)$.
+    \begin{note}
+      $g$ is also called an \textit{extension} of $f$.
+    \end{note}
+  }
 }
 
 \newglossaryentry{corestriction}
@@ -1229,9 +1312,9 @@
 {
   name=Relative Complement,
   text=relative complement,
-  description={of a set $B$ with respect to a set $A$ or simply, the \textit{difference} of $A$ and $B$, denoted by $A\\ B$, is the set of elements which belong to $A$ but not in $B$.
+  description={of a set $B$ with respect to a set $A$ or simply, the \textit{difference} of $A$ and $B$, denoted by $A\setminus B$, is the set of elements which belong to $A$ but not in $B$.
     \begin{equation*}
-      A\\ B=\{x:x\in A, x\notin B\}
+      A\setminus B=\{x:x\in A, x\notin B\}
     \end{equation*}
   }
 }
@@ -1245,6 +1328,81 @@
     A^c =\{x:x\in U, x\notin A\}
   \end{equation*}
   }
+}
+
+\newglossaryentry{indexedset}
+{
+  name=Indexed Set,
+  text=indexed set,
+  description={
+    An \textbf{indexed class of sets} $\mathscr{A}$, denoted by:
+    \begin{equation*}
+      \{A_i:i\in I\}\text{, }\{A_i\}_{i\in I}\text{ or simply }\{A_i\}
+    \end{equation*}
+    assigns a set $A_i$ to each $i\in I$ (a function from $I$ into a class of sets). The set $I$ is called the \textit{index set}, the sets $A_i$ are called \textbf{indexed sets}, and each $i\in I$ is called an \textit{index}.
+    \begin{note}[Sequence]
+      When the index set $I$ is the set of positive integers, the indexed class $\{A_1, A_2, \dots\}$ is called a \textbf{sequence} (of sets).
+      We write
+      \begin{equation*}
+        \bigcup^{\infty}_{i=1}A_i=A_1\cup A_2\cup\dots\text{ and }\bigcap^{\infty}_{i=1}A_i=A_1\cap A_2\cap\dots
+      \end{equation*}
+      for the union and intersection respectively.
+    \end{note}
+    \begin{note}[Cartesian Product]
+      for an indexed class of sets $\mathscr{A}$ is denoted by:
+      \begin{equation*}
+        \prod\{A_i:i\in I\}\text{ or }\prod_{i\in I}A_i\text{ or simply }\prod_iA_i
+      \end{equation*}
+      is the set of all functions $p:I\rightarrow\cup_iA_i$ such that $p(i)=a_i\in A_i$. We denote such an element of the Cartesian product by $p=\langle a_i:i\in I\rangle$. For each $i_0\in I$ there exists an $i_0$th \textit{projection function}, $\pi_{i_0}$, from the product set $\prod_iA_i$ into the $i_0$th \textit{coordinate set} $A_{i_0}$ defined by:
+      \begin{equation*}
+        \pi_{i_0}(\langle a_i:i\in I\rangle)=a_{i_0}
+      \end{equation*}
+    \end{note}
+    \begin{note}[Union]
+      for an indexed class of sets $\mathscr{A}$ is denoted by:
+      \begin{equation*}
+        \bigcup\{A_i:i\in I\}\text{, }\bigcup_{i\in I}A_i\text{ or }\cup_iA_i
+      \end{equation*}
+    \end{note}
+    \begin{note}[Intersection]
+      for an indexed class of sets $\mathscr{A}$ is denoted by:
+      \begin{equation*}
+        \bigcap\{A_i:i\in I\}\text{, }\bigcap_{i\in I}A_i\text{ or }\cap_iA_i
+      \end{equation*}
+    \end{note}
+  }
+}
+
+\newglossaryentry{setunion}
+{
+  name=Set Union,
+  text=set union,
+  description={
+    Let $\mathscr{A}$ be any class of subsets of the universal set $U$. The \textbf{union} of the sets in $\mathscr{A}$, denoted by $\bigcup\{A:A\in\mathscr{A}\}$, is the set of elements which belong to at least one set in $\mathscr{A}$:
+    \begin{equation*}
+      \bigcup\{A:A\in\mathscr{A}\}=\{x:x\in U,\exists A\in\mathscr{A}\text{ s.t. }x\in A\}
+    \end{equation*}
+    \begin{note}
+      $\bigcup\{A:A\in\emptyset\}=\emptyset$ and $\bigcup\{A_i:i\in\emptyset\}=\emptyset$. Ref: \cite{empty_intersection_empty_union}
+    \end{note}
+  },
+  symbol={$\bigcup$}
+}
+
+\newglossaryentry{setintersection}
+{
+  name=Set Intersection,
+  text=set intersection,
+  description={
+    Let $\mathscr{A}$ be any class of subsets of the universal set $U$. The \textbf{intersection} of the sets in $\mathscr{A}$, denoted by $\bigcap\{A:A\in\mathscr{A}\}$, is the set of elements which belong to every set in $\mathscr{A}$:
+    \begin{equation*}
+      \bigcap\{A:A\in\mathscr{A}\}=\{x:x\in U,\forall A\in\mathscr{A},x\in A\}
+    \end{equation*}
+    \begin{note}
+      $\bigcap\{A:A\in\emptyset\}=U$ and $\bigcap\{A_i:i\in\emptyset\}=U$. Ref: \cite{empty_intersection_empty_union}
+    \end{note}
+  },
+  symbol={$\bigcap$}
 }
 
 \title{Math Preliminaries}
