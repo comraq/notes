@@ -35,6 +35,56 @@
       \item
         Two sets $A$ and $B$ are equal if and only if $A\subseteq B$ and $B\subseteq A$.
     \end{itemize}
+    Note that this is different from the concept of \gls{setequivalence}.
+  \end{note}
+}
+
+\longnewglossaryentry{setequivalence}
+{
+  name=Set Equivalence,
+  text=set equivalence,
+  symbol={$\sim$}
+} {
+  A set $A$ is called \textbf{equivalent} to a set $B$, written $A\sim B$, if there exists a function $f:A\rightarrow B$ which is both \textit{injective} and \textit{surjective}. The function $f$ is then said to define a \textit{one-to-one correspondence} between the sets $A$ and $B$. By this definition, two finite sets are equivalent iff they contain the same number of elements.
+  \begin{note}
+    For finite sets, equivalence corresponds to the usual meaning of two sets containing the same number of elements.
+  \end{note}
+  \begin{note}
+    An infinite set can be equivalent to a proper subset of itself, this property is tru of infinite sets in general.
+  \end{note}
+}
+
+\longnewglossaryentry{setcardinality}
+{
+  name=Set Cardinality,
+  text=set cardinality,
+  symbol={$\#$},
+} {
+  If $A$ is equivalent to $B$ ($A\sim B$), then we say that $A$ and $B$ have the same \textbf{cardinal number} or \textbf{cardinality}. We write $\#(A)$ for "the cardinal number (or cardinality) of $A$".
+  \begin{equation*}
+    \#(A)=\#(B)\text{ iff }A\sim B
+  \end{equation*}
+  \begin{note}
+    The cardinal numbers of $\mathbb{N}$ and the interval $[0,1]$ are:
+    \begin{equation*}
+      \aleph_0\text{(read: \textit{aleph-null})}=\#(\mathbb{N})\text{, }\textbf{c}=\#([0,1])
+    \end{equation*}
+    A set $X$ is said to have cardinality $\aleph_0$  iff it is equivalent to $\mathbb{N}$. And $0<1<2<\dots<\aleph_0<\textbf{c}$.
+  \end{note}
+  \begin{note}[Finite]
+    A set is \textbf{finite} iff it is empty or equivalent to $\{1,2,\dots,n\}$ for some $n\in\mathbb{N}$. Otherwise it is said to be \textbf{infinite}.
+  \end{note}
+  \begin{note}[Denumerable]
+    A set is called \textbf{denumerable} if it has cardinality $\aleph_0$. Note that every infinite set contains a denumerable subset.
+  \end{note}
+  \begin{note}[Countable]
+    A set is called \textbf{countable} iff it is finite or denumerable. Note that Every subset of a countable set is countable.
+  \end{note}
+  \begin{note}
+    A set which is neither finite nor denumerable is said to be \textit{non-denumerable} or \textit{non-countable}.
+  \end{note}
+  \begin{note}[Cantor's Theorem]
+    The power set $\mathscr{P}(A)$ of any set $A$ has cardinality greater than $A$.
   \end{note}
 }
 
@@ -973,7 +1023,8 @@
   text=partial order,
   description={is a binary relation that is \textit{reflexive},
     \textit{antisymmetric} and \textit{transitive} (ie: a partial order is
-  an antisymmetric preorder).}
+  an antisymmetric preorder).},
+  symbol={$\preceq$}
 }
 
 \newglossaryentry{semigroup}
@@ -1006,6 +1057,20 @@
   symbol={$^*$}
 }
 
+\longnewglossaryentry{orderedset}
+{
+  name=Ordered Set,
+  text=ordered set
+} {
+  is a set $X$ with a relation $R$ defining an \textbf{order} on its elements, denoted by $\preceq$. If $a\preceq b$, then we say that $a$ \textit{precedes} or \textit{is smaller} than $b$ and that $b$ \textit{follows}, \textit{dominates} or \textit{is larger} than $a$. We write $a\prec b$ if $a\preceq b$ but $a\neq b$.
+  \begin{note}[First and Last Elements]
+    An element $a_0\in X$ is a \textbf{first} or \textbf{smallest} element of $X$ iff $a_0\preceq x$ for all $x\in X$. Similarly, an element $b_0\in X$ is a \textbf{last} or \textbf{largest} element of $X$ iff $x\preceq b_0$ for all $x\in X$.
+  \end{note}
+  \begin{note}[Maximal and Minimal Elements]
+    An element $a_0\in X$ is \textbf{maximal} iff $a_0\preceq x$ implies $x=a$, i.e. if no element follows $a_0$ except itself. Similarly, an element $b_0\in X$ is \textbf{minimal} iff $x\preceq b_0$ implies $x=b_0$, i.e. if no element precedes $b_0$ except itself.
+  \end{note}
+}
+
 \newglossaryentry{preorderedset}
 {
   name=Preordered Set,
@@ -1014,12 +1079,46 @@
   elements, denoted as $(S,\alpha)$.}
 }
 
-\newglossaryentry{partiallyorderedset}
+\longnewglossaryentry{partiallyorderedset}
 {
   name=Partially Ordered Set/Poset,
-  text=partially ordered set,
-  description={is a \textit{preordered set} $(S,\alpha)$ where $\alpha$ is
-  \textit{antisymmetric}, (ie: a set $S$ with a partial order).}
+  text=partially ordered set
+} {
+  is a \textit{preordered set} $(X,\preceq)$ where $\preceq$ is
+  \textit{antisymmetric}, (ie: a set $X$ with a partial order).
+  \begin{note}[Inverse Order]
+    If a relation $R$ in a set $A$ defines a partial order, then the inverse relation $R^{-1}$ is also a partial order; it is called the \textbf{inverse order}.
+  \end{note}
+  \begin{note}[Upper and Lower Bounds]
+    Let $A\subseteq X$. An element $m\in X$ is a \textbf{lower bound} of $A$ iff $m\preceq x$ for all $x\in A$, i.e. if $m$ precedes every element in $A$. If some lower bound of $A$ follows every other lower bound of $A$, then it is called the \gls{infimum} or \textit{greatest lower bound}. Similarly, an element $M\in X$ is an \textbf{upper bound} of $A$ iff $x\preceq M$ for all $x\in A$, i.e. if $M$ follows every element in $A$. If some upper bound of $A$ precedes every other upper bound of $A$, then it is called the \gls{supremum} or \textit{least upper bound}.
+  \end{note}
+  \begin{note}
+    $A$ is said to be \textit{bounded above} if it has an upper bound, and \textit{bounded below} if it has a lower bound. If $A$ has both an upper and lower bound, then it is said to be \textit{bounded}.
+  \end{note}
+}
+
+\newglossaryentry{partiallyorderedsubset}
+{
+  name=Partially Ordered Subset,
+  text=partially ordered subset,
+  description={
+    Let $A\subseteq X$, where $X$ is a poset. Then the order in $X$ induces an order in $A$: If $a,b\in A$, then $a\preceq b$ as elements in $A$ iff $a\preceq b$ as elements in $X$. More precisely, if $R$ is a partial order in $X$, then the relation $R_A=R\cap(A\times A)$, called the \textit{restriction} of $R$ to $A$, is a partial order in $A$. The ordered set $(A,R_A)$ is called a (\textbf{partially ordered}) \textbf{subset} of the ordered set $(X,R)$.
+    \begin{note}
+      Some subsets of a poset may be totally ordered.
+    \end{note}
+  }
+}
+
+\newglossaryentry{totallyorderedset}
+{
+  name=Totally (or Linearly) Ordered Set,
+  text=totally ordered set,
+  description={
+    is a \gls{partiallyorderedset} $A$ if for every $a,b\in A$, either $a\preceq b$ or $b\preceq a$.
+    \begin{note}[Example]
+      $\mathbb{R}$ with the natural order defined by $x\leq y$ is a totally ordered set.
+    \end{note}
+  }
 }
 
 \newglossaryentry{reflexive}
@@ -1076,16 +1175,16 @@
   text=supremum,
   symbol={$\bigsqcup$}
 } {
-  is the \textit{least upper bound} of a subset $T$ of a poset $(S,\leq)$.
+  is the \textit{least upper bound} of a subset $T$ of a poset $(S,\preceq)$.
   That is, for a subset $T\subseteq S$, a \textbf{supremum} is an element
   $v\in S$ such that:
   \begin{itemize}
-    \item $\forall t\in T, t\leq v$
-    \item If $w\in S$ has the property that $t\leq w$ for every $t\in T$,
-      then $v\leq w$
+    \item $\forall t\in T, t\preceq v$
+    \item If $w\in S$ has the property that $t\preceq w$ for every $t\in T$,
+      then $v\preceq w$
   \end{itemize}
   \begin{note}
-    The supremum of $T$ is denoted as $\bigsqcup T$.
+    The supremum of $T$ is denoted as $\bigsqcup T$ or $\sup(T)$.
   \end{note}
 }
 
@@ -1095,7 +1194,7 @@
   text=infimum,
   symbol={$\bigsqcap$},
   description={is the \textit{greatest lower bound} of a subset $T$ of a
-  poset $S$ denoted as $\bigsqcap T$, if such an element exists.}
+  poset $S$ denoted as $\bigsqcap T$ or $\inf(T)$, if such an element exists.}
 }
 
 \longnewglossaryentry{path}
@@ -1403,6 +1502,63 @@
     \end{note}
   },
   symbol={$\bigcap$}
+}
+
+\newglossaryentry{continuum}
+{
+  name=Continuum,
+  text=continuum,
+  description={
+    A set $X$ is said to have the \textbf{power of the continuum} or is said to have \textbf{cardinality c} iff it is equivalent to the unit interval $[0,1]$ (note that not all infinite sets are denumerable, e.g. the unit interval $[0,1]$ is non-denumerable).
+    \begin{note}
+      $\mathbb{R}$, the set of real numbers, has cardinality \textbf{c}. Every interval in $\mathbb{R}$, open or closed, has cardinality \textbf{c}. And hence, any interval is equivalent to $\mathbb{R}$.
+    \end{note}
+    \begin{note}[Continuum Hypothesis]
+      There does not exist a set $A$ with the property that $\aleph_0<\#(A)<\textbf{c}$.
+    \end{note}
+  }
+}
+\longnewglossaryentry{schroederbernstein}
+{
+  name=Schroeder-Bernstein Theorem,
+  text=schroeder-bernstein theorem
+} {
+  We write $A\preceq B$ if $A$ is equivalent to a subset of $B$,
+  \begin{equation*}
+    A\preceq B\text{ iff }\exists B^*\subseteq B\text{ s.t. }A\sim B^*
+  \end{equation*}
+  The \textbf{Schroeder-Berstein Theorem} states that $A\preceq B$ and $B\preceq A$, then $A\sim B$. This can also be restated as:
+  \begin{equation*}
+    \text{Let }X\supseteq Y\supseteq X_1\text{ and let }X\sim X_1\text{, then }X\sim Y
+  \end{equation*}
+  In terms of cardinality, this can also be stated as: If $\#(A)\leq\#(B)$ and $\#(B)\leq\#(A)$, then $\#(A)=\#(B)$.
+
+  \begin{note}
+    We also write $A\prec B$ if $A\preceq B$ but $A\nsim B$, if $A$ is not equivalent to $B$.
+  \end{note}
+  \begin{note}[Example]
+    Since $\mathbb{N}\subset\mathbb{R}$, $\mathbb{N}\preceq\mathbb{R}$. In fact, $\mathbb{R}$ is not denumerable, i.e. $\mathbb{R}\nsim\mathbb{N}$, and thus $\mathbb{N}\prec\mathbb{R}$.
+  \end{note}
+  \begin{note}[Law of Trichotomy]
+    Given any pair of sets $A$ and $B$, either $A\prec B$, $A\sim B$ or $B\prec A$.
+  \end{note}
+  \begin{note}
+    If $A\prec B$ then we say that $A$ has cardinality less than $B$ or $B$ has cardinality greater than $A$.
+    \begin{equation*}
+      \#(A)<\#(B)\text{ iff }A\prec B
+    \end{equation*}
+  \end{note}
+}
+
+\newglossaryentry{zornslemma}
+{
+  name=Zorn's Lemma,
+  text=zorn's lemma,
+  description={Let $X$ be a non-empty poset in which every totally ordered subset has an upper bound. Then $X$ contains at least one maximal element.
+    \begin{note}[Remark]
+      This is equivalent to the classical \textit{Axiom of Choice} and the \textit{Well-ordering Principle}.
+    \end{note}
+  }
 }
 
 \title{Math Preliminaries}
