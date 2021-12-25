@@ -15,22 +15,82 @@
 \makeindex
 \makeglossaries
 
-\newglossaryentry{set}
+\longnewglossaryentry{set}
 {
   name=Set,
   text=set,
-  description={is a mathematical entity that is distinct from, but
-    completely determined by, its elements (if any). For every entity $x$
-    and set $S$, the statement $x\in S$, read '\textit{$x$ is an element of
-  $S$}', is a sentence that is either true or false.}
+} {
+  is a mathematical entity that is distinct from, but
+  completely determined by, its elements (if any). For every entity $x$
+  and set $S$, the statement $x\in S$, read "\textit{$x$ is an element of
+  $S$}", is a sentence that is either true or false.
+
+  \begin{note}[Set Equality]
+    \item[]
+    \begin{itemize}
+      \item
+        Two sets $A$ and $B$ are equal, written $A=B$, if they consist of the same elements. Note that sets do not depend on the way they are displayed, a set remains the same if its elements are repeated or rearraged.
+      \item
+        Two sets $A$ and $B$ are equal if and only if $A\subseteq B$ and $B\subseteq A$.
+    \end{itemize}
+  \end{note}
+  \begin{note}
+    When members of a set $A$ are sets themselves, $A$ may be called a \textit{class, collection}, or \textit{family}.
+  \end{note}
+}
+
+\newglossaryentry{subset}
+{
+  name=Subset,
+  text=subset,
+  description={A set $A$ is a \textbf{subset} of a set $B$, or equivalently, $B$ is a \textbf{superset} of $A$, written $A\subseteq B$ or $B\supseteq A$ iff each element in $A$ also belongs to $B$; that is, if $x\in A$ implies $x\in B$.
+    \begin{note}
+      The negation of $A\subseteq B$ is written $A\nsubseteq B$ or $B\nsupseteq A$ and states that there is an $x\in A$ such that $x\notin B$.
+    \end{note}
+    \begin{note}
+      The words \textit{subclass, subcollection} and \textit{subfamily} are sometimes used to indicate subsets where their elements are sets themselves.
+    \end{note}
+  },
+  symbol={$\subseteq$}
+}
+
+\newglossaryentry{propersubset}
+{
+  name=Proper Subset,
+  text=proper subset,
+  description={In the case that $A\subseteq B$ but $A\ne B$, we say that $A$ is a \textbf{proper subset} of $B$ and write $A\subset B$.},
+  symbol={$\subset$}
 }
 
 \newglossaryentry{emptyset}
 {
   name=Empty Set,
   text=empty set,
-  description={is the set with no elements \{\}.},
+  description={is the set with no elements $\{\}$.},
   symbol={$\emptyset$}
+}
+
+\newglossaryentry{singletonset}
+{
+  name=Singleton Set,
+  text=singleton set,
+  description={is any set with exactly one element, $\{a\}$, where $a$ is the only element.},
+  symbol={$\textbf{1}$}
+}
+
+\newglossaryentry{universalset}
+{
+  name=Universal Set,
+  text=universal set,
+  description={In any application of the theory of sets, all sets under investigation are subsets of a fixed set. We call this set the \textbf{universal set} or \textbf{universe of discourse} and denote it as $U$. Thus for any set $A$, $A\subseteq U$.},
+  symbol={$U$}
+}
+
+\newglossaryentry{space}
+{
+  name=Space,
+  text=space,
+  description={is used to refer to a non-empty set which possesses some type of mathematical structure, e.g. \textit{vector space, metric space} or \textit{topological space}. In such a situation, the elements in a space are called \textit{points}.}
 }
 
 \newglossaryentry{cartesianproduct}
@@ -61,7 +121,14 @@
   description={A \textbf{relation} $\alpha$ from a set $S$ to a set $T$ is a subset
     of $S\times T$. Any such subset is a relation from $S$ to $T$. Extreme
     examples of relations are the $\emptyset$ and the set $S\times
-  T$.}
+  T$.
+  \begin{note}[Domain and Range]
+    The \textit{domain} of a relation $R$ from $A$ to $B$ is the set of first coodinates of the pairs in $R$ and its \textit{range} is the set of second coordinates. i.e., domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
+  \end{note}
+  \begin{note}[Inverse]
+    The \textit{inverse} of $R$, denoted by $R^{-1}$, is the relation from $B$ to $A$ defined by domain of $R=\{a:\langle a,b\rangle\in R\}$, range of $R=\{b:\langle a,b\rangle\in R\}$.
+  \end{note}
+  }
 }
 
 \newglossaryentry{diagonalrelation}
@@ -131,7 +198,7 @@
 {
   name=Inclusion Function,
   text=inclusion,
-  description={If a set $S$ is a subset of a set $T$ (denoted by $S\subset
+  description={If a set $S$ is a subset of a set $T$ (denoted by $S\subseteq
     T$), then there is an \textbf{inclusion function} $i:S\rightarrow T$
     for which $i(x)=x$ for all $x\in S$.
     \begin{note}
@@ -210,7 +277,7 @@
 {
   name=Restriction,
   text=restriction,
-  description={If $g:S\rightarrow T$, $f:A\rightarrow T$ and $A\subset S$,
+  description={If $g:S\rightarrow T$, $f:A\rightarrow T$ and $A\subseteq S$,
     then $f$ is the \textbf{restriction} of $g$ to $A$ if $f=g\circ i$ where
   $i:A\rightarrow S$ is the inclusion function of $A$ in $S$.}
 }
@@ -219,7 +286,7 @@
 {
   name=Corestriction,
   text=corestriction,
-  description={If $f:S\rightarrow T$, $g:S\rightarrow B$ and $T\subset B$,
+  description={If $f:S\rightarrow T$, $g:S\rightarrow B$ and $T\subseteq B$,
     then $f$ is the \textbf{corestriction} of $g$ to $T$ if $g=i\circ
   f$, where $i$ is the inclusion of $T$ in $B$.}
 }
@@ -1158,7 +1225,27 @@
   \end{note}
 }
 
+\newglossaryentry{relativecomplement}
+{
+  name=Relative Complement,
+  text=relative complement,
+  description={of a set $B$ with respect to a set $A$ or simply, the \textit{difference} of $A$ and $B$, denoted by $A\\ B$, is the set of elements which belong to $A$ but not in $B$.
+    \begin{equation*}
+      A\\ B=\{x:x\in A, x\notin B\}
+    \end{equation*}
+  }
+}
 
+\newglossaryentry{absolutecomplement}
+{
+  name=Absolute Complement,
+  text=absolute complement,
+  description={or simply, the \textit{complement} of a set $A$, denoted by $A^c$, is the set of elements which do not belong to $A$.
+  \begin{equation*}
+    A^c =\{x:x\in U, x\notin A\}
+  \end{equation*}
+  }
+}
 
 \title{Math Preliminaries}
 \author{Adam Yin}
@@ -1169,9 +1256,17 @@
 A glossary reference for some basic mathematical terms which I found useful
 with a formal definition.
 
+\nocite{*}
+
 \clearpage
 
 \glsaddall
 \setglossarystyle{tree}
 \printglossaries
+
+\medskip
+
+\bibliographystyle{unsrt}
+\bibliography{references}
 \end{document}
+
