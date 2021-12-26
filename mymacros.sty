@@ -1,0 +1,90 @@
+\ProvidesPackage{mymacros}[2016/12/21]
+
+\RequirePackage{enumitem}
+\RequirePackage{tikz}
+\RequirePackage{tikz-cd}
+\RequirePackage{xifthen}
+\RequirePackage{xparse}
+\RequirePackage{mathptmx}
+\RequirePackage{graphicx}
+\RequirePackage{xfp}
+
+\newenvironment{note}[1][Note]
+{\begin{itemize}[align=left, nolistsep]
+    \item[\textit{ #1}:]
+}
+{\end{itemize}}
+
+\newenvironment{mytikzcd}[1][]
+{\begin{equation*}\begin{tikzcd}[ampersand replacement=\&]}
+{\end{tikzcd}\end{equation*}}
+
+% A number line macro taking 9 optional parameters each with default values:
+% #1 - the left most value in the number line (default: 0)
+% #2 - the right most value in the number line (default: 10)
+% #3 - the interval length between each segment/tick in the number line (default: 1)
+% #4 - the lower bound of the covered segment, if less than #1, then extends to -\infty (default: -1)
+% #5 - the upper bound of the covered segment, if greater than #2, then extends to \infty (default: 11)
+% #6 - indicate lower bound is (white for) open or (black for) closed (default: white)
+% #7 - indicate upper bound is (white for) open or (black for) closed (default: white)
+% #8 - label for lower bound, label will be wrapped in math mode (default: L_1)
+% #9 - label for upper bound, label will be wrapped in math mode (default: L_2)
+\NewDocumentEnvironment{mynl}{ O{0} O{10} O{1} O{-1} O{11} O{white} O{white} O{L_1} O{L_2} }
+{\begin{equation*}
+  \begin{tikzpicture}
+    % draw basic line segment
+    \draw (0,0) -- (10,0);
+    % the ticks and their labels
+    \foreach \x [count=\i from 0] in {#1,\fpeval{#1 + #3},...,#2}
+      \draw[xshift=\fpeval{10 *#3/(#2-#1) *\i} cm] (0pt,2pt) -- (0pt,-1pt) node[below,fill=white] {\x};
+    % draw the covered segment and labels
+    \ifdim #4pt<#1pt {
+      \ifdim #5pt>#2pt {
+        \draw[ultra thick] (0,0) -- (10,0);
+        \draw[-{Stealth[black]}] (1,0) -- (-0.1,0);
+        \draw[-{Stealth[black]}] (9,0) -- (10.1,0);
+      } \else {
+        \draw[ultra thick] (0,0) -- (\fpeval{(#5-#1)/#3 * (10 *#3/(#2-#1))},0);
+        \draw[-{Stealth[black]}] (1,0) -- (-0.1,0);
+        \node[fill=#7,draw=black,circle,inner sep=1.5pt,label=above:{$#9$}] at (\fpeval{(#5-#1)/#3 * (10 *#3/(#2-#1))},0) {};
+      } \fi
+    } \else {
+      \ifdim #5pt>#2pt {
+        \draw[ultra thick] (\fpeval{(#4-#1)/#3 * (10 *#3/(#2-#1))},0) -- (10,0);
+        \node[fill=#6,draw=black,circle,inner sep=1.5pt,label=above:{$#8$}] at (\fpeval{(#4-#1)/#3 * (10 *#3/(#2-#1))},0) {};
+        \draw[-{Stealth[black]}] (9,0) -- (10.1,0);
+      } \else {
+        \draw[ultra thick] (\fpeval{(#4-#1)/#3 * (10 *#3/(#2-#1))},0) -- (\fpeval{(#5-#1)/#3 * (10 *#3/(#2-#1))},0);
+        \node[fill=#6,draw=black,circle,inner sep=1.5pt,label=above:{$#8$}] at (\fpeval{(#4-#1)/#3 * (10 *#3/(#2-#1))},0) {};
+        \node[fill=#7,draw=black,circle,inner sep=1.5pt,label=above:{$#9$}] at (\fpeval{(#5-#1)/#3 * (10 *#3/(#2-#1))},0) {};
+      } \fi
+    } \fi
+  }
+  {\end{tikzpicture}
+\end{equation*}}
+
+\newcommand{\Hom}{\text{Hom}}
+
+% A parallel pair of right arrow with 2 optional arguments, which are the
+% optional names of the top and bottom arrow
+\DeclareDocumentCommand{\parrightarrow}{ O{} O{} }{
+  \begin{tikzcd}[ampersand replacement=\&]
+    {} \ar[r,shift left,"\ifthenelse{\isempty{#1}}{}{#1}"]
+       \ar[r,shift right,"\ifthenelse{\isempty{#2}}{}{#2}"'] \& {}
+  \end{tikzcd}
+}
+
+% Provides \bigsqcap command by rotating \bigsqcup 180 degrees
+% https://tex.stackexchange.com/questions/121700/how-to-get-bigsqcap-in-the-right-size
+\makeatletter
+\providecommand{\bigsqcap}{
+  \mathop{
+    \mathpalette\@updown\bigsqcup
+  }
+}
+\newcommand*{\@updown}[2]{
+  \rotatebox[origin=c]{180}{$\m@th#1#2$}
+}
+\makeatother
+
+\endinput

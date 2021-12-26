@@ -1,0 +1,128 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{tikz}
+\usepackage[xindy, nonumberlist, nopostdot]{glossaries}
+
+% My Custom Macros Package
+\usepackage{mymacros}
+
+\makeindex
+\makeglossaries
+
+\longnewglossaryentry{openset}
+{
+  name=Open Set,
+  text=open set
+} {
+  A set $A$ is \textbf{open} (or $\mathscr{U}$-open) iff each of its points is an interior point. Observer that a set is not open iff there exists a point in the set that is not an interior point.
+  \begin{note}[Examples]
+    \begin{itemize}
+      \item
+        An open interval $A=(a,b)$ is an open set, for we may choose $S_p=A$ for each $p\in A$.
+      \item
+        The real line $\mathbb{R}$ is oepn since any open interval $S_p$ is a subset of $\mathbb{R}$, i.e. $p\in S_p\subseteq\mathbb{R}$
+      \item
+        The empty set $\emptyset$ is open since there is no point in $\emptyset$ which is not an interior point.
+      \item
+        The closed interval $B=[a,b]$ is not an open set, for any open interval containing $a$ or $b$ must contain points outside of $B$, i.e. the end points $a$ and $b$ are not interior points of $B$.
+      \item
+        Infinite open intervals $(a,\infty)$, $(-\infty,a)$ and $(-\infty,\infty)$ are open. On the other hand, infinite closed intervals $[a,\infty)$, $(-\infty,a]$ are not open sets since $a$ is not an interior point.
+    \end{itemize}
+  \end{note}
+  \begin{note}
+    The union of any number of open sets in $\mathbb{R}$ is open and the intersection of any finite number of open sets in $\mathbb{R}$ is open. For consider the class of open intervals:
+    \begin{equation*}
+      \{A_n=(-\frac{1}{n},\frac{1}{n}):n\in\mathbb{N}\}\text{ i.e. }\{(-1,1),(-\frac{1}{2},\frac{1}{2}),(-\frac{1}{3},\frac{1}{3}),\dots\}
+    \end{equation*}
+    and the intersection, $\bigcap^\infty_{n=1}A_n=\{0\}$, is a single point which is not open.
+  \end{note}
+}
+
+\longnewglossaryentry{interiorpoint}
+{
+  name=Interior Point,
+  text=interior point,
+} {
+  Let $A$ be a set of real numbers. A point $p\in A$ is an \textbf{interior point} of $A$ iff $p$ belongs to some open interval $S_p$ which is contained in $A$:
+  \begin{equation*}
+    p\in S_p\subseteq A
+  \end{equation*}
+}
+
+\longnewglossaryentry{accumulationpoint}
+{
+  name=Accumulation (Limit) Point,
+  text=accumulation point,
+} {
+  Let $A\subseteq\mathbb{R}$. A point $p\in\mathbb{R}$ is an \textbf{accumulation point} or \textbf{limit point} of $A$ iff every open set $G$ containing $p$ contains a point of $A$ different from $p$, i.e.:
+  \begin{equation*}
+    G\text{ open, }p\in G\text{ implies }A\cap(G\setminus\{p\})\neq\emptyset
+  \end{equation*}
+  The set of accumulation points of $A$, denoted by $A'$, is called the \textit{derived set} of $A$.
+  \begin{note}[Examples]
+    \begin{itemize}
+      \item
+        Every real number $p\in\mathbb{R}$ is a limit point of $\mathbb{Q}$ since every open set contains rational numbers.
+      \item
+        The set of integers $\mathbb{Z}$ does not have any accumulation points, i.e. derived set of $\mathbb{Z}$ is $\emptyset$ (as open sets in $\mathbb{R}$ can span between integers).
+      \item
+        Let $A=\{\frac{1}{n}:n\in\mathbb{N}\}$, the point $0$ is an accumulation point of $A$ since any open set $G$ with $0\in G$ contains an open interval $(-a_1,a_2)\subseteq G$ with $-a_1<0<a_2$, which contains points in $A$. Note that the limit point $0$ of $A$ does not belong to $A$ and there are no other limit points, i.e. $A'=\{0\}$.
+        \begin{mynl}[-1][1][0.25][-0.125][0.125][white][white][-a_1][a_2]
+        \end{mynl}
+    \end{itemize}
+  \end{note}
+  \begin{note}
+    \textit{"Limit point of a set"} is not to be confused with the concept \textit{"limit of a sequence"}.
+  \end{note}
+  \begin{note}[Bolzano-Weierstrass Theorem]
+    Let $A$ be a bounded, infinite set of real numbers. Then $A$ has at least one accumulation point. However, do note that not every set, even if it is infinite, has a limit point.
+  \end{note}
+}
+
+\longnewglossaryentry{closedset}
+{
+  name=Closed Set,
+  text=closed set
+} {
+  is a subset $A\subseteq \mathbb{R}$, iff its complement, $A^c$, is an open set. Alternatively, $A\subseteq \mathbb{R}$ is closed iff $A$ contains each of its points of accumulation.
+  \begin{note}[Examples]
+    \begin{itemize}
+      \item
+        The closed interval $[a,b]$ is a closed set since its complement $(-\infty,a)\cup(b,\infty)$, the union of two open infinite intervals, is open.
+      \item
+        The set $A=\{\frac{1}{n}:n\in\mathbb{N}\}$ is not closed since $0$ is a limit point of $A$ but does not belong to $A$.
+      \item
+        The empty set $\emptyset$ and the entire line $\mathbb{R}$ are closed sets since their complements $\mathbb{R}$ and $\emptyset$, respectively, are open sets.
+      \item
+        Consider the open-closed interval $A=(a,b]$. Note that $A$ is not open since $b\in A$ is not an interior point of $A$, and is not closed since $a\notin A$ but is a limit point of $A$.
+    \end{itemize}
+  \end{note}
+  \begin{note}
+    \textit{Open} and \textit{Closed} sets are not inverses of each other as sets can be neither open nor closed.
+  \end{note}
+}
+
+\title{Topology}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+
+\maketitle
+A glossary reference for Topology and related terms. Definitions are from various texts which I have read \cite{general_topology}.
+
+\clearpage
+
+\glsaddall
+\setglossarystyle{tree}
+\printglossaries
+
+\medskip
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
+
