@@ -17,8 +17,9 @@
   name=Open Set,
   text=open set
 } {
-  A set $A$ is \textbf{open} (or $\mathscr{U}$-open) iff each of its points is an interior point. Observer that a set is not open iff there exists a point in the set that is not an interior point.
+  A set $A$ is \textbf{open} (or $\mathcal{U}$-open) iff each of its points is an interior point. Observer that a set is not open iff there exists a point in the set that is not an interior point.
   \begin{note}[Examples]
+    \item[]
     \begin{itemize}
       \item
         An open interval $A=(a,b)$ is an open set, for we may choose $S_p=A$ for each $p\in A$.
@@ -63,6 +64,7 @@
   \end{equation*}
   The set of accumulation points of $A$, denoted by $A'$, is called the \textit{derived set} of $A$.
   \begin{note}[Examples]
+    \item[]
     \begin{itemize}
       \item
         Every real number $p\in\mathbb{R}$ is a limit point of $\mathbb{Q}$ since every open set contains rational numbers.
@@ -89,6 +91,7 @@
 } {
   is a subset $A\subseteq \mathbb{R}$, iff its complement, $A^c$, is an open set. Alternatively, $A\subseteq \mathbb{R}$ is closed iff $A$ contains each of its points of accumulation.
   \begin{note}[Examples]
+    \item[]
     \begin{itemize}
       \item
         The closed interval $[a,b]$ is a closed set since its complement $(-\infty,a)\cup(b,\infty)$, the union of two open infinite intervals, is open.
@@ -102,6 +105,33 @@
   \end{note}
   \begin{note}
     \textit{Open} and \textit{Closed} sets are not inverses of each other as sets can be neither open nor closed.
+  \end{note}
+}
+
+\longnewglossaryentry{topologicalspaces}
+{
+  name=Topological Spaces (Topology),
+  text=topological spaces
+} {
+  Let $X$ be a non-empty set. A class $\mathcal{T}$ of subsets of $X$ is a \textbf{topology} on $X$ iff $\mathcal{T}$ satisfies the following axioms:
+  \begin{itemize}
+    \item[($O_1$)]
+      $X$ and $\emptyset$ belong to $\mathcal{T}$.
+    \item[($O_2$)]
+      The union of any number of sets in $\mathcal{T}$ belongs to $\mathcal{T}$.
+    \item[($O_3$)]
+      The intersection of any two sets in $\mathcal{T}$ belongs to $\mathcal{T}$.
+  \end{itemize}
+  The members of $\mathcal{T}$ are then called $\mathcal{T}$\textit{-open sets}, of simply \textit{open sets}, and $X$ together with $\mathcal{T}$, i.e. the pair $(X,\mathcal{T})$ is called a \textbf{topological space}.
+
+  \begin{note}[Examples]
+    \item[]
+    \begin{itemize}
+      \item
+        Let $\mathcal{U}=\{\cup_i I_i|I_i\in I\}$ denote the class of all open sets of real numbers where $I=\{(a,b)|a,b\in\mathbb{R}\}$. Then $\mathcal{U}$ is a topology in $\mathbb{R}$ denoted $(\mathbb{R},\mathcal{U})$, and is also called the \textit{usual topology} on $\mathbb{R}$.
+      \item
+        Similarily, the class $\mathcal{U}$ of all open sets in the plane $\mathbb{R}^2$ is a topology and also called the \textit{usual topology} on $\mathbb{R}^2$.
+    \end{itemize}
   \end{note}
 }
 
