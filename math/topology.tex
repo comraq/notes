@@ -3,6 +3,7 @@
 \usepackage{amssymb}
 \usepackage{enumitem}
 \usepackage{mathrsfs}
+\usepackage{mathtools}
 \usepackage{tikz}
 \usepackage[xindy, nonumberlist, nopostdot]{glossaries}
 
@@ -108,6 +109,165 @@
   \end{note}
 }
 
+\longnewglossaryentry{cover}
+{
+  name=Cover,
+  text=cover
+} {
+  A class of sets, $\mathscr{A}=\{A_i\}$, is said to \textbf{cover} a set $A$ if $A$ is contained in the union of the members of $\mathscr{A}$, i.e. $A\subseteq\cup_iA_i$.
+  \begin{note}[Heine-Borel Theorem]
+    Let $A=[c,d]$ be a closed and bounded interval, and $\mathcal{G}=\{G_i:i\in I\}$ be a class of open intervals which covers $A$, i.e. $A\subseteq\cup_iG_i$. Then $\mathcal{G}$ contains a finite subclass, say $\{G{i_1},G{i_2},\dots,G{i_m}\}$, which also covers $A$, i.e.,
+    \begin{equation*}
+      A\subseteq G_{i_1}\subseteq G_{i_2}\subseteq\dots\subseteq G_{i_m}
+    \end{equation*}
+    Both conditions, closed and bounded, must be satisfied by $A$ or else this theorem is not true.
+  \end{note}
+
+  \begin{note}[Examples of Heine-Borel Theorem]
+    \item[]
+      \begin{itemize}
+        \item
+          Consider the open, bounded unit interval $A=(0,1)$. The class
+          \begin{equation*}
+            \mathbb{G}=\{G_n=(\frac{1}{n+2},\frac{1}{n}):n\in\mathbb{N}\}
+          \end{equation*}
+          of open intervals covers $A$, i.e.,
+          \begin{equation*}
+            A\subseteq (\frac{1}{3},1)\cup(\frac{1}{4},\frac{1}{2})\cup(\frac{1}{5},\frac{1}{3})\cup\dots
+          \end{equation*}
+          But the union of no finite subclass of $\mathbb{G}$ contains $A$.
+        \item
+          Consider the closed infinite interval $A=[1,\infty)$. The class
+          \begin{equation*}
+            \mathbb{G}=\{(0,2),(1,3),(2,4),\dots\}
+          \end{equation*}
+          of open intervals covers $A$, but no infinite subclass does.
+      \end{itemize}
+  \end{note}
+}
+
+\longnewglossaryentry{sequence}
+{
+  name=Sequence,
+  text=sequence
+} {
+  , denoted by
+  \begin{equation*}
+    \langle s_1,s_2,\dots\rangle\text{, }\langle s_n:n\in\mathbb{N}\rangle\text{ or }\langle s_n\rangle
+  \end{equation*}
+  is a function whose domain is $\mathbb{N}=\{1,2,3,\dots\}$, i.e. a sequence assigns a point $s_n$ to each positive integer $n\in\mathbb{N}$. The image $s_n$ or $s(n)$ of $n\in\mathbb{N}$ is called the $n$th \textit{term} of the sequence.
+
+  \begin{note}[Bounded]
+    A sequence $\langle s_n:n\in\mathbb{N}\rangle$ is said to be \textit{bounded} if its range $\{s_n:n\in\mathbb{N}\}$ is a bounded set.
+  \end{note}
+  \begin{note}[Notation]
+    Observe that $\langle s_n:n\in\mathbb{N}\rangle$ denotes a sequence and is a function. Whereas $\{s_n:n\in\mathbb{N}\}$ denotes the range of the sequence and is a set.
+  \end{note}
+}
+
+\longnewglossaryentry{convergentsequencerealnumbers}
+{
+  name=Convergent Sequence In Real Numbers,
+  text=convergent sequence in real numbers
+} {
+  is defined as:
+  \begin{center}
+    The sequence $\langle a_1,a_2,\dots\rangle$ of real numbers converges to $b\in\mathbb{R}$ or, equivalently, the real number $b$ is the limit of the sequence $\langle a_n:n\in\mathbb{N}\rangle$, denoted by
+  \end{center}
+  \begin{equation*}
+    \lim_{n\rightarrow\infty}a_n=b\text{, }\lim a_n=b\text{ or }a_n\rightarrow b
+  \end{equation*}
+  \begin{center}
+    if for every $\epsilon >0$ there exists a positive integer $n_0$ such that
+  \end{center}
+  \begin{equation*}
+    n>n_0\text{ implies }|a_n-b|<\epsilon
+  \end{equation*}
+  Observe that $|a_n-b|<\epsilon$ means that $b-\epsilon<a_n<b+\epsilon$ and $a_n$ belongs to the open interval $(b-\epsilon,b+\epsilon)$ containing $b$. Thus, since each term after the $n_0$th lies inside the interval $(b-\epsilon,b+\epsilon)$, only the terms before $a_{n_0}$, and there are only a finite number of them, can lie outside the interval $(b-\epsilon,b+\epsilon)$.
+
+  \begin{note}[Alternative Definition]
+    The sequence $\langle a_n:n\in\mathbb{N}\rangle$ converges to $b$ if every open set containing $b$ contains almost all, i.e. all but a finite number, of the terms of the sequence.
+  \end{note}
+  \begin{note}[Examples]
+    \item[]
+    \begin{itemize}
+      \item
+        A constant sequence $\langle a_0,a_0,\dots\rangle$ such as $\langle -2,-2,\dots\rangle$ converges to $a_0$ since each open set containing $a_0$ contains every term of the sequence.
+      \item
+        Each of the sequence
+        \begin{equation*}
+          \langle 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots\rangle\text{, }\langle 1,0,\frac{1}{2},0,\frac{1}{3},0,\frac{1}{4},0,\dots\rangle\text{, }\langle 1,-\frac{1}{2},\frac{1}{3},-\frac{1}{4},\dots\rangle
+        \end{equation*}
+        converges to 0 since any open interval containing 0 contains almost all of the terms of each of the sequences.
+      \item
+        Consider the sequence $\langle\frac{1}{2},\frac{1}{4},\frac{3}{4},\frac{1}{8},\frac{7}{8},\frac{1}{16},\frac{15}{16},\dots\rangle$, i.e. the sequence
+        \[
+          a_n=
+          \begin{cases*}
+            \frac{1}{2^{(n+2)/2}} & if $n$ is even\\
+            1-\frac{1}{2^{(n+2)/2}} & if $n$ is odd
+          \end{cases*}
+        \]
+        Observe that any open interval containing either 0 or 1 contains an infinite number of the terms of the sequence. Neither 0 nor 1, however, is a limit of the sequence. Observe, though, that 0 and 1 are accumulation points of the \textit{range} of the sequence, that is, of the set $\{\frac{1}{2},\frac{1}{4},\frac{3}{4},\frac{1}{8},\frac{7}{8},\frac{1}{16},\frac{15}{16},\dots\}$.
+    \end{itemize}
+  \end{note}
+}
+
+\longnewglossaryentry{subsequence}
+{
+  name=Subsequence,
+  text=subsequence
+} {
+  Consider a sequence $\langle a_1,a_2,a_3,\dots\rangle$. If $\langle i_n\rangle$ is a sequence of positive integers such that $i_1<i_2<\dots$, then
+  \begin{equation*}
+    \langle a_{i_1},a_{i_2},a_{i_3},\dots\rangle
+  \end{equation*}
+  is called a \textbf{subsequence} of $\langle a_n:n\in\mathbb{N}\rangle$.
+
+  \begin{note}
+    Every bounded sequence of real numbers contains a convergent subsequence.
+  \end{note}
+
+  \begin{note}[Examples]
+    \item[]
+      \begin{itemize}
+        \item
+          Consider the sequence $\langle a_n\rangle=\langle 1,\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots\rangle$. Observe that $\langle a_n\rangle=\langle 1,\frac{1}{2},\frac{1}{4},\frac{1}{8},\dots\rangle$ is a subsequence of $\langle a_n\rangle$ but that $\langle a_n\rangle=\langle \frac{1}{2},1,\frac{1}{4},\frac{1}{3},\frac{1}{6},\frac{1}{5},\dots\rangle$ is not a subsequence of $\langle a_n\rangle$ since 1 appears before $\frac{1}{2}$ in the original sequence.
+        \item
+          Although the sequence $\langle\frac{1}{2},\frac{1}{4},\frac{3}{4},\frac{1}{8},\frac{7}{8},\frac{1}{16},\frac{15}{16},\dots\rangle$ does not converge, it does have a convergent subsequence such as $\langle\frac{1}{2},\frac{1}{4},\frac{1}{8},\frac{1}{16},\dots\rangle$ and $\langle\frac{1}{2},\frac{3}{4},\frac{7}{8},\frac{15}{16},\dots\rangle$. On the other hand, the sequence $\langle 1,3,5,\dots\rangle$ does not have any convergent subsequences.
+      \end{itemize}
+  \end{note}
+}
+
+\longnewglossaryentry{convergentsequence}
+{
+  name=Convergent Sequence,
+  text=convergent sequence
+} {
+  A sequence $\langle a_1,a_2,\dots\rangle$ of points in a topological space $X$ \textbf{converges} to a point $b\in X$, or $b$ is the \textit{limit} of the sequence $\langle a_n\rangle$, denoted by
+  \begin{equation*}
+    \lim_{n\rightarrow\infty}a_n=b\text{, }\lim a_n = b\text{ or }a_n\rightarrow b
+  \end{equation*}
+  iff for each open set $G$ containing $b$ there exists a positive integer $n_0\in\mathbb{N}$ such that
+  \begin{equation*}
+    n>n_0\text{ implies }a_n\in G
+  \end{equation*}
+  that is, if $G$ contains almost all, i.e. all except a finite number, of the terms of the sequence.
+
+  \begin{note}[Examples]
+    \item[]
+    \begin{itemize}
+      \item
+        Let $\langle a_1,a_2,\dots\rangle$ be a sequence of points in an indiscrete topological space $(X,\mathcal{G})$. Note that: (i) $X$ is the only open set containing any point $b\in X$; and (ii) $X$ contains every term of the sequence $\langle a_n\rangle$. Accordingly, the seqeuence $\langle a_1,a_2,\dots\rangle$ contverges to every point $b\in X$.
+      \item
+        Let $\langle a_1,a_2,\dots\rangle$ be a sequence of points in a discrete topological space $(X,\mathcal{D})$. Now for every point $b\in X$, the singleton set $\{b\}$ is an open set containing $b$. So, if $a_n\rightarrow b$, then the set $\{b\}$ must contain almost all of the terms of the sequence. In other wrods, the sequence $\langle a_n\rangle$ converges to a point $b\in X$ iff the sequence is of the form $\langle a_1,a_2,\dots,a_{n_0},b,b,b,\dots\rangle$
+      \item
+        Let $\mathcal{T}$ be a cocountable topology. A sequence $\langle a_1,a_2,\dots\rangle$ converges to $b\in X$, ($a_n\rightarrow b$), iff the sequence is eventually constant, i.e. $\langle a_1,a_2,\dots,a_{n_0},b,b,b,\dots\rangle$. Prove $\Rightarrow$, we define $A^c$ to be the set consisting of the terms in the sequence $\langle a_n\rangle$ not equal to $b$, and this set is finite. Thus $A$ is an open set in $\mathcal{T}$ also containing $b$. Since $a_n\rightarrow b$, there exists $n>n_0$ such that $a_n=b$ for all $n>n_0$, hence enventually constant. \cite{convergent_sequence_in_cocountable_topology}
+    \end{itemize}
+  \end{note}
+
+}
+
 \longnewglossaryentry{topologicalspaces}
 {
   name=Topological Spaces (Topology),
@@ -131,6 +291,8 @@
         Let $\mathcal{U}=\{\cup_i I_i|I_i\in I\}$ denote the class of all open sets of real numbers where $I=\{(a,b)|a,b\in\mathbb{R}\}$. Then $\mathcal{U}$ is a topology in $\mathbb{R}$ denoted $(\mathbb{R},\mathcal{U})$, and is also called the \textit{usual topology} on $\mathbb{R}$.
       \item
         Similarily, the class $\mathcal{U}$ of all open sets in the plane $\mathbb{R}^2$ is a topology and also called the \textit{usual topology} on $\mathbb{R}^2$.
+      \item
+        Let $X$ be an infinite set. We can define a \textit{Cocountable Topology} (also known as \textit{Countable Complement Topology}) by declaring the empty set to be open, and a non-empty subset $U\subseteq X$ to be open if $X\setminus U$ is countable. In this case, if $X$ is countable then the cocountable topology is just the discrete topology, as the complement of any set is countable, and thus open.
     \end{itemize}
   \end{note}
 }
