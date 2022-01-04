@@ -2702,21 +2702,21 @@
   $G:\mathscr{B}\rightarrow\mathscr{A}$, $F$ and $G$ form an
   \textbf{adjunction} (denoted as $F\dashv G$) provided that there is a
   natural transformation $\eta:id\rightarrow GF$ such that for any objects
-  $A\in\mathscr{A}$, $B\in\mathscr{B}$ and arrow $f:A\rightarrow UB$, there
+  $A\in\mathscr{A}$, $B\in\mathscr{B}$ and arrow $f:A\rightarrow GB$, there
   is an unique arrow $g:FA\rightarrow B$ such that the following diagram
   commutes:
   \begin{mytikzcd}
-    A \ar[r,"\eta A"] \ar[rd,"f"'] \& UFA
-    \ar[d,"Ug"] \\ \& UB
+    A \ar[r,"\eta A"] \ar[rd,"f"'] \& GFA
+    \ar[d,"Gg"] \\ \& GB
   \end{mytikzcd}
 
   \begin{note}
     Dually, for any adjunction $F\dashv G$, there is a natural
     transformation $\epsilon:FG\rightarrow id$ such that for any
-    $g:FA\rightarrow B$, there exists an unique arrow $f:A\rightarrow UB$
+    $g:FA\rightarrow B$, there exists an unique arrow $f:A\rightarrow GB$
     such that the following diagram commutes:
     \begin{mytikzcd}
-      \& FUB \ar[d,"\epsilon B"] \\
+      \& FGB \ar[d,"\epsilon B"] \\
       FA \ar[ru,"Ff"] \ar[r,"g"'] \& B
     \end{mytikzcd}
   \end{note}
