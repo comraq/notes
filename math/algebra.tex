@@ -1,0 +1,219 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage[xindy, nonumberlist, nopostdot]{glossaries}
+
+% My Custom Macros Package
+\usepackage{mymacros}
+
+\makeindex
+\makeglossaries
+
+\longnewglossaryentry{identityelement}
+{
+  name=Identity Element,
+  text=identity element,
+} {
+  An element $e\in\Omega$ is said to be an \textbf{identity
+  element} under the binary operator $o$ if and only if $\forall
+  a\in\Omega$:
+  \begin{equation*}
+    a\circ e=e\circ a=a
+  \end{equation*}
+  In order for $e$ to be an \textbf{identity element}, $e$ must statisfy
+  the following:
+  \begin{enumerate}
+    \item $e\in\Omega$
+    \item $\forall a\in\Omega, a\circ e=a$
+    \item $\forall a\in\Omega, e\circ a=a$
+  \end{enumerate}
+  ie: the identity element $e$ must be in $\Omega$ and commute with every
+  element in $\Omega$.
+  \begin{note}
+    if the binary operator $\circ$ is abelian, only conditions
+    $1. $ and $2. $ or $3. $ is necessary.
+  \end{note}
+  To prove, let $a\in\Omega$ be arbitrary but fixed. Compute $a\circ x$,
+  $x\circ a$ and solve for $x$ where $a\circ x=x\circ a$. Show that
+  $x\in\Omega$ does not depend on $a$. Conclude $e=x$ is an identity
+  element in $\Omega$ under the binary operator $\circ$.
+  \begin{note}[Theorem]
+    If $\Omega$ is closed under the $\circ$ binary operation and $e$ is an
+    identity element under $\circ$, then $e$ is unique
+  \end{note}
+}
+
+\longnewglossaryentry{inverseelement}
+{
+  name=Inverse Element,
+  text=inverse element
+} {
+  An element $a\in\Omega$ is said to have an \textbf{inverse element}
+  $a^{-1}\in\Omega$ under the binary operator $\circ$ if and only if:
+  \begin{equation*}
+    a\circ a^{-1}=a^{-1}\circ a=e
+  \end{equation*}
+  where $e$ is the identity element in $\Omega$.\\
+
+  To prove, determine the identity element $e$ and let $a\in\Omega$ be
+  arbitrary but fixed. Compute $a\circ x$, $x\circ a$, solve for $x$
+  where $a\circ x=e=x\circ a$ and show that $x\in\Omega$. Conc
+  that $a^{-1}=x$ is the inverse of the element $a$ under the binary
+  operator $\circ$.
+  \begin{note}[Theorem]
+    Let $o$ be an associative binary operator. If $\Omega$ is closed under
+    $\circ$ and $a^{-1}\in\Omega$ whenever $a\in\Omega$, then $a^{-1}$ is
+    unique
+  \end{note}
+  \begin{note}[Theorem]
+    If $\Omega$ is closed under $\circ$ and $a^{-1}\in\Omega$ whenever
+    $a\in\Omega$, then $(a^{-1})^{-1}=a$
+  \end{note}
+}
+
+\newglossaryentry{cayleystheorem}
+{
+  name=Cayley's Theorem,
+  description={Every group $G$ is isomorphic to a subgroup of the symmetric
+    group acting on $G$.
+    \begin{note}
+      The same can be stated about monoids and monoid actions.
+    \end{note}
+  }
+}
+
+\longnewglossaryentry{groupaction}
+{
+  name=Group Action,
+  text=group action
+} {
+  is a way of interpreting elements of group ``acting'' on some space, thus
+  if $G$ is a group and $X$ is a set, the action of $G$ on $X$ is a group
+  homomorphism from $G$ to the symmetry group on $X$. The group action
+  $\alpha:G\times X\rightarrow X$ may be defined as follows:
+  \begin{itemize}
+    \item $\alpha(1, x)=x$ where $1$ is the identity in $G$ for any $x\in
+      X$\\
+      Also written as: $1x=x$
+    \item $\alpha(gh,x)=\alpha(g,\alpha(h,x))$ for all $g,h\in G, x\in X$\\
+      Also written as: $(gh)x=g(hx)$
+  \end{itemize}
+
+  \begin{note}
+    A similar construct can be defined for monoids.
+  \end{note}
+
+  \begin{note}
+    One way to think of group actions would be the set $X$ is a
+    \textit{state space} and elements of $G$ acting on $X$ induces
+    \textit{transitions} from one state to another.
+  \end{note}
+}
+
+\newglossaryentry{equivariantmap}
+{
+  name=Equivariant Map,
+  text=equivariant map,
+  description={is a function that commutes with the action of the group on
+    either its domain or codomain. Thus, for a group $G$ and an equivariant map
+    $\phi:S\rightarrow T$ for sets $S$ and $T$:
+    \begin{center}
+      $\forall g\in G, \forall s\in S, g\phi(s)=\phi(gs)$
+    \end{center}
+  }
+}
+
+\longnewglossaryentry{field}
+{
+  name=Field,
+  text=field
+} {
+  is a set $F$ of two or more elements, together with the two operations called addition ($+$) and multiplication ($\bullet$) and satisfies the following axioms:
+  \begin{itemize}
+    \item[($A_1$)]
+      Closure: $a,b\in F\Rightarrow a+b\in F$
+    \item[($A_2$)]
+      Associative Law: $a,b,c\in F\Rightarrow (a+b)+c=a+(b+c)$
+    \item[($A_3$)]
+      (Additive) Identity: $\exists 0\in F$ such that $0+a=a+0=a,\forall a\in F$
+    \item[($A_4$)]
+      (Additive) Inverse: $a\in F\Rightarrow\exists -a\in F$ such that $a+(-a)=(-a)+a=0$
+    \item[($A_5$)]
+      Commutative Law: $a,b\in F\Rightarrow a+b=b+a$
+    \item[($M_1$)]
+      Closure: $a,b\in F\Rightarrow a\bullet b\in F$
+    \item[($M_2$)]
+      Associative Law: $a,b,c\in F\Rightarrow (a\bullet b)\bullet c=a\bullet (b\bullet c)$
+    \item[($M_3$)]
+      (Multiplicative) Identity: $\exists 1\in F$ such that $1\bullet a=a\bullet 1=a,\forall a\in F$
+    \item[($M_4$)]
+      (Multiplicative) Inverse: $a\in F,a\neq 0\Rightarrow\exists a^{-1}\in F$ such that $a\bullet a^{-1}\bullet a=a\bullet a^{-1}=1$
+    \item[($M_5$)]
+      Commutative Law: $a,b\in F\Rightarrow a\bullet b=b\bullet a$
+    \item[($D_1$)]
+      Left Distributive Law: $a,b,c\in F\Rightarrow a\bullet (b+c)=a\bullet b+a\bullet c$
+    \item[($D_2$)]
+      Right Distributive Law: $a,b,c\in F\Rightarrow (b+c)\bullet a=b\bullet a+c\bullet a$
+  \end{itemize}
+
+  With the following algebraic properties:
+  \begin{enumerate}
+    \item
+      The identity elements 0 and 1 are unique
+    \item
+      The following cancellation laws hold:
+      \begin{equation*}
+        \text{(1) }a+b=a+c\Rightarrow b+c\text{, (2) }a\bullet b=a\bullet c,a\neq 0\Rightarrow b=c
+      \end{equation*}
+    \item
+      The inverse elements $-a$ and $a^{-1}$ are unique.
+    \item
+      For every $a,b\in F$
+      \begin{equation*}
+        \text{(1) }a\bullet 0=0\text{, (2) }a\bullet (-b)=(-a)\bullet b=-(a\bullet b)\text{, (3) }(-a)\bullet (-b)=a\bullet b
+      \end{equation*}
+  \end{enumerate}
+
+  \begin{note}[Subtraction]
+    is defined as $b-a\equiv b+(-a)$
+  \end{note}
+  \begin{note}[Division]
+    (by a non-zero element) is defined as $\frac{b}{a}\equiv b\bullet a^{-1}$
+  \end{note}
+}
+
+\longnewglossaryentry{ring}
+{
+  name=Ring,
+  text=ring
+} {
+  is a non-empty set together with two operations that satisfy all the axioms of a \gls{field} except ($M_3$), ($M_4$) and ($M_5$).
+  \begin{note}[Example]
+    $\mathbb{Z}$, the set of integers under addition and multiplication is a ring but not a field.
+  \end{note}
+}
+
+\title{Algebra}
+\author{Adam Yin}
+\date{}
+
+\begin{document}
+\maketitle
+A glossary reference for Algebra and related terms.
+\cite{ctforcpsc}
+\cite{general_topology}
+
+\clearpage
+
+\glsaddall
+\setglossarystyle{tree}
+\printglossaries
+
+\medskip
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+\end{document}
